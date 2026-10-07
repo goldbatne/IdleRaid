@@ -1,0 +1,1 @@
+print("[IdleRaid] Server Started")
