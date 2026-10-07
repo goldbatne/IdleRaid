@@ -13,10 +13,13 @@ function CombatController.Start()
 			return
 		end
 
-		local hitPart = mouse.Target
-		local target = hitPart and hitPart:FindFirstAncestorOfClass("Model")
-		if target and target.Name == "TrainingDummy" then
-			attackRemote:FireServer(target)
+		local target = mouse.Target
+		while target and target ~= workspace do
+			if target:IsA("Model") and target:GetAttribute("EnemyId") then
+				attackRemote:FireServer(target)
+				return
+			end
+			target = target.Parent
 		end
 	end)
 end

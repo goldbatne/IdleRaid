@@ -13,6 +13,10 @@ local function onAttackRequested(player: Player, target: any)
 		return
 	end
 
+	if not EnemyService.IsAliveEnemy(target) then
+		return
+	end
+
 	local targetPosition = EnemyService.GetAttackPosition(target)
 	if not targetPosition then
 		return
@@ -39,16 +43,19 @@ local function onAttackRequested(player: Player, target: any)
 		return
 	end
 
-	lastAttackAt[player] = now
-	local dealt, killed = EnemyService.ApplyDamage(target, attack)
+	local killExp = EnemyService.GetKillExp(target)
+	local dealt, killed, enemyId = EnemyService.ApplyDamage(target, attack)
 	if dealt <= 0 then
 		return
 	end
 
-	print(string.format("[IdleRaid] %s dealt %d damage", player.Name, dealt))
+	lastAttackAt[player] = now
+	print(string.format("[IdleRaid] %s dealt %d damage to %s", player.Name, dealt, enemyId))
 	if killed then
-		print(string.format("[IdleRaid] %s killed TrainingDummy", player.Name))
-		PlayerDataService.AddExp(player, GameConfig.TrainingDummy.KillExp)
+		print(string.format("[IdleRaid] %s killed %s", player.Name, enemyId))
+		if killExp then
+			PlayerDataService.AddExp(player, killExp)
+		end
 	end
 end
 
