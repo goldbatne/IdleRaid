@@ -31,6 +31,13 @@ local GameConfig = {
 			Id = "Slime",
 			MaxHealth = 40,
 			KillExp = 20,
+			GoldMin = 3,
+			GoldMax = 7,
+			DropTable = {
+				{ ItemId = "TrainingSword", Chance = 0.15 },
+				{ ItemId = "ClothArmor", Chance = 0.20 },
+				{ ItemId = "SlimeCharm", Chance = 0.05 },
+			},
 			RespawnTime = 3,
 			Attack = 0,
 			Level = 1,

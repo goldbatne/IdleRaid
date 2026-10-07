@@ -66,6 +66,11 @@ function PlayerDataService.GetAttack(player: Player): number?
 	return data and data.Attack or nil
 end
 
+function PlayerDataService.GetGold(player: Player): number?
+	local data = playerData[player]
+	return data and data.Gold or nil
+end
+
 function PlayerDataService.AddExp(player: Player, amount: number)
 	local data = playerData[player]
 	if not data or amount <= 0 then
@@ -79,6 +84,18 @@ function PlayerDataService.AddExp(player: Player, amount: number)
 	for level = oldLevel + 1, data.Level do
 		print(string.format("[IdleRaid] %s reached Level %d", player.Name, level))
 	end
+end
+
+function PlayerDataService.AddGold(player: Player, amount: number): boolean
+	local data = playerData[player]
+	if not data or typeof(amount) ~= "number" or amount < 1 or amount % 1 ~= 0 then
+		return false
+	end
+
+	data.Gold += amount
+	updateLeaderstats(player, data)
+	print(string.format("[IdleRaid] %s gained %d Gold", player.Name, amount))
+	return true
 end
 
 return PlayerDataService

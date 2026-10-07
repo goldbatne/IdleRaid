@@ -3,10 +3,32 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
 local EnemyService = require(script.Parent.EnemyService)
+local InventoryService = require(script.Parent.InventoryService)
 local PlayerDataService = require(script.Parent.PlayerDataService)
 
 local CombatService = {}
 local lastAttackAt = {}
+local rewardRandom = Random.new()
+
+local function grantKillRewards(player: Player, enemyId: string)
+	local definition = GameConfig.Enemies[enemyId]
+	if not definition then
+		warn(string.format("[IdleRaid] Missing rewards for EnemyId %s", enemyId))
+		return
+	end
+
+	PlayerDataService.AddExp(player, definition.KillExp)
+	PlayerDataService.AddGold(player, rewardRandom:NextInteger(definition.GoldMin, definition.GoldMax))
+	for _, drop in ipairs(definition.DropTable) do
+		if typeof(drop.Chance) == "number" and drop.Chance >= 0 and drop.Chance <= 1 then
+			if rewardRandom:NextNumber() < drop.Chance then
+				InventoryService.AddItem(player, drop.ItemId, 1)
+			end
+		else
+			warn(string.format("[IdleRaid] Invalid drop chance for %s", tostring(drop.ItemId)))
+		end
+	end
+end
 
 local function onAttackRequested(player: Player, target: any)
 	if typeof(target) ~= "Instance" or not target:IsA("Model") then
@@ -43,7 +65,6 @@ local function onAttackRequested(player: Player, target: any)
 		return
 	end
 
-	local killExp = EnemyService.GetKillExp(target)
 	local dealt, killed, enemyId = EnemyService.ApplyDamage(target, attack)
 	if dealt <= 0 then
 		return
@@ -53,9 +74,7 @@ local function onAttackRequested(player: Player, target: any)
 	print(string.format("[IdleRaid] %s dealt %d damage to %s", player.Name, dealt, enemyId))
 	if killed then
 		print(string.format("[IdleRaid] %s killed %s", player.Name, enemyId))
-		if killExp then
-			PlayerDataService.AddExp(player, killExp)
-		end
+		grantKillRewards(player, enemyId)
 	end
 end
 
