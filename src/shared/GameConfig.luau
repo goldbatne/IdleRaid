@@ -14,6 +14,12 @@ local GameConfig = {
 		AttackRange = 15,
 		AttackCooldown = 0.6,
 	},
+	AutoCombat = {
+		TargetScanInterval = 0.25,
+		AttackRequestInterval = 0.65,
+		ApproachDistance = 12,
+		MoveRefreshInterval = 1,
+	},
 	EnemySpawns = {
 		DefaultEnemyId = "Slime",
 		DefaultCount = 5,

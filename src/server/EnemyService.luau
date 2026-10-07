@@ -9,6 +9,7 @@ local enemies = {}
 local activeBySpawn = {}
 local respawnPending = {}
 local started = false
+local enemyFolder: Folder?
 
 local function getSpawnLayout(): (Vector3, Vector3)
 	local playerSpawn = Workspace:FindFirstChildWhichIsA("SpawnLocation", true)
@@ -76,7 +77,7 @@ end
 
 function EnemyService.RegisterEnemy(model: Model, spawnPoint: BasePart, enemyId: string): boolean
 	local definition = GameConfig.Enemies[enemyId]
-	if not definition or not model.PrimaryPart or enemies[model] or activeBySpawn[spawnPoint] then
+	if not enemyFolder or not definition or not model.PrimaryPart or enemies[model] or activeBySpawn[spawnPoint] then
 		return false
 	end
 
@@ -93,7 +94,7 @@ function EnemyService.RegisterEnemy(model: Model, spawnPoint: BasePart, enemyId:
 	model:SetAttribute("MaxHealth", definition.MaxHealth)
 	model:SetAttribute("Attack", definition.Attack)
 	model:SetAttribute("Level", definition.Level)
-	model.Parent = Workspace
+	model.Parent = enemyFolder
 	print(string.format("[IdleRaid] %s spawned at %s", enemyId, spawnPoint.Name))
 	return true
 end
@@ -130,12 +131,23 @@ function EnemyService.Start()
 		warn("[IdleRaid] Workspace.EnemySpawns must be a Folder")
 		return
 	end
+	local existingEnemies = Workspace:FindFirstChild("Enemies")
+	if existingEnemies and not existingEnemies:IsA("Folder") then
+		warn("[IdleRaid] Workspace.Enemies must be a Folder")
+		return
+	end
 
 	if not folder then
 		folder = Instance.new("Folder")
 		folder.Name = "EnemySpawns"
 		folder.Parent = Workspace
 	end
+	if not existingEnemies then
+		existingEnemies = Instance.new("Folder")
+		existingEnemies.Name = "Enemies"
+		existingEnemies.Parent = Workspace
+	end
+	enemyFolder = existingEnemies
 	started = true
 
 	for _, spawnPoint in ipairs(getSpawnPoints(folder)) do
@@ -149,7 +161,7 @@ function EnemyService.IsAliveEnemy(target: Instance): boolean
 	end
 
 	local state = enemies[target]
-	return state ~= nil and state.Alive and state.Health > 0 and target.Parent == Workspace
+	return state ~= nil and state.Alive and state.Health > 0 and target.Parent == enemyFolder
 end
 
 function EnemyService.GetAttackPosition(target: Instance): Vector3?
