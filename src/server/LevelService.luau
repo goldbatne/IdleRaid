@@ -14,7 +14,6 @@ function LevelService.ApplyExp(data, amount: number): number
 	while data.Exp >= LevelService.GetExpRequired(data.Level) do
 		data.Exp -= LevelService.GetExpRequired(data.Level)
 		data.Level += 1
-		data.Attack += GameConfig.Level.AttackIncreasePerLevel
 		levelsGained += 1
 	end
 

@@ -60,7 +60,7 @@ local function onAttackRequested(player: Player, target: any)
 		return
 	end
 
-	local attack = PlayerDataService.GetAttack(player)
+	local attack = PlayerDataService.GetFinalAttack(player)
 	if not attack then
 		return
 	end

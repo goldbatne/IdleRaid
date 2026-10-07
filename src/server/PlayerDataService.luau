@@ -3,6 +3,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
 local LevelService = require(script.Parent.LevelService)
+local StatService = require(script.Parent.StatService)
 
 local PlayerDataService = {}
 local playerData = {}
@@ -21,10 +22,17 @@ local function updateLeaderstats(player: Player, data)
 		return
 	end
 
-	for _, name in ipairs({ "Level", "Exp", "Gold", "Attack" }) do
+	local displayed = {
+		Level = data.Level,
+		Exp = data.Exp,
+		Gold = data.Gold,
+		Attack = data.FinalAttack,
+		Defense = data.FinalDefense,
+	}
+	for name, value in pairs(displayed) do
 		local stat = leaderstats:FindFirstChild(name)
 		if stat then
-			stat.Value = data[name]
+			stat.Value = value
 		end
 	end
 end
@@ -38,15 +46,21 @@ local function onPlayerAdded(player: Player)
 		Level = GameConfig.Player.InitialLevel,
 		Exp = GameConfig.Player.InitialExp,
 		Gold = GameConfig.Player.InitialGold,
-		Attack = GameConfig.Player.InitialAttack,
+		BaseAttack = GameConfig.Player.InitialBaseAttack,
+		BaseDefense = GameConfig.Player.InitialBaseDefense,
+		EquipmentAttackBonus = 0,
+		EquipmentDefenseBonus = 0,
 	}
+	data.FinalAttack, data.FinalDefense = StatService.Calculate(data)
 	playerData[player] = data
 
 	local leaderstats = Instance.new("Folder")
 	leaderstats.Name = "leaderstats"
-	for _, name in ipairs({ "Level", "Exp", "Gold", "Attack" }) do
-		makeStat(leaderstats, name, data[name])
-	end
+	makeStat(leaderstats, "Level", data.Level)
+	makeStat(leaderstats, "Exp", data.Exp)
+	makeStat(leaderstats, "Gold", data.Gold)
+	makeStat(leaderstats, "Attack", data.FinalAttack)
+	makeStat(leaderstats, "Defense", data.FinalDefense)
 	leaderstats.Parent = player
 end
 
@@ -61,14 +75,42 @@ function PlayerDataService.Start()
 	end
 end
 
-function PlayerDataService.GetAttack(player: Player): number?
+function PlayerDataService.GetFinalAttack(player: Player): number?
 	local data = playerData[player]
-	return data and data.Attack or nil
+	return data and data.FinalAttack or nil
 end
 
 function PlayerDataService.GetGold(player: Player): number?
 	local data = playerData[player]
 	return data and data.Gold or nil
+end
+
+function PlayerDataService.GetSnapshot(player: Player)
+	local data = playerData[player]
+	if not data then
+		return nil
+	end
+	return {
+		Level = data.Level,
+		Exp = data.Exp,
+		Gold = data.Gold,
+		BaseAttack = data.BaseAttack,
+		FinalAttack = data.FinalAttack,
+		BaseDefense = data.BaseDefense,
+		FinalDefense = data.FinalDefense,
+	}
+end
+
+function PlayerDataService.SetEquipmentBonuses(player: Player, attack: number, defense: number): boolean
+	local data = playerData[player]
+	if not data then
+		return false
+	end
+	data.EquipmentAttackBonus = attack
+	data.EquipmentDefenseBonus = defense
+	data.FinalAttack, data.FinalDefense = StatService.Calculate(data)
+	updateLeaderstats(player, data)
+	return true
 end
 
 function PlayerDataService.AddExp(player: Player, amount: number)
@@ -79,6 +121,7 @@ function PlayerDataService.AddExp(player: Player, amount: number)
 
 	local oldLevel = data.Level
 	LevelService.ApplyExp(data, amount)
+	data.FinalAttack, data.FinalDefense = StatService.Calculate(data)
 	updateLeaderstats(player, data)
 	print(string.format("[IdleRaid] %s gained %d EXP", player.Name, amount))
 	for level = oldLevel + 1, data.Level do

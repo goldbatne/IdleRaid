@@ -3,7 +3,8 @@ local GameConfig = {
 		InitialLevel = 1,
 		InitialExp = 0,
 		InitialGold = 0,
-		InitialAttack = 10,
+		InitialBaseAttack = 10,
+		InitialBaseDefense = 0,
 	},
 	Level = {
 		BaseExpRequired = 100,
