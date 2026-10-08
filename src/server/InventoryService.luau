@@ -2,6 +2,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local ItemConfig = require(ReplicatedStorage.Shared.ItemConfig)
+local StateSyncService = require(script.Parent.StateSyncService)
 
 local InventoryService = {}
 local itemsByPlayer = {}
@@ -46,6 +47,7 @@ function InventoryService.AddItem(player: Player, itemId: string, quantity: numb
 		items[itemId] = stack
 	end
 	print(string.format("[IdleRaid] %s obtained %s x%d", player.Name, definition.Name, stack.Quantity))
+	StateSyncService.Push(player, { Kind = "Item", ItemId = itemId, Quantity = quantity })
 	return true
 end
 

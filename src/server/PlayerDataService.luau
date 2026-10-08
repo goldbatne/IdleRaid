@@ -4,6 +4,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
 local LevelService = require(script.Parent.LevelService)
 local StatService = require(script.Parent.StatService)
+local StateSyncService = require(script.Parent.StateSyncService)
 
 local PlayerDataService = {}
 local playerData = {}
@@ -110,6 +111,7 @@ function PlayerDataService.SetEquipmentBonuses(player: Player, attack: number, d
 	data.EquipmentDefenseBonus = defense
 	data.FinalAttack, data.FinalDefense = StatService.Calculate(data)
 	updateLeaderstats(player, data)
+	StateSyncService.Push(player)
 	return true
 end
 
@@ -123,6 +125,7 @@ function PlayerDataService.AddExp(player: Player, amount: number)
 	LevelService.ApplyExp(data, amount)
 	data.FinalAttack, data.FinalDefense = StatService.Calculate(data)
 	updateLeaderstats(player, data)
+	StateSyncService.Push(player)
 	print(string.format("[IdleRaid] %s gained %d EXP", player.Name, amount))
 	for level = oldLevel + 1, data.Level do
 		print(string.format("[IdleRaid] %s reached Level %d", player.Name, level))
@@ -137,6 +140,7 @@ function PlayerDataService.AddGold(player: Player, amount: number): boolean
 
 	data.Gold += amount
 	updateLeaderstats(player, data)
+	StateSyncService.Push(player)
 	print(string.format("[IdleRaid] %s gained %d Gold", player.Name, amount))
 	return true
 end

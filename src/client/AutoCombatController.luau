@@ -14,6 +14,7 @@ local moving = false
 local lastMoveAt = -math.huge
 local lastAttackRequestAt = -math.huge
 local heldMovementKeys = {}
+local changed = Instance.new("BindableEvent")
 
 local movementKeys = {
 	[Enum.KeyCode.W] = true,
@@ -144,6 +145,33 @@ local function update(attackRemote: RemoteEvent)
 	end
 end
 
+function AutoCombatController.GetEnabled(): boolean
+	return enabled
+end
+
+function AutoCombatController.OnChanged(callback)
+	local connection = changed.Event:Connect(callback)
+	callback(enabled)
+	return connection
+end
+
+function AutoCombatController.SetEnabled(nextEnabled: boolean)
+	if enabled == nextEnabled then
+		return
+	end
+	enabled = nextEnabled
+	target = nil
+	if not enabled then
+		stopAutoMove()
+	end
+	print(if enabled then "[IdleRaid] AutoCombat ON" else "[IdleRaid] AutoCombat OFF")
+	changed:Fire(enabled)
+end
+
+function AutoCombatController.Toggle()
+	AutoCombatController.SetEnabled(not enabled)
+end
+
 function AutoCombatController.Start()
 	local attackRemote = ReplicatedStorage:WaitForChild("IdleRaidRemotes"):WaitForChild("BasicAttack")
 
@@ -152,12 +180,7 @@ function AutoCombatController.Start()
 			return
 		end
 		if input.KeyCode == Enum.KeyCode.T then
-			enabled = not enabled
-			target = nil
-			if not enabled then
-				stopAutoMove()
-			end
-			print(if enabled then "[IdleRaid] AutoCombat ON" else "[IdleRaid] AutoCombat OFF")
+			AutoCombatController.Toggle()
 		elseif movementKeys[input.KeyCode] then
 			heldMovementKeys[input.KeyCode] = true
 			stopAutoMove()
@@ -171,13 +194,10 @@ function AutoCombatController.Start()
 	end)
 
 	player.CharacterAdded:Connect(function()
-		if enabled then
-			print("[IdleRaid] AutoCombat OFF")
-		end
-		enabled = false
-		target = nil
 		moving = false
 		table.clear(heldMovementKeys)
+		AutoCombatController.SetEnabled(false)
+		target = nil
 	end)
 
 	task.spawn(function()
