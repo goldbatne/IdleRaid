@@ -18,6 +18,8 @@ local moving = false
 local lastMoveAt = -math.huge
 local lastAttackRequestAt = -math.huge
 local heldMovementKeys = {}
+local heldMovementTouches = {}
+local manualUntil = -math.huge
 local changed = Instance.new("BindableEvent")
 
 local movementKeys = {
@@ -89,7 +91,7 @@ local function findNearestEnemy(root: BasePart, folder: Folder): Model?
 end
 
 local function isMovingManually(): boolean
-	return next(heldMovementKeys) ~= nil
+	return next(heldMovementKeys) ~= nil or next(heldMovementTouches) ~= nil or os.clock() < manualUntil
 end
 
 local function update(attackRemote: RemoteEvent)
@@ -127,12 +129,12 @@ local function update(attackRemote: RemoteEvent)
 		return
 	end
 
+	if isMovingManually() then
+		stopAutoMove()
+		return
+	end
 	local distance = (root.Position - position).Magnitude
 	if distance > GameConfig.Combat.AttackRange then
-		if isMovingManually() then
-			stopAutoMove()
-			return
-		end
 
 		local horizontal = Vector3.new(position.X - root.Position.X, 0, position.Z - root.Position.Z)
 		if horizontal.Magnitude > 0 then
@@ -153,6 +155,11 @@ local function update(attackRemote: RemoteEvent)
 		lastAttackRequestAt = now
 		attackRemote:FireServer(target)
 	end
+end
+
+function AutoCombatController.PauseForDash()
+	manualUntil = math.max(manualUntil, os.clock() + GameConfig.Raid.Dash.ManualPauseTime)
+	stopAutoMove()
 end
 
 function AutoCombatController.GetEnabled(): boolean
@@ -197,6 +204,15 @@ function AutoCombatController.Start()
 	end)
 
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if input.UserInputType == Enum.UserInputType.Touch then
+			local camera = Workspace.CurrentCamera
+			local viewport = camera and camera.ViewportSize
+			if viewport and input.Position.X < viewport.X * 0.45 and input.Position.Y > viewport.Y * 0.4 then
+				heldMovementTouches[input] = true
+				stopAutoMove()
+			end
+			return
+		end
 		if gameProcessed then
 			return
 		end
@@ -209,6 +225,9 @@ function AutoCombatController.Start()
 	end)
 
 	UserInputService.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.Touch then
+			heldMovementTouches[input] = nil
+		end
 		if movementKeys[input.KeyCode] then
 			heldMovementKeys[input.KeyCode] = nil
 		end
@@ -217,6 +236,8 @@ function AutoCombatController.Start()
 	player.CharacterAdded:Connect(function()
 		moving = false
 		table.clear(heldMovementKeys)
+		table.clear(heldMovementTouches)
+		manualUntil = -math.huge
 		AutoCombatController.SetEnabled(false)
 		target = nil
 	end)

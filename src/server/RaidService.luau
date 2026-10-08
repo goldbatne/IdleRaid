@@ -1,10 +1,12 @@
 local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
 
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
 local EnemyService = require(script.Parent.EnemyService)
+local EquipmentService = require(script.Parent.EquipmentService)
 local PlayerDataService = require(script.Parent.PlayerDataService)
 local StateSyncService = require(script.Parent.StateSyncService)
 
@@ -14,7 +16,9 @@ local arena: Folder?
 local bossSpawn: BasePart?
 local joinRemote: RemoteEvent?
 local telegraphRemote: RemoteEvent?
+local feedbackRemote: RemoteEvent?
 local nextId = 0
+local lastMetrics
 local finishRaid
 
 local function alivePlayers(session)
@@ -64,6 +68,11 @@ local function makeArena()
 		floor.Color = Color3.fromRGB(53, 65, 77)
 		floor.Parent = arena
 	end
+	if not floor:IsA("BasePart") then
+		warn("[IdleRaid] Workspace.RaidArena.Floor must be a BasePart")
+		arena = nil
+		return
+	end
 	local spawn = arena:FindFirstChild("BossSpawn")
 	if not spawn then
 		spawn = Instance.new("Part")
@@ -75,6 +84,11 @@ local function makeArena()
 		spawn.Size = Vector3.new(2, 0.2, 2)
 		spawn.Position = GameConfig.Raid.ArenaCenter + Vector3.new(0, 0.2, 18)
 		spawn.Parent = arena
+	end
+	if not spawn:IsA("BasePart") then
+		warn("[IdleRaid] Workspace.RaidArena.BossSpawn must be a BasePart")
+		arena = nil
+		return
 	end
 	bossSpawn = spawn
 end
@@ -104,6 +118,7 @@ function RaidService.GetSnapshot(player: Player)
 		BossMaxHealth = session.BossMaxHealth,
 		BossName = GameConfig.Enemies.SlimeKing.Name,
 		Defeated = (PlayerDataService.GetHealth(player) or 0) <= 0,
+		DashReadyAt = session.Dash[player] and session.Dash[player].ReadyAt or 0,
 	}
 end
 
@@ -118,11 +133,70 @@ function RaidService.CanAttack(player: Player, target: Instance): boolean
 	return not (session and session.Participants[player])
 end
 
+function RaidService.IsInvulnerable(player: Player): boolean
+	local session = current
+	local dash = session and session.Dash[player]
+	return session ~= nil and session.Status == "Active" and dash ~= nil
+		and Workspace:GetServerTimeNow() < dash.InvulnerableUntil
+end
+
+function RaidService.TryDash(player: Player, direction): boolean
+	local session = current
+	if not session or session.Status ~= "Active" or not session.Participants[player]
+		or (PlayerDataService.GetHealth(player) or 0) <= 0 then
+		return false
+	end
+	if typeof(direction) ~= "Vector3" or direction.X ~= direction.X or direction.Z ~= direction.Z
+		or math.abs(direction.X) > 1000000 or math.abs(direction.Z) > 1000000 then
+		return false
+	end
+	local character = player.Character
+	local root = character and character:FindFirstChild("HumanoidRootPart")
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	if not root or not root:IsA("BasePart") or not humanoid or humanoid.Health <= 0 then return false end
+	local now = Workspace:GetServerTimeNow()
+	local previous = session.Dash[player]
+	if previous and now < previous.ReadyAt then return false end
+	local horizontal = Vector3.new(direction.X, 0, direction.Z)
+	if horizontal.Magnitude < 0.01 then return false end
+	local center = GameConfig.Raid.ArenaCenter
+	local half = GameConfig.Raid.ArenaSize / 2
+	local inset = GameConfig.Raid.ArenaInset
+	if math.abs(root.Position.X - center.X) > half.X - inset
+		or math.abs(root.Position.Z - center.Z) > half.Z - inset then
+		return false
+	end
+	local desired = root.Position + horizontal.Unit * GameConfig.Raid.Dash.Distance
+	local destination = Vector3.new(
+		math.clamp(desired.X, center.X - half.X + inset, center.X + half.X - inset),
+		root.Position.Y,
+		math.clamp(desired.Z, center.Z - half.Z + inset, center.Z + half.Z - inset)
+	)
+	local displacement = destination - root.Position
+	if displacement.Magnitude < 0.1 then return false end
+	session.Dash[player] = {
+		ReadyAt = now + GameConfig.Raid.Dash.Cooldown,
+		InvulnerableUntil = now + GameConfig.Raid.Dash.InvulnerableTime,
+	}
+	character:PivotTo(character:GetPivot() + displacement)
+	root.AssemblyLinearVelocity = Vector3.zero
+	StateSyncService.Push(player)
+	return true
+end
+
+function RaidService.GetLastMetrics()
+	return lastMetrics
+end
+
 local function applyDamage(session, player: Player, amount: number)
 	if current ~= session or session.Status ~= "Active" or not session.Participants[player] then return end
 	local health = PlayerDataService.GetHealth(player)
-	if not health or health <= 0 then return end
+	if not health or health <= 0 or RaidService.IsInvulnerable(player) then return end
 	local remaining = PlayerDataService.ApplyRaidDamage(player, amount)
+	if not remaining then return end
+	session.Metrics.Hits += 1
+	session.Metrics.HitsByPlayer[player] = (session.Metrics.HitsByPlayer[player] or 0) + 1
+	if feedbackRemote then feedbackRemote:FireClient(player, "Taken", health - remaining) end
 	if remaining == 0 then
 		print(string.format("[IdleRaid] %s defeated in raid", player.Name))
 		StateSyncService.Push(player)
@@ -140,6 +214,7 @@ local function groundSlam(session, targetPlayer: Player)
 	local config = GameConfig.Raid.Slam
 	local center = Vector3.new(root.Position.X, GameConfig.Raid.ArenaCenter.Y, root.Position.Z)
 	session.Phase = "Telegraph"
+	session.Metrics.Slam += 1
 	pushParticipants(session)
 	for player in pairs(session.Participants) do
 		telegraphRemote:FireClient(player, "Slam", center, config.Radius, config.TelegraphTime)
@@ -176,6 +251,7 @@ local function charge(session, targetPlayer: Player)
 	if horizontal.Magnitude < 1 then return end
 	local endPos = startPos + horizontal.Unit * math.min(horizontal.Magnitude, config.MaxDistance)
 	session.Phase = "Telegraph"
+	session.Metrics.Charge += 1
 	pushParticipants(session)
 	for player in pairs(session.Participants) do
 		telegraphRemote:FireClient(player, "Charge", startPos, endPos, config.Width, config.TelegraphTime)
@@ -226,9 +302,33 @@ finishRaid = function(session, success: boolean)
 	if current ~= session or session.Status ~= "Active" then return end
 	session.Status = if success then "Clear" else "Failed"
 	session.Phase = "Finished"
-	if not success and session.Boss then
-		EnemyService.RemoveEnemy(session.Boss)
+	if session.Boss then EnemyService.RemoveEnemy(session.Boss) end
+	local metrics = session.Metrics
+	metrics.Result = if success then "Clear" else "Failed"
+	metrics.Duration = math.round((os.clock() - metrics.StartedAt) * 10) / 10
+	metrics.Participants = {}
+	for player in pairs(session.Participants) do
+		local initial = metrics.Initial[player]
+		if initial then
+			table.insert(metrics.Participants, {
+			Name = player.Name,
+			Level = initial.Level,
+			Equipment = initial.Equipment,
+			FinalAttack = initial.FinalAttack,
+			Hits = metrics.HitsByPlayer[player] or 0,
+			DamageDealt = metrics.DamageByPlayer[player] or 0,
+			Defeated = (PlayerDataService.GetHealth(player) or 0) <= 0,
+			})
+		end
 	end
+	lastMetrics = {
+		Result = metrics.Result, Duration = metrics.Duration,
+		Slam = metrics.Slam, Charge = metrics.Charge, Hits = metrics.Hits,
+		BossHealthRemaining = if success then 0 else session.BossHealth,
+		Participants = metrics.Participants,
+	}
+	print(string.format("[IdleRaid] RaidMetrics %s %.1fs Slam=%d Charge=%d Hits=%d",
+		metrics.Result, metrics.Duration, metrics.Slam, metrics.Charge, metrics.Hits))
 	if success then
 		session.BossHealth = 0
 		for player in pairs(session.Participants) do
@@ -254,9 +354,11 @@ finishRaid = function(session, success: boolean)
 	end)
 end
 
-function RaidService.OnBossDamaged(target: Instance, killed: boolean)
+function RaidService.OnBossDamaged(player: Player, target: Instance, dealt: number, killed: boolean)
 	local session = current
 	if not session or session.Status ~= "Active" or target ~= session.Boss then return end
+	session.Metrics.DamageByPlayer[player] = (session.Metrics.DamageByPlayer[player] or 0) + dealt
+	if feedbackRemote then feedbackRemote:FireClient(player, "BossDamage", dealt) end
 	if killed then
 		finishRaid(session, true)
 	else
@@ -291,6 +393,15 @@ local function beginRaid(session)
 	end
 	session.Status = "Active"
 	session.Phase = "Idle"
+	session.Metrics.StartedAt = os.clock()
+	for player in pairs(session.Participants) do
+		local snapshot = PlayerDataService.GetSnapshot(player)
+		session.Metrics.Initial[player] = {
+			Level = snapshot and snapshot.Level or 0,
+			FinalAttack = snapshot and snapshot.FinalAttack or 0,
+			Equipment = EquipmentService.GetSnapshot(player),
+		}
+	end
 	pushParticipants(session)
 	print(string.format("[IdleRaid] Raid started with %d player(s), boss HP %d", count, session.BossMaxHealth))
 	task.spawn(bossLoop, session)
@@ -308,6 +419,11 @@ local function joinRaid(player: Player)
 		current = {
 			Id = nextId, Status = "Gathering", Phase = "Gathering",
 			Participants = {}, Boss = nil, BossHealth = 0, BossMaxHealth = 0,
+			Dash = {},
+			Metrics = {
+				Slam = 0, Charge = 0, Hits = 0,
+				HitsByPlayer = {}, DamageByPlayer = {}, Initial = {},
+			},
 		}
 		local session = current
 		task.delay(GameConfig.Raid.JoinWindow, function() beginRaid(session) end)
@@ -334,21 +450,80 @@ function RaidService.Start()
 	telegraphRemote = Instance.new("RemoteEvent")
 	telegraphRemote.Name = "RaidTelegraph"
 	telegraphRemote.Parent = folder
+	feedbackRemote = Instance.new("RemoteEvent")
+	feedbackRemote.Name = "RaidCombatFeedback"
+	feedbackRemote.Parent = folder
+	local dashRemote = Instance.new("RemoteEvent")
+	dashRemote.Name = "RaidDash"
+	dashRemote.Parent = folder
+	dashRemote.OnServerEvent:Connect(function(player, direction)
+		RaidService.TryDash(player, direction)
+	end)
+
+	local boundaryElapsed = 0
+	RunService.Heartbeat:Connect(function(dt)
+		boundaryElapsed += dt
+		if boundaryElapsed < GameConfig.Raid.BoundaryCheckInterval then return end
+		boundaryElapsed = 0
+		local session = current
+		if not session then return end
+		local center = GameConfig.Raid.ArenaCenter
+		local half = GameConfig.Raid.ArenaSize / 2
+		local inset = GameConfig.Raid.ArenaInset
+		for player in pairs(session.Participants) do
+			local character = player.Character
+			local root = character and character:FindFirstChild("HumanoidRootPart")
+			if root and root:IsA("BasePart") then
+				local position = root.Position
+				local x = math.clamp(position.X, center.X - half.X + inset, center.X + half.X - inset)
+				local z = math.clamp(position.Z, center.Z - half.Z + inset, center.Z + half.Z - inset)
+				if x ~= position.X or z ~= position.Z or position.Y < center.Y - 10 or position.Y > center.Y + 25 then
+					character:PivotTo(CFrame.new(x, center.Y + 4, z))
+					root.AssemblyLinearVelocity = Vector3.zero
+				end
+			end
+		end
+	end)
+
 	Players.PlayerRemoving:Connect(function(player)
 		local session = current
 		if not session or not session.Participants[player] then return end
 		session.Participants[player] = nil
-		if session.Status == "Active" and #alivePlayers(session) == 0 then
+		session.Dash[player] = nil
+		if next(session.Participants) == nil then
+			if session.Boss then EnemyService.RemoveEnemy(session.Boss) end
+			current = nil
+			print("[IdleRaid] Empty raid cleaned up")
+		elseif session.Status == "Active" and #alivePlayers(session) == 0 then
 			finishRaid(session, false)
+		else
+			pushParticipants(session)
 		end
 	end)
 	local function watchCharacter(player)
 		player.CharacterRemoving:Connect(function()
 			local session = current
-			if not session or not session.Participants[player] or session.Status ~= "Active" then return end
-			local health = PlayerDataService.GetHealth(player)
-			if health and health > 0 then PlayerDataService.ApplyRaidDamage(player, health) end
-			if #alivePlayers(session) == 0 then finishRaid(session, false) end
+			if not session or not session.Participants[player] then return end
+			if session.Status == "Gathering" then
+				session.Participants[player] = nil
+				session.Dash[player] = nil
+				if next(session.Participants) == nil then current = nil end
+				StateSyncService.Push(player)
+			elseif session.Status == "Active" then
+				local health = PlayerDataService.GetHealth(player)
+				if health and health > 0 then PlayerDataService.ApplyRaidDamage(player, health) end
+				if #alivePlayers(session) == 0 then finishRaid(session, false) end
+			end
+		end)
+		player.CharacterAdded:Connect(function(character)
+			task.spawn(function()
+				local root = character:WaitForChild("HumanoidRootPart", 5)
+				local session = current
+				if root and session and session.Participants[player] then
+					teleport(player, playerStart(1))
+					StateSyncService.Push(player)
+				end
+			end)
 		end)
 	end
 	Players.PlayerAdded:Connect(watchCharacter)

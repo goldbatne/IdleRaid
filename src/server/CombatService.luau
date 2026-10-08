@@ -75,7 +75,7 @@ local function onAttackRequested(player: Player, target: any)
 	lastAttackAt[player] = now
 	print(string.format("[IdleRaid] %s dealt %d damage to %s", player.Name, dealt, enemyId))
 	if isBoss then
-		RaidService.OnBossDamaged(target, killed)
+		RaidService.OnBossDamaged(player, target, dealt, killed)
 	elseif killed then
 		print(string.format("[IdleRaid] %s killed %s", player.Name, enemyId))
 		grantKillRewards(player, enemyId)
