@@ -1,4 +1,5 @@
 local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local GameConfig = require(game:GetService("ReplicatedStorage").Shared.GameConfig)
 
@@ -35,20 +36,24 @@ local function tree(parent: Instance, position: Vector3, index: number)
 		position + Vector3.new(0, 12.2, 0), Color3.fromRGB(77, 182, 132), Enum.Material.Grass)
 end
 
-local function field(folder: Folder, onPortalTriggered)
+local function field(folder: Folder, onPortalTriggered, onFacilityTriggered)
 	local spawn = Workspace:FindFirstChildWhichIsA("SpawnLocation", true)
 	local origin = spawn and spawn.Position or Vector3.new(0, 0, 0)
 	local y = origin.Y - 0.05
-	piece(folder, "GrassField", Vector3.new(96, 0.4, 80),
-		CFrame.new(origin.X, y - 0.2, origin.Z - 5),
+	piece(folder, "GrassField", Vector3.new(96, 0.4, 120),
+		CFrame.new(origin.X, y - 0.2, origin.Z - 20),
 		Color3.fromRGB(95, 174, 105), Enum.Material.Grass, true)
-	piece(folder, "VillagePath", Vector3.new(12, 0.08, 38),
-		CFrame.new(origin.X, y + 0.02, origin.Z - 9),
+	piece(folder, "VillagePath", Vector3.new(12, 0.08, 76),
+		CFrame.new(origin.X, y + 0.02, origin.Z - 25),
 		Color3.fromRGB(205, 183, 140), Enum.Material.Sand)
 	piece(folder, "HuntClearing", Vector3.new(43, 0.09, 21),
 		CFrame.new(origin.X, y + 0.04, origin.Z - 17),
 		Color3.fromRGB(116, 186, 112), Enum.Material.Grass)
 
+	piece(folder, "FoothillClearing", Vector3.new(49, 0.09, 20),
+		CFrame.new(origin.X, y + 0.04, origin.Z - 34), Color3.fromRGB(141, 179, 119), Enum.Material.Grass)
+	piece(folder, "CitadelClearing", Vector3.new(52, 0.09, 20),
+		CFrame.new(origin.X, y + 0.04, origin.Z - 58), Color3.fromRGB(124, 154, 152), Enum.Material.Slate)
 	local spawns = Workspace:FindFirstChild("EnemySpawns")
 	if spawns then
 		for _, spawnPoint in ipairs(spawns:GetChildren()) do
@@ -79,6 +84,19 @@ local function field(folder: Folder, onPortalTriggered)
 			Color3.fromRGB(111, 133, 127), Enum.Material.Slate)
 	end
 
+	local facilityAt = Vector3.new(origin.X - 22, y, origin.Z + 13)
+	local pedestal = piece(folder, "TrainingFacility", Vector3.new(6, 2, 6),
+		CFrame.new(facilityAt + Vector3.new(0, 1, 0)),
+		Color3.fromRGB(88, 107, 164), Enum.Material.Slate, true)
+	sphere(folder, "TrainingCrystal", Vector3.new(2.8, 3.8, 2.8),
+		facilityAt + Vector3.new(0, 3.5, 0), Color3.fromRGB(94, 234, 215), Enum.Material.Neon)
+	local facilityPrompt = Instance.new("ProximityPrompt")
+	facilityPrompt.ActionText = "성장 메뉴 열기"
+	facilityPrompt.ObjectText = "수련 시설"
+	facilityPrompt.HoldDuration = 0
+	facilityPrompt.MaxActivationDistance = 12
+	facilityPrompt.Parent = pedestal
+	facilityPrompt.Triggered:Connect(onFacilityTriggered)
 	local portalAt = Vector3.new(origin.X + 23, y, origin.Z + 13)
 	local base = piece(folder, "RaidPortalBase", Vector3.new(0.25, 11, 11),
 		CFrame.new(portalAt + Vector3.new(0, 0.08, 0)) * CFrame.Angles(0, 0, math.pi / 2),
@@ -133,6 +151,12 @@ local function arenaVisuals(arena: Folder)
 end
 
 function WorldVisualService.Start(onPortalTriggered)
+	local openGrowth = Instance.new("RemoteEvent")
+	openGrowth.Name = "OpenGrowthMenu"
+	openGrowth.Parent = ReplicatedStorage:WaitForChild("IdleRaidRemotes")
+	local function onFacilityTriggered(player)
+		openGrowth:FireClient(player)
+	end
 	local root = Workspace:FindFirstChild("IdleRaidVisuals")
 	if root and not root:IsA("Folder") then
 		warn("[IdleRaid] Workspace.IdleRaidVisuals must be a Folder")
@@ -143,11 +167,44 @@ function WorldVisualService.Start(onPortalTriggered)
 		root.Name = "IdleRaidVisuals"
 		root.Parent = Workspace
 	end
-	if not root:FindFirstChild("GeneratedField") then
-		local generated = Instance.new("Folder")
+	local generated = root:FindFirstChild("GeneratedField")
+	if not generated then
+		generated = Instance.new("Folder")
 		generated.Name = "GeneratedField"
 		generated.Parent = root
-		field(generated, onPortalTriggered)
+		field(generated, onPortalTriggered, onFacilityTriggered)
+	elseif generated:IsA("Folder") then
+		-- A saved field from the previous version may not contain the training facility.
+		-- Add only the missing managed object; keep every existing Studio object.
+		local pedestal = generated:FindFirstChild("TrainingFacility")
+		if not pedestal then
+			local spawn = Workspace:FindFirstChildWhichIsA("SpawnLocation", true)
+			local origin = spawn and spawn.Position or Vector3.zero
+			local at = Vector3.new(origin.X - 22, origin.Y - 0.05, origin.Z + 13)
+			pedestal = piece(generated, "TrainingFacility", Vector3.new(6, 2, 6),
+				CFrame.new(at + Vector3.new(0, 1, 0)),
+				Color3.fromRGB(88, 107, 164), Enum.Material.Slate, true)
+			if not generated:FindFirstChild("TrainingCrystal") then
+				sphere(generated, "TrainingCrystal", Vector3.new(2.8, 3.8, 2.8),
+					at + Vector3.new(0, 3.5, 0), Color3.fromRGB(94, 234, 215), Enum.Material.Neon)
+			end
+		end
+		if pedestal:IsA("BasePart") then
+			local prompt = pedestal:FindFirstChildOfClass("ProximityPrompt")
+			if not prompt then
+				prompt = Instance.new("ProximityPrompt")
+				prompt.ActionText = "성장 메뉴 열기"
+				prompt.ObjectText = "수련 시설"
+				prompt.HoldDuration = 0
+				prompt.MaxActivationDistance = 12
+				prompt.Parent = pedestal
+			end
+			prompt.Triggered:Connect(onFacilityTriggered)
+		else
+			warn("[IdleRaid] Existing TrainingFacility is not a BasePart")
+		end
+	else
+		warn("[IdleRaid] Existing GeneratedField is not a Folder")
 	end
 	local raidArena = Workspace:FindFirstChild("RaidArena")
 	if raidArena and raidArena:IsA("Folder") then

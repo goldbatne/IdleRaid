@@ -2,6 +2,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
+local GrowthConfig = require(ReplicatedStorage.Shared.GrowthConfig)
 local EnemyAppearance = require(script.Parent.EnemyAppearance)
 
 local EnemyService = {}
@@ -31,12 +32,9 @@ local function getSpawnPoints(folder: Folder): { BasePart }
 		end
 	end
 
-	if #points > 0 then
-		return points
-	end
-
 	local center, right = getSpawnLayout()
 	local count = GameConfig.EnemySpawns.DefaultCount
+	if #points == 0 then
 	for index = 1, count do
 		local point = Instance.new("Part")
 		point.Name = string.format("SpawnPoint%d", index)
@@ -54,7 +52,34 @@ local function getSpawnPoints(folder: Folder): { BasePart }
 		point.Parent = folder
 		table.insert(points, point)
 	end
+	end
 
+	local playerSpawn = Workspace:FindFirstChildWhichIsA("SpawnLocation", true)
+	local forward = if playerSpawn then playerSpawn.CFrame.LookVector else Vector3.new(0, 0, -1)
+	for zoneIndex = 2, #GrowthConfig.Zones do
+		local zone = GrowthConfig.Zones[zoneIndex]
+		local hasZone = false
+		for _, point in ipairs(points) do
+			if point:GetAttribute("EnemyId") == zone.EnemyId then hasZone = true; break end
+		end
+		if not hasZone then
+			local zoneCenter = center + forward * ((zoneIndex - 1) * 24)
+			for index = 1, zone.Count do
+				local point = Instance.new("Part")
+				point.Name = string.format("Generated_%s_%d", zone.Id, index)
+				point.Size = Vector3.new(2, 0.2, 2)
+				point.Transparency = 0.8
+				point.Anchored = true
+				point.CanCollide = false
+				point.CanTouch = false
+				point.CanQuery = false
+				point.Position = zoneCenter + right * ((index - (zone.Count + 1) / 2) * 7) + Vector3.new(0, 0.2, 0)
+				point:SetAttribute("EnemyId", zone.EnemyId)
+				point.Parent = folder
+				table.insert(points, point)
+			end
+		end
+	end
 	return points
 end
 
@@ -90,6 +115,7 @@ function EnemyService.RegisterEnemy(model: Model, spawnPoint: BasePart, enemyId:
 
 	enemies[model] = {
 		Id = enemyId,
+		RequiredStage = definition.RequiredStage or 1,
 		Health = (options and options.MaxHealth) or definition.MaxHealth,
 		MaxHealth = (options and options.MaxHealth) or definition.MaxHealth,
 		NoRespawn = options and options.NoRespawn or false,
@@ -99,6 +125,7 @@ function EnemyService.RegisterEnemy(model: Model, spawnPoint: BasePart, enemyId:
 	}
 	activeBySpawn[spawnPoint] = model
 	model:SetAttribute("EnemyId", enemyId)
+	model:SetAttribute("RequiredStage", definition.RequiredStage or 1)
 	model:SetAttribute("Health", enemies[model].Health)
 	model:SetAttribute("MaxHealth", enemies[model].MaxHealth)
 	model:SetAttribute("IsBoss", definition.IsBoss == true)
@@ -182,6 +209,11 @@ function EnemyService.IsAliveEnemy(target: Instance): boolean
 	return state ~= nil and state.Alive and state.Health > 0 and target.Parent == enemyFolder
 end
 
+function EnemyService.GetRequiredStage(target: Instance): number?
+	local state = enemies[target]
+	return state and state.RequiredStage or nil
+end
+
 function EnemyService.GetAttackPosition(target: Instance): Vector3?
 	if not EnemyService.IsAliveEnemy(target) then
 		return nil
@@ -205,13 +237,6 @@ function EnemyService.RemoveEnemy(target: Instance)
 	target:Destroy()
 end
 
-function EnemyService.GetKillExp(target: Instance): number?
-	if not EnemyService.IsAliveEnemy(target) then
-		return nil
-	end
-
-	return enemies[target].Definition.KillExp
-end
 
 function EnemyService.ApplyDamage(target: Instance, damage: number): (number, boolean, string?)
 	if not EnemyService.IsAliveEnemy(target) or damage <= 0 then

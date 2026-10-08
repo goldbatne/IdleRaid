@@ -1,0 +1,7 @@
+stage,zone,pure_power_per_min,auto_extra_power_per_min,previous_zone_extra_power_per_min,auto_gold_per_min,previous_zone_gold_per_min
+1,Field,600,160,0,40,0
+9,Field,153600,40960,0,40,0
+10,Foothill,307200,81920,40960,176,40
+19,Foothill,157286400,41943040,40960,176,40
+20,Citadel,314572800,83886080,41943040,840,176
+29,Citadel,161061273600,42949672960,41943040,840,176

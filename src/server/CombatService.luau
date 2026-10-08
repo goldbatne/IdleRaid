@@ -2,6 +2,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
+local GrowthMath = require(ReplicatedStorage.Shared.GrowthMath)
 local EnemyService = require(script.Parent.EnemyService)
 local InventoryService = require(script.Parent.InventoryService)
 local PlayerDataService = require(script.Parent.PlayerDataService)
@@ -19,7 +20,10 @@ local function grantKillRewards(player: Player, enemyId: string)
 		return
 	end
 
-	PlayerDataService.AddExp(player, definition.KillExp)
+	local profile = PlayerDataService.GetProfile(player)
+	if not profile or not definition.ZoneId then return end
+	local power = GrowthMath.EnemyPower(profile.BreakthroughStage, definition.ZoneId)
+	if power then PlayerDataService.AddPowerFinal(player, power, "EnemyKill") end
 	PlayerDataService.AddGold(player, rewardRandom:NextInteger(definition.GoldMin, definition.GoldMax))
 	for _, drop in ipairs(definition.DropTable) do
 		if typeof(drop.Chance) == "number" and drop.Chance >= 0 and drop.Chance <= 1 then
@@ -40,6 +44,9 @@ local function onAttackRequested(player: Player, target: any)
 	if not EnemyService.IsAliveEnemy(target) or not RaidService.CanAttack(player, target) then
 		return
 	end
+	local profile = PlayerDataService.GetProfile(player)
+	local requiredStage = EnemyService.GetRequiredStage(target)
+	if not profile or not requiredStage or profile.BreakthroughStage < requiredStage then return end
 
 	local targetPosition = EnemyService.GetAttackPosition(target)
 	if not targetPosition then

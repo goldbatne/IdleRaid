@@ -1,23 +1,10 @@
-local GameConfig = require(game:GetService("ReplicatedStorage").Shared.GameConfig)
-
+local GrowthMath = require(game:GetService("ReplicatedStorage").Shared.GrowthMath)
 local LevelService = {}
 
 function LevelService.GetExpRequired(level: number): number
-	return GameConfig.Level.BaseExpRequired
-		+ (level - 1) * GameConfig.Level.ExpIncreasePerLevel
-end
-
-function LevelService.ApplyExp(data, amount: number): number
-	data.Exp += amount
-
-	local levelsGained = 0
-	while data.Exp >= LevelService.GetExpRequired(data.Level) do
-		data.Exp -= LevelService.GetExpRequired(data.Level)
-		data.Level += 1
-		levelsGained += 1
-	end
-
-	return levelsGained
+	local current = GrowthMath.LifetimeForLevel(level)
+	local nextThreshold = GrowthMath.LifetimeForLevel(level + 1)
+	return if current and nextThreshold then nextThreshold - current else 0
 end
 
 return LevelService

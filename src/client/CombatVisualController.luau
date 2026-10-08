@@ -2,6 +2,7 @@ local Debris = game:GetService("Debris")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
+local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
 
 local CombatVisualController = {}
 
@@ -71,7 +72,7 @@ function CombatVisualController.Start()
 	ReplicatedStorage:WaitForChild("IdleRaidRemotes"):WaitForChild("CombatVisual").OnClientEvent:Connect(
 		function(attacker, enemyId, position, dealt, killed)
 			if typeof(position) ~= "Vector3" or typeof(dealt) ~= "number" or dealt <= 0
-				or (enemyId ~= "Slime" and enemyId ~= "SlimeKing") or #folder:GetChildren() > 48 then
+				or not GameConfig.Enemies[enemyId] or #folder:GetChildren() > 48 then
 				return
 			end
 			local isBoss = enemyId == "SlimeKing"

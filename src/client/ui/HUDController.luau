@@ -1,4 +1,7 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local NumberFormatter = require(ReplicatedStorage.Shared.NumberFormatter)
 local UiStyle = require(script.Parent.UiStyle)
+local UiText = require(script.Parent.UiText)
 
 local HUDController = {}
 
@@ -7,59 +10,69 @@ function HUDController.Start(gui: ScreenGui, stateController)
 	panel.Name = "HUD"
 	panel.BackgroundColor3 = UiStyle.Colors.Panel
 	panel.BorderSizePixel = 0
-	panel.Size = UDim2.fromOffset(196, 192)
+	panel.Size = UDim2.new(0.58, 0, 0, 178)
 	panel.Position = UDim2.fromOffset(12, 12)
+	local limit = Instance.new("UISizeConstraint")
+	limit.MaxSize = Vector2.new(260, 178)
+	limit.MinSize = Vector2.new(178, 178)
+	limit.Parent = panel
 	UiStyle.Panel(panel, 12)
-	local stripe = Instance.new("Frame")
-	stripe.Name = "AccentStripe"
-	stripe.BorderSizePixel = 0
-	stripe.BackgroundColor3 = UiStyle.Colors.Accent
-	stripe.Size = UDim2.fromOffset(4, 162)
-	stripe.Position = UDim2.fromOffset(0, 15)
-	UiStyle.Corner(stripe, 2)
-	stripe.Parent = panel
 	panel.Parent = gui
 
-	local level = UiStyle.Text(panel, "Level", "Level --", UDim2.new(1, -20, 0, 25), UDim2.fromOffset(10, 8))
-	level.Font = Enum.Font.GothamBlack
-	level.TextColor3 = UiStyle.Colors.Gold
-	level.TextSize = 19
-	local exp = UiStyle.Text(panel, "Exp", "EXP -- / --", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 35))
-	exp.TextSize = 14
+	local lifetimeCaption = UiStyle.Text(panel, "LifetimeCaption", UiText.Lifetime, UDim2.new(1, -20, 0, 20), UDim2.fromOffset(12, 7))
+	lifetimeCaption.TextSize = 13
+	lifetimeCaption.TextColor3 = UiStyle.Colors.Muted
+	local lifetime = UiStyle.Text(panel, "LifetimePower", "--", UDim2.new(1, -20, 0, 32), UDim2.fromOffset(12, 26))
+	lifetime.TextSize = 26
+	lifetime.Font = Enum.Font.GothamBlack
+	lifetime.TextColor3 = UiStyle.Colors.Gold
 
+	local level = UiStyle.Text(panel, "Level", "레벨 1", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(12, 63))
+	level.TextSize = 15
+	local exp = UiStyle.Text(panel, "Exp", "0 / 100", UDim2.new(1, -20, 0, 18), UDim2.fromOffset(12, 83))
+	exp.TextSize = 12
+	exp.TextColor3 = UiStyle.Colors.Muted
 	local bar = Instance.new("Frame")
 	bar.Name = "ExpBar"
 	bar.BackgroundColor3 = UiStyle.Colors.Surface
 	bar.BorderSizePixel = 0
-	bar.Size = UDim2.new(1, -20, 0, 12)
-	bar.Position = UDim2.fromOffset(10, 59)
-	UiStyle.Corner(bar, 6)
+	bar.Size = UDim2.new(1, -24, 0, 9)
+	bar.Position = UDim2.fromOffset(12, 105)
+	UiStyle.Corner(bar, 5)
 	bar.Parent = panel
-
 	local fill = Instance.new("Frame")
 	fill.Name = "Fill"
+	fill.Size = UDim2.fromScale(0, 1)
 	fill.BackgroundColor3 = UiStyle.Colors.Accent
 	fill.BorderSizePixel = 0
-	fill.Size = UDim2.fromScale(0, 1)
-	UiStyle.Corner(fill, 6)
+	UiStyle.Corner(fill, 5)
 	fill.Parent = bar
 
-	local gold = UiStyle.Text(panel, "Gold", "Gold: --", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 79))
-	gold.TextColor3 = UiStyle.Colors.Gold
-	local attack = UiStyle.Text(panel, "Attack", "Attack: --", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 105))
-	local defense = UiStyle.Text(panel, "Defense", "Defense: --", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 131))
-	local tokens = UiStyle.Text(panel, "RaidToken", "Raid Token: 0", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 157))
-	tokens.TextColor3 = UiStyle.Colors.Muted
+	local stage = UiStyle.Text(panel, "Stage", "돌파 1단계", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(12, 119))
+	stage.TextSize = 14
+	local rate = UiStyle.Text(panel, "Rate", "x1 · 10/초", UDim2.new(1, -20, 0, 19), UDim2.fromOffset(12, 138))
+	rate.TextSize = 13
+	rate.TextColor3 = UiStyle.Colors.Accent
+	local gold = UiStyle.Text(panel, "Gold", "Gold 0", UDim2.new(1, -20, 0, 16), UDim2.fromOffset(12, 157))
+	gold.TextSize = 12
+	gold.TextColor3 = UiStyle.Colors.Muted
 
 	stateController.Subscribe(function(state)
-		local required = math.max(1, state.ExpRequired or 1)
-		level.Text = string.format("Level %d", state.Level or 1)
-		exp.Text = string.format("EXP %d / %d", state.Exp or 0, required)
-		fill.Size = UDim2.fromScale(math.clamp((state.Exp or 0) / required, 0, 1), 1)
-		gold.Text = string.format("Gold: %d", state.Gold or 0)
-		attack.Text = string.format("Attack: %d", state.FinalAttack or 0)
-		defense.Text = string.format("Defense: %d", state.FinalDefense or 0)
-		tokens.Text = string.format("Raid Token: %d", state.RaidToken or 0)
+		if not state.Ready then
+			lifetime.Text = "--"
+			level.Text = UiText.Loading
+			return
+		end
+		lifetime.Text = NumberFormatter.Format(state.LifetimeTrainingPower or 0)
+		level.Text = string.format("레벨 %d", state.Level or 1)
+		local required = state.ExpRequired or 0
+		exp.Text = if required > 0 then string.format("%s / %s", NumberFormatter.Format(state.Exp or 0),
+			NumberFormatter.Format(required)) else "최고 레벨"
+		fill.Size = UDim2.fromScale(if required > 0 then math.clamp((state.Exp or 0) / required, 0, 1) else 1, 1)
+		stage.Text = string.format("돌파 %d단계", state.BreakthroughStage or 1)
+		rate.Text = string.format("x%s · %s/초", NumberFormatter.Format(state.StageMultiplier or 1),
+			NumberFormatter.Format(state.BaseTrainingRate or 0))
+		gold.Text = "Gold " .. NumberFormatter.Format(state.Gold or 0)
 	end)
 end
 

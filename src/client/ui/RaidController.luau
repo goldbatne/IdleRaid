@@ -76,10 +76,6 @@ end
 
 function RaidController.Start(gui: ScreenGui, stateController, dashController)
 	local remotes = ReplicatedStorage:WaitForChild("IdleRaidRemotes")
-	local join = remotes:WaitForChild("JoinRaid")
-	local raidButton = UiStyle.Button(gui, "RaidButton", "RAID", UDim2.fromOffset(96, 44), UDim2.new(1, -12, 0, 116))
-	raidButton.AnchorPoint = Vector2.new(1, 0)
-	raidButton.Activated:Connect(function() join:FireServer() end)
 
 	local dashButton = UiStyle.Button(gui, "DashButton", "DASH Q", UDim2.fromOffset(108, 56), UDim2.new(1, -12, 1, -80))
 	dashButton.AnchorPoint = Vector2.new(1, 0)
@@ -126,7 +122,6 @@ function RaidController.Start(gui: ScreenGui, stateController, dashController)
 	local defeated = false
 	stateController.Subscribe(function(state)
 		local raid = state.Raid or {}
-		raidButton.Visible = not raid.IsParticipant
 		dashButton.Visible = raid.IsParticipant == true
 		if lastMembership ~= raid.IsParticipant then
 			lastMembership = raid.IsParticipant

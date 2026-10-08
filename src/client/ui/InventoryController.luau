@@ -4,6 +4,8 @@ local ItemConfig = require(ReplicatedStorage.Shared.ItemConfig)
 local UiStyle = require(script.Parent.UiStyle)
 
 local InventoryController = {}
+local typeNames = { Weapon = "무기", Armor = "방어구", Accessory = "장신구" }
+local rarityNames = { Common = "일반", Uncommon = "고급", Rare = "희귀", Epic = "영웅", Legendary = "전설" }
 
 function InventoryController.Start(panel: Frame, stateController)
 	local section = Instance.new("Frame")
@@ -13,7 +15,7 @@ function InventoryController.Start(panel: Frame, stateController)
 	section.Position = UDim2.fromOffset(8, 8)
 	section.Parent = panel
 
-	local title = UiStyle.Text(section, "Title", "INVENTORY", UDim2.new(1, -16, 0, 25), UDim2.fromOffset(8, 0))
+	local title = UiStyle.Text(section, "Title", "가방", UDim2.new(1, -16, 0, 25), UDim2.fromOffset(8, 0))
 	title.Font = Enum.Font.GothamBlack
 	title.TextColor3 = UiStyle.Colors.Gold
 
@@ -36,17 +38,22 @@ function InventoryController.Start(panel: Frame, stateController)
 		scroll.CanvasSize = UDim2.fromOffset(0, layout.AbsoluteContentSize.Y + 8)
 	end)
 
-	local selectedLabel = UiStyle.Text(section, "Selected", "Select an item", UDim2.new(1, -16, 0, 22), UDim2.new(0, 8, 1, -72))
+	local selectedLabel = UiStyle.Text(section, "Selected", "아이템을 선택하세요", UDim2.new(1, -16, 0, 22), UDim2.new(0, 8, 1, -72))
 	selectedLabel.TextSize = 14
-	local equipButton = UiStyle.Button(section, "Equip", "EQUIP", UDim2.new(1, -16, 0, 42), UDim2.new(0, 8, 1, -46))
+	local equipButton = UiStyle.Button(section, "Equip", "장착", UDim2.new(1, -16, 0, 42), UDim2.new(0, 8, 1, -46))
 	equipButton.Visible = false
 
 	local equipRemote = ReplicatedStorage:WaitForChild("IdleRaidRemotes"):WaitForChild("EquipItem")
 	local selectedItemId
 	local currentState
+	local lastInventory
+	local hasRendered = false
 
-	local function render(state)
+	local function render(state, force)
 		currentState = state
+		if hasRendered and not force and state.Inventory == lastInventory then return end
+		hasRendered = true
+		lastInventory = state.Inventory
 		local selectedStack
 		for _, child in ipairs(scroll:GetChildren()) do
 			if child:IsA("TextButton") then
@@ -66,7 +73,7 @@ function InventoryController.Start(panel: Frame, stateController)
 				local row = UiStyle.Button(
 					scroll,
 					stack.ItemId,
-					string.format("%s%s  x%d\n%s · %s", prefix, definition.Name, stack.Quantity, definition.Type, definition.Rarity),
+					string.format("%s%s  x%d\n%s · %s", prefix, definition.Name, stack.Quantity, typeNames[definition.Type] or definition.Type, rarityNames[definition.Rarity] or definition.Rarity),
 					UDim2.new(1, -10, 0, 56),
 					UDim2.fromOffset(4, 0)
 				)
@@ -84,21 +91,21 @@ function InventoryController.Start(panel: Frame, stateController)
 				row.LayoutOrder = #scroll:GetChildren()
 				row.Activated:Connect(function()
 					selectedItemId = itemId
-					render(currentState)
+					render(currentState, true)
 				end)
 			end
 		end
 
 		if selectedStack then
 			equipButton.Visible = true
-			selectedLabel.Text = "Selected: " .. ItemConfig.Items[selectedItemId].Name
+			selectedLabel.Text = "선택: " .. ItemConfig.Items[selectedItemId].Name
 			equipButton.Active = true
 			equipButton.AutoButtonColor = true
 			equipButton.BackgroundColor3 = UiStyle.Colors.Accent
 		else
 			equipButton.Visible = false
 			selectedItemId = nil
-			selectedLabel.Text = if #items == 0 then "No items yet" else "Select an item"
+			selectedLabel.Text = if #items == 0 then "아직 아이템 없음" else "아이템을 선택하세요"
 			equipButton.Active = false
 			equipButton.AutoButtonColor = false
 			equipButton.BackgroundColor3 = UiStyle.Colors.Surface

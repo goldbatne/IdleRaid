@@ -64,6 +64,11 @@ local function getEnemyPosition(enemy: Model, folder: Folder): Vector3?
 		or (enemy:GetAttribute("IsBoss") == true) ~= raidParticipant then
 		return nil
 	end
+	local state = StateController.GetSnapshot()
+	local requiredStage = enemy:GetAttribute("RequiredStage")
+	if typeof(requiredStage) == "number" and (not state or (state.BreakthroughStage or 1) < requiredStage) then
+		return nil
+	end
 	local health = enemy:GetAttribute("Health")
 	if typeof(health) ~= "number" or health <= 0 then
 		return nil

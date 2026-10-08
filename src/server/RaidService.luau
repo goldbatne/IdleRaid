@@ -5,9 +5,12 @@ local TweenService = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
 
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
+local GrowthConfig = require(ReplicatedStorage.Shared.GrowthConfig)
+local GrowthMath = require(ReplicatedStorage.Shared.GrowthMath)
 local EnemyService = require(script.Parent.EnemyService)
 local EquipmentService = require(script.Parent.EquipmentService)
 local PlayerDataService = require(script.Parent.PlayerDataService)
+local GrowthService = require(script.Parent.GrowthService)
 local StateSyncService = require(script.Parent.StateSyncService)
 
 local RaidService = {}
@@ -20,6 +23,13 @@ local feedbackRemote: RemoteEvent?
 local nextId = 0
 local lastMetrics
 local finishRaid
+
+local function gateDefinition(gateId: string)
+	for _, gate in ipairs(GrowthConfig.Gates) do
+		if gate.Id == gateId then return gate end
+	end
+	return nil
+end
 
 local function alivePlayers(session)
 	local result = {}
@@ -116,7 +126,8 @@ function RaidService.GetSnapshot(player: Player)
 		Phase = session.Phase,
 		BossHealth = session.BossHealth,
 		BossMaxHealth = session.BossMaxHealth,
-		BossName = GameConfig.Enemies.SlimeKing.Name,
+		BossName = GameConfig.Enemies.SlimeKing.Name .. " · " .. (gateDefinition(session.GateId).Difficulty),
+		GateId = session.GateId,
 		Defeated = (PlayerDataService.GetHealth(player) or 0) <= 0,
 		DashReadyAt = session.Dash[player] and session.Dash[player].ReadyAt or 0,
 	}
@@ -225,7 +236,7 @@ local function groundSlam(session, targetPlayer: Player)
 	for _, player in ipairs(alivePlayers(session)) do
 		local playerRoot = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
 		if playerRoot and horizontalDistance(playerRoot.Position, center) <= config.Radius then
-			applyDamage(session, player, config.Damage)
+			applyDamage(session, player, math.round(config.Damage * session.Difficulty.DamageMultiplier))
 		end
 	end
 	print("[IdleRaid] Slime King used Ground Slam")
@@ -266,7 +277,7 @@ local function charge(session, targetPlayer: Player)
 	for _, player in ipairs(alivePlayers(session)) do
 		local playerRoot = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
 		if playerRoot and distanceToSegment(playerRoot.Position, startPos, endPos) <= config.Width / 2 then
-			applyDamage(session, player, config.Damage)
+			applyDamage(session, player, math.round(config.Damage * session.Difficulty.DamageMultiplier))
 		end
 	end
 	print("[IdleRaid] Slime King used Charge")
@@ -325,17 +336,27 @@ finishRaid = function(session, success: boolean)
 		Result = metrics.Result, Duration = metrics.Duration,
 		Slam = metrics.Slam, Charge = metrics.Charge, Hits = metrics.Hits,
 		BossHealthRemaining = if success then 0 else session.BossHealth,
+		GateId = session.GateId,
 		Participants = metrics.Participants,
 	}
 	print(string.format("[IdleRaid] RaidMetrics %s %.1fs Slam=%d Charge=%d Hits=%d",
 		metrics.Result, metrics.Duration, metrics.Slam, metrics.Charge, metrics.Hits))
 	if success then
 		session.BossHealth = 0
+		local gate = gateDefinition(session.GateId)
 		for player in pairs(session.Participants) do
 			if player.Parent == Players then
-				PlayerDataService.AddExp(player, GameConfig.Raid.RewardExp)
-				PlayerDataService.AddGold(player, GameConfig.Raid.RewardGold)
-				PlayerDataService.AddRaidToken(player, GameConfig.Raid.RewardToken)
+				local profile = PlayerDataService.GetProfile(player)
+				if profile then
+					local rewardStage = math.min(profile.BreakthroughStage, gate.Stage)
+					local rewardPower = GrowthMath.ReferenceRate(rewardStage) * GameConfig.Raid.RewardTrainingSeconds
+					PlayerDataService.AddPowerFinal(player, rewardPower, "RaidClear")
+					PlayerDataService.AddGold(player, session.Difficulty.Gold)
+					PlayerDataService.AddRaidToken(player, session.Difficulty.Tokens)
+					if session.GateEligible[player] and (metrics.DamageByPlayer[player] or 0) > 0 then
+						GrowthService.RecordGateClear(player, session.GateId)
+					end
+				end
 			end
 		end
 	end
@@ -375,7 +396,7 @@ local function beginRaid(session)
 		if player.Parent == Players then count += 1 else session.Participants[player] = nil end
 	end
 	if count == 0 then current = nil return end
-	session.BossMaxHealth = GameConfig.Raid.BossHealthByPlayers[count]
+	session.BossMaxHealth = GameConfig.Raid.BossHealthByPlayers[count] * session.Difficulty.HpMultiplier
 	session.BossHealth = session.BossMaxHealth
 	session.Boss = EnemyService.SpawnAt(bossSpawn, "SlimeKing", {
 		MaxHealth = session.BossMaxHealth,
@@ -407,18 +428,23 @@ local function beginRaid(session)
 	task.spawn(bossLoop, session)
 end
 
-local function joinRaid(player: Player)
+local function joinRaid(player: Player, requestedGate: any)
+	local gateId = if requestedGate == nil then "Gate10" else requestedGate
+	if typeof(gateId) ~= "string" or not gateDefinition(gateId) then return end
+	if gateId ~= "Gate10" and not GrowthService.CanClearGate(player, gateId) then return end
 	if not arena or not bossSpawn or not PlayerDataService.GetHealth(player) then return end
 	local character = player.Character
 	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
 	local root = character and character:FindFirstChild("HumanoidRootPart")
 	if not humanoid or humanoid.Health <= 0 or not root then return end
-	if current and current.Status ~= "Gathering" then return end
+	if current and (current.Status ~= "Gathering" or current.GateId ~= gateId) then return end
 	if not current then
 		nextId += 1
 		current = {
 			Id = nextId, Status = "Gathering", Phase = "Gathering",
-			Participants = {}, Boss = nil, BossHealth = 0, BossMaxHealth = 0,
+			Participants = {}, GateEligible = {}, GateId = gateId,
+			Difficulty = GameConfig.Raid.DifficultyByGate[gateId],
+			Boss = nil, BossHealth = 0, BossMaxHealth = 0,
 			Dash = {},
 			Metrics = {
 				Slam = 0, Charge = 0, Hits = 0,
@@ -433,6 +459,7 @@ local function joinRaid(player: Player)
 	for _ in pairs(current.Participants) do count += 1 end
 	if count >= GameConfig.Raid.MaxPlayers then return end
 	current.Participants[player] = true
+	current.GateEligible[player] = GrowthService.CanClearGate(player, gateId)
 	PlayerDataService.ResetRaidHealth(player)
 	teleport(player, playerStart(count + 1))
 	pushParticipants(current)
@@ -440,8 +467,8 @@ local function joinRaid(player: Player)
 	if count + 1 >= GameConfig.Raid.MaxPlayers then beginRaid(current) end
 end
 
-function RaidService.Join(player: Player)
-	joinRaid(player)
+function RaidService.Join(player: Player, gateId: string?)
+	joinRaid(player, gateId)
 end
 
 function RaidService.Start()
