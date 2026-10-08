@@ -10,6 +10,7 @@ local RaidService = require(script.Parent.RaidService)
 local CombatService = {}
 local lastAttackAt = {}
 local rewardRandom = Random.new()
+local visualRemote: RemoteEvent?
 
 local function grantKillRewards(player: Player, enemyId: string)
 	local definition = GameConfig.Enemies[enemyId]
@@ -73,6 +74,9 @@ local function onAttackRequested(player: Player, target: any)
 	end
 
 	lastAttackAt[player] = now
+	if visualRemote then
+		visualRemote:FireAllClients(player, enemyId, targetPosition, dealt, killed)
+	end
 	print(string.format("[IdleRaid] %s dealt %d damage to %s", player.Name, dealt, enemyId))
 	if isBoss then
 		RaidService.OnBossDamaged(player, target, dealt, killed)
@@ -96,6 +100,10 @@ function CombatService.Start()
 		attackRemote.Name = "BasicAttack"
 		attackRemote.Parent = remoteFolder
 	end
+
+	visualRemote = Instance.new("RemoteEvent")
+	visualRemote.Name = "CombatVisual"
+	visualRemote.Parent = remoteFolder
 
 	attackRemote.OnServerEvent:Connect(onAttackRequested)
 	Players.PlayerRemoving:Connect(function(player)

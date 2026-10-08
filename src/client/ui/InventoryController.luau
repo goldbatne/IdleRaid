@@ -14,7 +14,8 @@ function InventoryController.Start(panel: Frame, stateController)
 	section.Parent = panel
 
 	local title = UiStyle.Text(section, "Title", "INVENTORY", UDim2.new(1, -16, 0, 25), UDim2.fromOffset(8, 0))
-	title.Font = Enum.Font.GothamBold
+	title.Font = Enum.Font.GothamBlack
+	title.TextColor3 = UiStyle.Colors.Gold
 
 	local scroll = Instance.new("ScrollingFrame")
 	scroll.Name = "Items"
@@ -71,6 +72,15 @@ function InventoryController.Start(panel: Frame, stateController)
 				)
 				row.TextXAlignment = Enum.TextXAlignment.Left
 				row.TextSize = 14
+				local rarityColor = UiStyle.Rarities[definition.Rarity] or UiStyle.Colors.Text
+				row.TextColor3 = rarityColor
+				row.BackgroundColor3 = if selectedItemId == itemId then Color3.fromRGB(54, 82, 113)
+					else UiStyle.Colors.Surface
+				local outline = row:FindFirstChild("Outline")
+				if outline and outline:IsA("UIStroke") then
+					outline.Color = rarityColor
+					outline.Transparency = 0.55
+				end
 				row.LayoutOrder = #scroll:GetChildren()
 				row.Activated:Connect(function()
 					selectedItemId = itemId

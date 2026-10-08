@@ -2,6 +2,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
+local EnemyAppearance = require(script.Parent.EnemyAppearance)
 
 local EnemyService = {}
 
@@ -68,9 +69,15 @@ local function makeEnemyModel(definition, spawnPoint: BasePart): Model
 	body.Color = definition.Color or Color3.fromRGB(85, 205, 105)
 	body.Anchored = true
 	body.CanCollide = true
-	body.Position = spawnPoint.Position + Vector3.new(0, spawnPoint.Size.Y / 2 + body.Size.Y / 2, 0)
+	local position = spawnPoint.Position + Vector3.new(0, spawnPoint.Size.Y / 2 + body.Size.Y / 2, 0)
+	local playerSpawn = Workspace:FindFirstChildWhichIsA("SpawnLocation", true)
+	local lookAt = if definition.IsBoss then GameConfig.Raid.ArenaCenter + Vector3.new(0, 0, -20)
+		elseif playerSpawn then playerSpawn.Position else position + Vector3.new(0, 0, 1)
+	local facing = Vector3.new(lookAt.X, position.Y, lookAt.Z)
+	body.CFrame = if (facing - position).Magnitude > 0.1 then CFrame.lookAt(position, facing) else CFrame.new(position)
 	body.Parent = model
 	model.PrimaryPart = body
+	EnemyAppearance.Apply(model, body, definition)
 
 	return model
 end

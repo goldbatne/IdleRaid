@@ -26,7 +26,7 @@ local GameConfig = {
 		DefaultEnemyId = "Slime",
 		DefaultCount = 5,
 		DistanceFromPlayerSpawn = 10,
-		Spacing = 3,
+		Spacing = 6,
 	},
 	Raid = {
 		MaxPlayers = 4,

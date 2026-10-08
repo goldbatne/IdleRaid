@@ -440,6 +440,10 @@ local function joinRaid(player: Player)
 	if count + 1 >= GameConfig.Raid.MaxPlayers then beginRaid(current) end
 end
 
+function RaidService.Join(player: Player)
+	joinRaid(player)
+end
+
 function RaidService.Start()
 	makeArena()
 	local folder = ReplicatedStorage:WaitForChild("IdleRaidRemotes")

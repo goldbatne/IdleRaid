@@ -1,4 +1,5 @@
 local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
 
 local AutoCombatController = require(script.Parent.AutoCombatController)
 local StateController = require(script.Parent.StateController)
@@ -25,6 +26,9 @@ function UIController.Start()
 	gui.IgnoreGuiInset = false
 	gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	gui.Parent = playerGui
+	pcall(function()
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
+	end)
 
 	HUDController.Start(gui, StateController)
 
@@ -46,9 +50,11 @@ function UIController.Start()
 	panel.Size = UDim2.new(1, -24, 0.65, 0)
 	panel.BackgroundColor3 = UiStyle.Colors.Panel
 	panel.BorderSizePixel = 0
-	UiStyle.Corner(panel, 10)
+	panel.Visible = false
+	UiStyle.Panel(panel, 12)
 	local limit = Instance.new("UISizeConstraint")
 	limit.MaxSize = Vector2.new(400, 540)
+	limit.MinSize = Vector2.new(0, 340)
 	limit.Parent = panel
 	panel.Parent = gui
 
@@ -61,7 +67,11 @@ function UIController.Start()
 	NotificationController.Start(gui, StateController)
 	RaidController.Start(gui, StateController, DashController)
 	StateController.Subscribe(function(state)
-		if state.Raid and state.Raid.IsParticipant then panel.Visible = false end
+		local inRaid = state.Raid and state.Raid.IsParticipant == true
+		if inRaid then panel.Visible = false end
+		bagButton.Visible = not inRaid
+		local hud = gui:FindFirstChild("HUD")
+		if hud then hud.Visible = not inRaid end
 	end)
 end
 

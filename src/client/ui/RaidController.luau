@@ -89,19 +89,20 @@ function RaidController.Start(gui: ScreenGui, stateController, dashController)
 	local panel = Instance.new("Frame")
 	panel.Name = "RaidPanel"
 	panel.AnchorPoint = Vector2.new(0.5, 0)
-	panel.Position = UDim2.new(0.5, 0, 0, 204)
+	panel.Position = UDim2.new(0.5, 0, 0, 70)
 	panel.Size = UDim2.new(1, -24, 0, 160)
 	panel.BackgroundColor3 = UiStyle.Colors.Panel
 	panel.BorderSizePixel = 0
 	panel.Visible = false
-	UiStyle.Corner(panel, 10)
+	UiStyle.Panel(panel, 12)
 	local limit = Instance.new("UISizeConstraint")
 	limit.MaxSize = Vector2.new(420, 160)
 	limit.Parent = panel
 	panel.Parent = gui
 
 	local title = UiStyle.Text(panel, "BossName", "Slime King", UDim2.new(1, -20, 0, 24), UDim2.fromOffset(10, 6))
-	title.Font = Enum.Font.GothamBold
+	title.Font = Enum.Font.GothamBlack
+	title.TextColor3 = UiStyle.Colors.Gold
 	title.TextXAlignment = Enum.TextXAlignment.Center
 	local bossHp = UiStyle.Text(panel, "BossHealth", "HP -- / --", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 30))
 	bossHp.TextXAlignment = Enum.TextXAlignment.Center
@@ -112,7 +113,7 @@ function RaidController.Start(gui: ScreenGui, stateController, dashController)
 	local cooldown = UiStyle.Text(panel, "DashCooldown", "Dash: Ready", UDim2.new(0.5, -10, 0, 24), UDim2.new(0.5, 0, 0, 120))
 	cooldown.TextXAlignment = Enum.TextXAlignment.Right
 
-	local warning = makeFeedback(gui, "RaidWarning", UDim2.new(0.5, 0, 0, 166), Color3.fromRGB(255, 145, 65))
+	local warning = makeFeedback(gui, "RaidWarning", UDim2.new(0.5, 0, 0, 238), Color3.fromRGB(255, 145, 65))
 	local taken = makeFeedback(gui, "TakenDamage", UDim2.new(0.5, 0, 0.62, 0), Color3.fromRGB(255, 70, 70))
 	local dealt = makeFeedback(gui, "BossDamage", UDim2.new(0.5, 0, 0, 366), Color3.fromRGB(255, 235, 120))
 	local result = makeFeedback(gui, "RaidResult", UDim2.new(0.5, 0, 0.5, -30), UiStyle.Colors.Text)
