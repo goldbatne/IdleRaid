@@ -29,4 +29,4 @@
 
 ## 현재 단계
 
-현재는 서버에서 관리하는 플레이어 런타임 데이터와 레벨업, SpawnPoint 기반 다중 Enemy, PC 클릭 기본 공격, T 키 자동사냥, 처치 Gold 및 장비 드롭, 서버 Inventory와 장비 착용으로 플레이 루프를 테스트한다. 자동사냥은 클라이언트가 대상 탐색과 이동, 공격 요청을 담당하며 기존 서버 전투 검증을 재사용한다. 장비 슬롯은 서버에서 관리하고 최종 공격력은 기본 공격력, 레벨 보너스, 장비 보너스로 재계산한다. Inventory와 Equipment는 아직 서버 접속 중에만 유지한다. 기본 HUD와 Inventory, Equipment UI는 서버 상태를 표시하고 장착·해제 요청만 보낸다. AutoCombat 버튼은 T 키와 같은 컨트롤러를 사용한다. DataStore, 적 AI 이동과 공격, 랜덤 장비 옵션과 강화, 무기 모델과 빠른 전환, 스킬, 레이드, 최종 UI 디자인, 오프라인 보상, 과금은 별도 요청 전까지 구현하지 않는다.
+현재는 서버 PlayerData, 레벨/EXP, SpawnPoint 기반 다중 Enemy, 수동 공격, T 키 및 UI 자동사냥, Gold와 장비 드롭, 서버 Inventory/Equipment, 기본 HUD를 통해 성장 루프를 테스트한다. 첫 레이드 프로토타입은 같은 서버의 RaidArena에서 최대 4명이 Slime King을 상대한다. 서버 RaidService가 참가자, Boss 패턴, 피격, 성공/실패와 보상을 결정한다. Raid 전투 Health는 PlayerData가 원본이며 Humanoid Health는 이동/캐릭터 생존 판정에만 사용한다. Boss HP는 EnemyService의 서버 상태가 원본이다. BasicAttack의 서버 검증은 Raid에서도 재사용한다. 레이드 중 AutoCombat은 Boss만 탐색하며 회피 이동은 플레이어가 직접 한다. Inventory, Equipment, RaidToken은 접속 중에만 유지한다. DataStore, 적 일반 AI, 랜덤 장비 옵션/강화, 무기 모델/전환, 스킬, 레이드 매칭 및 별도 Place, 최종 UI/보스 모델/애니메이션/VFX, 오프라인 보상, 과금은 별도 요청 전까지 구현하지 않는다.

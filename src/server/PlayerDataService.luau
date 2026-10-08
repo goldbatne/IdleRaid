@@ -49,6 +49,9 @@ local function onPlayerAdded(player: Player)
 		Gold = GameConfig.Player.InitialGold,
 		BaseAttack = GameConfig.Player.InitialBaseAttack,
 		BaseDefense = GameConfig.Player.InitialBaseDefense,
+		MaxHealth = GameConfig.Player.InitialMaxHealth,
+		Health = GameConfig.Player.InitialMaxHealth,
+		RaidToken = 0,
 		EquipmentAttackBonus = 0,
 		EquipmentDefenseBonus = 0,
 	}
@@ -95,11 +98,43 @@ function PlayerDataService.GetSnapshot(player: Player)
 		Level = data.Level,
 		Exp = data.Exp,
 		Gold = data.Gold,
+		Health = data.Health,
+		MaxHealth = data.MaxHealth,
+		RaidToken = data.RaidToken,
 		BaseAttack = data.BaseAttack,
 		FinalAttack = data.FinalAttack,
 		BaseDefense = data.BaseDefense,
 		FinalDefense = data.FinalDefense,
 	}
+end
+
+function PlayerDataService.GetHealth(player: Player): number?
+	local data = playerData[player]
+	return data and data.Health or nil
+end
+
+function PlayerDataService.ResetRaidHealth(player: Player): boolean
+	local data = playerData[player]
+	if not data then return false end
+	data.Health = data.MaxHealth
+	StateSyncService.Push(player)
+	return true
+end
+
+function PlayerDataService.ApplyRaidDamage(player: Player, amount: number): number?
+	local data = playerData[player]
+	if not data or typeof(amount) ~= "number" or amount <= 0 then return nil end
+	data.Health = math.max(0, data.Health - amount)
+	StateSyncService.Push(player)
+	return data.Health
+end
+
+function PlayerDataService.AddRaidToken(player: Player, amount: number): boolean
+	local data = playerData[player]
+	if not data or typeof(amount) ~= "number" or amount < 1 or amount % 1 ~= 0 then return false end
+	data.RaidToken += amount
+	StateSyncService.Push(player)
+	return true
 end
 
 function PlayerDataService.SetEquipmentBonuses(player: Player, attack: number, defense: number): boolean

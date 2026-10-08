@@ -4,11 +4,15 @@ local UserInputService = game:GetService("UserInputService")
 local Workspace = game:GetService("Workspace")
 
 local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
+local StateController = require(script.Parent.StateController)
 
 local AutoCombatController = {}
 
 local player = Players.LocalPlayer
 local enabled = false
+local raidParticipant = false
+local raidActive = false
+local raidDefeated = false
 local target: Model?
 local moving = false
 local lastMoveAt = -math.huge
@@ -54,7 +58,8 @@ local function getEnemyFolder(): Folder?
 end
 
 local function getEnemyPosition(enemy: Model, folder: Folder): Vector3?
-	if enemy.Parent ~= folder or typeof(enemy:GetAttribute("EnemyId")) ~= "string" then
+	if enemy.Parent ~= folder or typeof(enemy:GetAttribute("EnemyId")) ~= "string"
+		or (enemy:GetAttribute("IsBoss") == true) ~= raidParticipant then
 		return nil
 	end
 	local health = enemy:GetAttribute("Health")
@@ -89,6 +94,11 @@ end
 
 local function update(attackRemote: RemoteEvent)
 	if not enabled then
+		return
+	end
+	if raidParticipant and (not raidActive or raidDefeated) then
+		target = nil
+		stopAutoMove()
 		return
 	end
 
@@ -174,6 +184,17 @@ end
 
 function AutoCombatController.Start()
 	local attackRemote = ReplicatedStorage:WaitForChild("IdleRaidRemotes"):WaitForChild("BasicAttack")
+	StateController.Subscribe(function(state)
+		local raid = state.Raid or {}
+		local wasParticipant = raidParticipant
+		raidParticipant = raid.IsParticipant == true
+		raidActive = raid.Status == "Active"
+		raidDefeated = raid.Defeated == true
+		if wasParticipant ~= raidParticipant or not raidActive or raidDefeated then
+			target = nil
+			stopAutoMove()
+		end
+	end)
 
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		if gameProcessed then

@@ -7,7 +7,7 @@ function HUDController.Start(gui: ScreenGui, stateController)
 	panel.Name = "HUD"
 	panel.BackgroundColor3 = UiStyle.Colors.Panel
 	panel.BorderSizePixel = 0
-	panel.Size = UDim2.fromOffset(196, 166)
+	panel.Size = UDim2.fromOffset(196, 192)
 	panel.Position = UDim2.fromOffset(12, 12)
 	UiStyle.Corner(panel, 10)
 	panel.Parent = gui
@@ -38,6 +38,7 @@ function HUDController.Start(gui: ScreenGui, stateController)
 	local gold = UiStyle.Text(panel, "Gold", "Gold: --", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 79))
 	local attack = UiStyle.Text(panel, "Attack", "Attack: --", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 105))
 	local defense = UiStyle.Text(panel, "Defense", "Defense: --", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 131))
+	local tokens = UiStyle.Text(panel, "RaidToken", "Raid Token: 0", UDim2.new(1, -20, 0, 20), UDim2.fromOffset(10, 157))
 
 	stateController.Subscribe(function(state)
 		local required = math.max(1, state.ExpRequired or 1)
@@ -47,6 +48,7 @@ function HUDController.Start(gui: ScreenGui, stateController)
 		gold.Text = string.format("Gold: %d", state.Gold or 0)
 		attack.Text = string.format("Attack: %d", state.FinalAttack or 0)
 		defense.Text = string.format("Defense: %d", state.FinalDefense or 0)
+		tokens.Text = string.format("Raid Token: %d", state.RaidToken or 0)
 	end)
 end
 

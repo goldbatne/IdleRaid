@@ -6,6 +6,7 @@ local EquipmentController = require(script.Parent.ui.EquipmentController)
 local HUDController = require(script.Parent.ui.HUDController)
 local InventoryController = require(script.Parent.ui.InventoryController)
 local NotificationController = require(script.Parent.ui.NotificationController)
+local RaidController = require(script.Parent.ui.RaidController)
 local UiStyle = require(script.Parent.ui.UiStyle)
 
 local UIController = {}
@@ -57,6 +58,10 @@ function UIController.Start()
 	InventoryController.Start(panel, StateController)
 	EquipmentController.Start(panel, StateController)
 	NotificationController.Start(gui, StateController)
+	RaidController.Start(gui, StateController)
+	StateController.Subscribe(function(state)
+		if state.Raid and state.Raid.IsParticipant then panel.Visible = false end
+	end)
 end
 
 return UIController

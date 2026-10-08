@@ -5,6 +5,7 @@ local GameConfig = require(ReplicatedStorage.Shared.GameConfig)
 local EnemyService = require(script.Parent.EnemyService)
 local InventoryService = require(script.Parent.InventoryService)
 local PlayerDataService = require(script.Parent.PlayerDataService)
+local RaidService = require(script.Parent.RaidService)
 
 local CombatService = {}
 local lastAttackAt = {}
@@ -35,7 +36,7 @@ local function onAttackRequested(player: Player, target: any)
 		return
 	end
 
-	if not EnemyService.IsAliveEnemy(target) then
+	if not EnemyService.IsAliveEnemy(target) or not RaidService.CanAttack(player, target) then
 		return
 	end
 
@@ -65,6 +66,7 @@ local function onAttackRequested(player: Player, target: any)
 		return
 	end
 
+	local isBoss = target:GetAttribute("IsBoss") == true
 	local dealt, killed, enemyId = EnemyService.ApplyDamage(target, attack)
 	if dealt <= 0 then
 		return
@@ -72,7 +74,9 @@ local function onAttackRequested(player: Player, target: any)
 
 	lastAttackAt[player] = now
 	print(string.format("[IdleRaid] %s dealt %d damage to %s", player.Name, dealt, enemyId))
-	if killed then
+	if isBoss then
+		RaidService.OnBossDamaged(target, killed)
+	elseif killed then
 		print(string.format("[IdleRaid] %s killed %s", player.Name, enemyId))
 		grantKillRewards(player, enemyId)
 	end

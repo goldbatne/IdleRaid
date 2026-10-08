@@ -64,7 +64,7 @@ local function makeEnemyModel(definition, spawnPoint: BasePart): Model
 	local body = Instance.new("Part")
 	body.Name = "Body"
 	body.Shape = Enum.PartType.Ball
-	body.Size = Vector3.new(3, 3, 3)
+	body.Size = definition.Size or Vector3.new(3, 3, 3)
 	body.Color = definition.Color or Color3.fromRGB(85, 205, 105)
 	body.Anchored = true
 	body.CanCollide = true
@@ -75,7 +75,7 @@ local function makeEnemyModel(definition, spawnPoint: BasePart): Model
 	return model
 end
 
-function EnemyService.RegisterEnemy(model: Model, spawnPoint: BasePart, enemyId: string): boolean
+function EnemyService.RegisterEnemy(model: Model, spawnPoint: BasePart, enemyId: string, options): boolean
 	local definition = GameConfig.Enemies[enemyId]
 	if not enemyFolder or not definition or not model.PrimaryPart or enemies[model] or activeBySpawn[spawnPoint] then
 		return false
@@ -83,20 +83,34 @@ function EnemyService.RegisterEnemy(model: Model, spawnPoint: BasePart, enemyId:
 
 	enemies[model] = {
 		Id = enemyId,
-		Health = definition.MaxHealth,
+		Health = (options and options.MaxHealth) or definition.MaxHealth,
+		MaxHealth = (options and options.MaxHealth) or definition.MaxHealth,
+		NoRespawn = options and options.NoRespawn or false,
 		Definition = definition,
 		SpawnPoint = spawnPoint,
 		Alive = true,
 	}
 	activeBySpawn[spawnPoint] = model
 	model:SetAttribute("EnemyId", enemyId)
-	model:SetAttribute("Health", definition.MaxHealth)
-	model:SetAttribute("MaxHealth", definition.MaxHealth)
+	model:SetAttribute("Health", enemies[model].Health)
+	model:SetAttribute("MaxHealth", enemies[model].MaxHealth)
+	model:SetAttribute("IsBoss", definition.IsBoss == true)
 	model:SetAttribute("Attack", definition.Attack)
 	model:SetAttribute("Level", definition.Level)
 	model.Parent = enemyFolder
 	print(string.format("[IdleRaid] %s spawned at %s", enemyId, spawnPoint.Name))
 	return true
+end
+
+function EnemyService.SpawnAt(spawnPoint: BasePart, enemyId: string, options): Model?
+	local definition = GameConfig.Enemies[enemyId]
+	if not definition or activeBySpawn[spawnPoint] then return nil end
+	local model = makeEnemyModel(definition, spawnPoint)
+	if not EnemyService.RegisterEnemy(model, spawnPoint, enemyId, options) then
+		model:Destroy()
+		return nil
+	end
+	return model
 end
 
 local function spawnAt(spawnPoint: BasePart)
@@ -115,10 +129,7 @@ local function spawnAt(spawnPoint: BasePart)
 		return
 	end
 
-	local model = makeEnemyModel(definition, spawnPoint)
-	if not EnemyService.RegisterEnemy(model, spawnPoint, enemyId) then
-		model:Destroy()
-	end
+	EnemyService.SpawnAt(spawnPoint, enemyId)
 end
 
 function EnemyService.Start()
@@ -173,6 +184,20 @@ function EnemyService.GetAttackPosition(target: Instance): Vector3?
 	return body and body.Position or nil
 end
 
+function EnemyService.GetHealthSnapshot(target: Instance)
+	if not EnemyService.IsAliveEnemy(target) then return nil end
+	local state = enemies[target]
+	return { Health = state.Health, MaxHealth = state.MaxHealth, Id = state.Id }
+end
+
+function EnemyService.RemoveEnemy(target: Instance)
+	local state = enemies[target]
+	if not state then return end
+	enemies[target] = nil
+	activeBySpawn[state.SpawnPoint] = nil
+	target:Destroy()
+end
+
 function EnemyService.GetKillExp(target: Instance): number?
 	if not EnemyService.IsAliveEnemy(target) then
 		return nil
@@ -201,7 +226,7 @@ function EnemyService.ApplyDamage(target: Instance, damage: number): (number, bo
 	target:Destroy()
 
 	local spawnPoint = state.SpawnPoint
-	if not respawnPending[spawnPoint] then
+	if not state.NoRespawn and not respawnPending[spawnPoint] then
 		respawnPending[spawnPoint] = true
 		task.delay(state.Definition.RespawnTime, function()
 			respawnPending[spawnPoint] = nil

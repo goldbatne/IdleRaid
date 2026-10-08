@@ -5,6 +5,7 @@ local InventoryService = require(script.Parent.InventoryService)
 local EquipmentService = require(script.Parent.EquipmentService)
 local EnemyService = require(script.Parent.EnemyService)
 local CombatService = require(script.Parent.CombatService)
+local RaidService = require(script.Parent.RaidService)
 local LevelService = require(script.Parent.LevelService)
 local StateSyncService = require(script.Parent.StateSyncService)
 
@@ -12,6 +13,7 @@ PlayerDataService.Start()
 InventoryService.Start()
 EquipmentService.Start()
 EnemyService.Start()
+RaidService.Start()
 CombatService.Start()
 
 local function getPlayerState(player: Player)
@@ -22,6 +24,7 @@ local function getPlayerState(player: Player)
 	state.ExpRequired = LevelService.GetExpRequired(state.Level)
 	state.Inventory = InventoryService.GetSnapshot(player)
 	state.Equipment = EquipmentService.GetSnapshot(player)
+	state.Raid = RaidService.GetSnapshot(player)
 	return state
 end
 
