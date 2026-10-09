@@ -1,0 +1,168 @@
+{
+  "baselineHead": "bba9a4f70b2f06ea9d698aed4ae27039419bc0e8",
+  "workingBranch": "codex/oneshot-build",
+  "source": "actual repository inspection on 2026-10-09; line references are 1-based",
+  "economy": [
+    {
+      "key": "initial_profile",
+      "classification": "ExistingImplementation",
+      "source": "src/server/ProfileSchema.luau:84",
+      "valueOrFunction": "available=0; lifetime=0; stage=1; facility=1; training enabled",
+      "appliesTo": "profile start"
+    },
+    {
+      "key": "initial_gold_combat",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GameConfig.luau:4",
+      "valueOrFunction": "Gold=0; BaseAttack=10; BaseDefense=0; MaxHealth=100",
+      "appliesTo": "new player"
+    },
+    {
+      "key": "level",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthMath.luau:76",
+      "valueOrFunction": "LevelProgress(lifetime); requirements start 100, ceil(previous*13/10), max level 100",
+      "appliesTo": "lifetime power to level"
+    },
+    {
+      "key": "content_gates",
+      "classification": "UserConfirmed",
+      "source": "src/shared/GrowthConfig.luau:4",
+      "valueOrFunction": "max stage 30; direct gates at 10,20,30",
+      "appliesTo": "stage access"
+    },
+    {
+      "key": "breakthrough_steps",
+      "classification": "UserConfirmed",
+      "source": "src/shared/GrowthConfig.luau:42",
+      "valueOrFunction": "free +1; tickets total +2,+3,+5",
+      "appliesTo": "stage movement"
+    },
+    {
+      "key": "breakthrough_cost",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthMath.luau:39",
+      "valueOrFunction": "ReferenceRate(current stage) * min(45+15*(stage-1),900) power; every path spends current-stage cost",
+      "appliesTo": "available power"
+    },
+    {
+      "key": "stage_effect",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthMath.luau:10",
+      "valueOrFunction": "2^(stage-1) stage multiplier; reference rate stage 1=10 power/sec",
+      "appliesTo": "training rate"
+    },
+    {
+      "key": "facility_effect",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthMath.luau:20",
+      "valueOrFunction": "tier 1=1x, tier 2=1.5x, tier 3=2x, tier 4=3x; highest tier replaces previous",
+      "appliesTo": "training rate"
+    },
+    {
+      "key": "facility_cost_gate",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthConfig.luau:25",
+      "valueOrFunction": "tiers 2/3/4 cost 120/850/6000 Gold; tiers 3/4 require Gate10/Gate20",
+      "appliesTo": "facility upgrade"
+    },
+    {
+      "key": "online_training",
+      "classification": "ExistingImplementation",
+      "source": "src/server/TrainingService.luau:19",
+      "valueOrFunction": "server elapsed milliseconds * BaseRate(stage,tier), 1-second settlement tick",
+      "appliesTo": "power/sec"
+    },
+    {
+      "key": "enemy_rewards",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthConfig.luau:31",
+      "valueOrFunction": "zones Field/Foothill/Citadel; kill power=ReferenceRate(min(stage,reward cap))*2 sec",
+      "appliesTo": "kill reward"
+    },
+    {
+      "key": "enemy_gold_drop",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GameConfig.luau:57",
+      "valueOrFunction": "zone Gold ranges and item DropTable; server random",
+      "appliesTo": "kill Gold/item"
+    },
+    {
+      "key": "raid_rewards",
+      "classification": "ExistingImplementation",
+      "source": "src/server/RaidService.luau:350",
+      "valueOrFunction": "reward power=ReferenceRate(min(stage,gate stage))*10 sec; gate Gold/Token from GameConfig",
+      "appliesTo": "raid clear"
+    },
+    {
+      "key": "token_exchange",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthConfig.luau:43",
+      "valueOrFunction": "+2/+3/+5 tickets cost 10/18/30 RaidToken",
+      "appliesTo": "ticket ownership"
+    },
+    {
+      "key": "vouchers",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthConfig.luau:37",
+      "valueOrFunction": "10/30/120 minutes of current BaseRate; immediate power; no auto gate clear",
+      "appliesTo": "voucher use"
+    },
+    {
+      "key": "offline",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthConfig.luau:15",
+      "valueOrFunction": "max 8h at 25% of saved OfflineRateSnapshot; server unix time",
+      "appliesTo": "offline power"
+    },
+    {
+      "key": "profile_storage",
+      "classification": "ExistingImplementation",
+      "source": "src/server/ProfileStore.luau:12",
+      "valueOrFunction": "DataVersion=2; Studio in-memory mock; production DataStore IdleRaid_Profile_v2; 60s autosave; 120s lease",
+      "appliesTo": "profile persistence"
+    },
+    {
+      "key": "products",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/GrowthConfig.luau:44",
+      "valueOrFunction": "MonetizationEnabled=false; ProductIds and prices unset; six ticket/voucher definitions",
+      "appliesTo": "new sales disabled"
+    },
+    {
+      "key": "facility_paid_path",
+      "classification": "Unresolved",
+      "source": "src/shared/GrowthConfig.luau:25",
+      "valueOrFunction": "no existing facility entitlement or product contract",
+      "appliesTo": "do not invent paid facility item"
+    },
+    {
+      "key": "reference_competitor_rates",
+      "classification": "ReferenceOnly",
+      "source": "IdleRaid_OneShot_Build.md:1",
+      "valueOrFunction": "no competitor numerical rates adopted",
+      "appliesTo": "none"
+    },
+    {
+      "key": "equipment_stats",
+      "classification": "ExistingImplementation",
+      "source": "src/shared/ItemConfig.luau:5",
+      "valueOrFunction": "six fixed items; TrainingSword +3 Attack, IronSword +8, ClothArmor +2 Defense, LeatherArmor +5, IronArmor +10, SlimeCharm +2 Attack",
+      "appliesTo": "FinalAttack/FinalDefense via StatService"
+    },
+    {
+      "key": "combat_damage",
+      "classification": "ExistingImplementation",
+      "source": "src/server/CombatService.luau:69",
+      "valueOrFunction": "BasicAttack uses server PlayerData.GetFinalAttack; range 15 studs, cooldown 0.6s",
+      "appliesTo": "manual and auto damage"
+    },
+    {
+      "key": "normal_paid_equivalence",
+      "classification": "ExistingImplementation",
+      "source": "src/server/GrowthService.luau:63",
+      "valueOrFunction": "free/token/studio-synthetic ticket ownership converge at TryBreakthrough; existing current-stage power cost retained",
+      "appliesTo": "breakthrough stage and training rate"
+    }
+  ]
+}
