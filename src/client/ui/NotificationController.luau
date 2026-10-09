@@ -1,37 +1,76 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
 local ItemConfig = require(ReplicatedStorage.Shared.ItemConfig)
 local NumberFormatter = require(ReplicatedStorage.Shared.NumberFormatter)
 local UiStyle = require(script.Parent.UiStyle)
 
 local NotificationController = {}
 
-function NotificationController.Start(gui: ScreenGui, stateController)
-	local toast = UiStyle.Text(gui, "ItemNotice", "", UDim2.new(1, -24, 0, 48), UDim2.new(0.5, 0, 0.28, 0))
+function NotificationController.Start(gui: ScreenGui, stateController, openItem, openPage)
+	local toast = UiStyle.Button(gui, "GrowthNotice", "", UDim2.new(1, -24, 0, 42), UDim2.new(0.5, 0, 0, 0))
 	toast.AnchorPoint = Vector2.new(0.5, 0)
-	toast.BackgroundTransparency = 0.08
 	toast.BackgroundColor3 = UiStyle.Colors.Accent
 	toast.Font = Enum.Font.GothamBlack
-	toast.TextXAlignment = Enum.TextXAlignment.Center
+	toast.TextSize = 13
 	toast.Visible = false
 	toast.ZIndex = 20
-	UiStyle.Corner(toast, 10)
-	UiStyle.Outline(toast, UiStyle.Colors.Gold, 0.2)
-
 	local limit = Instance.new("UISizeConstraint")
-	limit.MaxSize = Vector2.new(360, 48)
+	limit.MaxSize = Vector2.new(320, 42)
 	limit.Parent = toast
 
-	local serial = 0
-	local function show(message: string, color: Color3, duration: number)
-		serial += 1
-		local this = serial
-		toast.Text = message
-		toast.BackgroundColor3 = color
-		toast.Visible = true
-		task.delay(duration, function()
-			if serial == this then toast.Visible = false end
+	local queue = {}
+	local displaying = false
+	local currentAction
+	local function pump()
+		if displaying or #queue == 0 then return end
+		displaying = true
+		task.spawn(function()
+			while #queue > 0 and gui.Parent do
+				local entry = table.remove(queue, 1)
+				currentAction = entry.Action
+				toast.Active = entry.Action ~= nil
+				toast.Text = entry.Text
+				toast.BackgroundColor3 = entry.Color
+				toast.Visible = true
+				task.wait(entry.Duration or 2.4)
+				toast.Visible = false
+				currentAction = nil
+			end
+			displaying = false
 		end)
+	end
+	local function enqueue(message, color, action, duration)
+		if #queue >= 5 then
+			local removable
+			for index, entry in ipairs(queue) do
+				if not entry.Action then removable = index break end
+			end
+			if not removable and not action then return end
+			table.remove(queue, removable or 1)
+		end
+		table.insert(queue, { Text = message, Color = color, Action = action, Duration = duration })
+		pump()
+	end
+	toast.Activated:Connect(function()
+		if currentAction then currentAction() end
+	end)
+
+	local pendingPower = 0
+	local pendingGold = 0
+	local rewardScheduled = false
+	local function flushRewards()
+		if pendingPower > 0 or pendingGold > 0 then
+			local parts = {}
+			if pendingPower > 0 then table.insert(parts, "수련력 +" .. NumberFormatter.Format(pendingPower)) end
+			if pendingGold > 0 then table.insert(parts, "Gold +" .. NumberFormatter.Format(pendingGold)) end
+			enqueue(table.concat(parts, " · "), UiStyle.Colors.Accent)
+		end
+		pendingPower, pendingGold = 0, 0
+		rewardScheduled = false
+	end
+	local function scheduleRewards()
+		if rewardScheduled then return end
+		rewardScheduled = true
+		task.delay(2.5, flushRewards)
 	end
 
 	local offlinePanel = Instance.new("Frame")
@@ -56,13 +95,26 @@ function NotificationController.Start(gui: ScreenGui, stateController)
 	dismiss.Activated:Connect(function() offlinePanel.Visible = false end)
 
 	stateController.OnNotification(function(notification)
-		if notification.Kind == "Item" then
+		local kind = notification.Kind
+		if kind == "Power" and notification.Source ~= "RaidClear" then
+			pendingPower += notification.Amount or 0
+			scheduleRewards()
+		elseif kind == "Gold" and notification.Source ~= "RaidClear" then
+			pendingGold += notification.Amount or 0
+			scheduleRewards()
+		elseif kind == "Item" then
 			local definition = ItemConfig.Items[notification.ItemId]
 			if definition then
-				show("획득: " .. definition.Name,
-					UiStyle.Rarities[definition.Rarity] or UiStyle.Colors.Accent, 3)
+				enqueue("획득: " .. definition.Name .. " · 눌러서 비교",
+					UiStyle.Rarities[definition.Rarity] or UiStyle.Colors.Accent,
+					function() openItem(notification.ItemId) end, 3.2)
 			end
-		elseif notification.Kind == "Offline" then
+		elseif kind == "Equipment" then
+			local definition = notification.ItemId and ItemConfig.Items[notification.ItemId]
+			local label = if notification.Action == "Equip" and definition then definition.Name .. " 장착"
+				else tostring(notification.Slot or "장비") .. " 해제"
+			enqueue(label, UiStyle.Colors.Accent, function() openPage("Bag") end)
+		elseif kind == "Offline" then
 			local summary = notification.Summary
 			if typeof(summary) == "table" and (summary.GrantedPower or 0) > 0 then
 				offlineText.Text = string.format("오프라인 수련\n실제 경과 %d분 · 인정 %d분\n기준 수련 %s/초 · 효율 %d%%\n받은 수련력 +%s\n레벨 %d → %d",
@@ -74,18 +126,36 @@ function NotificationController.Start(gui: ScreenGui, stateController)
 					summary.LevelBefore or 1, summary.LevelAfter or 1)
 				offlinePanel.Visible = true
 			end
-		elseif notification.Kind == "Breakthrough" then
-			show("돌파 성공", UiStyle.Colors.Gold, 2)
-		elseif notification.Kind == "GateClear" then
-			show("관문 클리어!", UiStyle.Colors.Gold, 3)
+		elseif kind == "Breakthrough" then
+			enqueue(string.format("돌파 %d → %d · 수련 %s/초", notification.From or 1,
+				notification.To or 1, NumberFormatter.Format(notification.AfterRate or 0)),
+				UiStyle.Colors.Gold, function() openPage("Growth") end)
+		elseif kind == "Facility" then
+			enqueue(string.format("시설 %d등급 · 수련 %s → %s/초", notification.Tier or 1,
+				NumberFormatter.Format(notification.BeforeRate or 0),
+				NumberFormatter.Format(notification.AfterRate or 0)),
+				UiStyle.Colors.Accent, function() openPage("Growth") end)
+		elseif kind == "GateClear" then
+			enqueue("관문 클리어: " .. tostring(notification.GateId or ""), UiStyle.Colors.Gold,
+				function() openPage("Raid") end)
+		elseif kind == "RaidReward" then
+			enqueue(string.format("레이드 보상 · 수련력 +%s · Gold +%s · Token +%s",
+				NumberFormatter.Format(notification.Power or 0),
+				NumberFormatter.Format(notification.Gold or 0),
+				NumberFormatter.Format(notification.Tokens or 0)),
+				UiStyle.Colors.Gold, function() openPage("Raid") end, 4)
+		elseif kind == "Voucher" then
+			enqueue("수련권 사용 · 수련력 +" .. NumberFormatter.Format(notification.Amount or 0),
+				UiStyle.Colors.Accent)
 		end
 	end)
 
 	local lastLevel
 	stateController.Subscribe(function(state)
+		if not state.Ready then return end
 		local level = state.Level or 1
 		if lastLevel and level > lastLevel then
-			show(string.format("LEVEL UP!  Lv.%d", level), UiStyle.Colors.Gold, 3.5)
+			enqueue(string.format("LEVEL UP!  Lv.%d", level), UiStyle.Colors.Gold, nil, 3)
 		end
 		lastLevel = level
 	end)

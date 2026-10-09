@@ -11,8 +11,8 @@ function EquipmentController.Start(panel: Frame, stateController)
 	local section = Instance.new("Frame")
 	section.Name = "Equipment"
 	section.BackgroundTransparency = 1
-	section.Size = UDim2.new(1, -16, 0.42, -8)
-	section.Position = UDim2.new(0, 8, 0.58, 0)
+	section.Size = UDim2.new(1, -16, 0, 170)
+	section.Position = UDim2.fromOffset(8, 365)
 	section.Parent = panel
 
 	local title = UiStyle.Text(section, "Title", "착용 장비", UDim2.new(1, -16, 0, 25), UDim2.fromOffset(8, 0))

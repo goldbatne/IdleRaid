@@ -26,8 +26,9 @@ local function clone(value)
 	return result
 end
 
-local function keyFor(player: Player): string
-	return "Player_" .. tostring(player.UserId)
+local function keyFor(player: Player, mode: string?): string
+	local prefix = if mode == "Sandbox" then "StudioSandbox_Player_" else "Player_"
+	return prefix .. tostring(player.UserId)
 end
 
 local function update(key: string, transformer)
@@ -59,8 +60,8 @@ local function offlineSettle(profile, now: number)
 	local elapsed = math.max(0, now - profile.LastSettlementUnix)
 	local accepted = math.min(elapsed, GrowthConfig.OfflineMaxSeconds)
 	local oldLifetime = profile.LifetimeTrainingPower
-	local oldRate = profile.OfflineRateSnapshot
-	local grant = SafeInteger.MultiplyRatioFloor(profile.OfflineRateSnapshot,
+	local oldRate = if profile.TrainingEnabled then profile.OfflineRateSnapshot else 0
+	local grant = SafeInteger.MultiplyRatioFloor(oldRate,
 		accepted * GrowthConfig.OfflineRateNumerator, GrowthConfig.OfflineRateDenominator)
 	if not grant then return nil, "OfflineOverflow" end
 	local available = SafeInteger.Add(profile.AvailableTrainingPower, grant)
@@ -86,7 +87,7 @@ local function offlineSettle(profile, now: number)
 end
 
 local function load(player: Player)
-	local entry = { Status = "Loading", Saving = false }
+	local entry = { Status = "Loading", Saving = false, Mode = "Normal" }
 	entries[player] = entry
 	local now = os.time()
 	local failure
@@ -130,6 +131,44 @@ function ProfileStore.GetStatus(player: Player): string
 	return if entry then entry.Status else "Loading"
 end
 
+function ProfileStore.IsStudioSandbox(player: Player): boolean
+	local entry = entries[player]
+	return isMock and entry ~= nil and entry.Status == "Ready" and entry.Mode == "Sandbox"
+end
+
+-- The normal profile is saved first. Development grants only touch a separate
+-- Studio record that is never sent to the production DataStore.
+function ProfileStore.SetStudioSandbox(player: Player, enabled: boolean): boolean
+	if not isMock or typeof(enabled) ~= "boolean" then return false end
+	local entry = entries[player]
+	if not entry or entry.Status ~= "Ready" or entry.Saving then return false end
+	if (entry.Mode == "Sandbox") == enabled then return true end
+	local saved = ProfileStore.Save(player)
+	if not saved then return false end
+	if enabled then
+		local now = os.time()
+		local sandboxKey = keyFor(player, "Sandbox")
+		local profile = ProfileSchema.Migrate(mockRecords[sandboxKey], now)
+		if not profile then return false end
+		local summary = offlineSettle(profile, now)
+		if not summary then return false end
+		profile._Session = { Owner = sessionId, ExpiresAt = now + GrowthConfig.SessionLeaseSeconds }
+		mockRecords[sandboxKey] = clone(profile)
+		profile._Session = nil
+		entry.NormalProfile = entry.Profile
+		entry.Profile = profile
+		entry.Mode = "Sandbox"
+	else
+		if not entry.NormalProfile then return false end
+		entry.Profile = entry.NormalProfile
+		entry.NormalProfile = nil
+		entry.Mode = "Normal"
+	end
+	entry.OfflineSummary = nil
+	entry.SavedRevision = entry.Profile.StateRevision
+	return true
+end
+
 function ProfileStore.GetOfflineSummary(player: Player)
 	local entry = entries[player]
 	return entry and entry.OfflineSummary or nil
@@ -166,10 +205,10 @@ function ProfileStore.Save(player: Player, release: boolean?): (boolean, string?
 	end
 	entry.Saving = true
 	if beforeSave then
-		local settled, errorText = pcall(beforeSave, player)
-		if not settled then
+		local settled, result = pcall(beforeSave, player)
+		if not settled or result == false then
 			entry.Saving = false
-			warn(string.format("[IdleRaid] Profile settlement failed for %s: %s", player.Name, tostring(errorText)))
+			warn(string.format("[IdleRaid] Profile settlement failed for %s: %s", player.Name, tostring(result)))
 			return false, "SettlementFailed"
 		end
 	end
@@ -179,7 +218,7 @@ function ProfileStore.Save(player: Player, release: boolean?): (boolean, string?
 	local snapshot = clone(profile)
 	local savedRevision = snapshot.StateRevision
 	local failure
-	local ok, record = tryUpdate(keyFor(player), function(raw)
+	local ok, record = tryUpdate(keyFor(player, entry.Mode), function(raw)
 		if not raw or not raw._Session or raw._Session.Owner ~= sessionId then
 			failure = "SessionLost"
 			return nil
@@ -227,6 +266,7 @@ function ProfileStore.Start(callback)
 	Players.PlayerRemoving:Connect(function(player)
 		local entry = entries[player]
 		if entry and entry.Status == "Ready" then
+			if entry.Mode == "Sandbox" then ProfileStore.SetStudioSandbox(player, false) end
 			local saved = false
 			for attempt = 1, 3 do
 				saved = ProfileStore.Save(player, true)
@@ -254,6 +294,7 @@ function ProfileStore.Start(callback)
 			if entry.Status == "Ready" then
 				pending += 1
 				task.spawn(function()
+					if entry.Mode == "Sandbox" then ProfileStore.SetStudioSandbox(player, false) end
 					local saved = ProfileStore.Save(player, true)
 					if not saved then warn("[IdleRaid] Shutdown profile save failed for " .. player.Name) end
 					pending -= 1

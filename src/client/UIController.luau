@@ -13,6 +13,7 @@ local InventoryController = require(script.Parent.ui.InventoryController)
 local NotificationController = require(script.Parent.ui.NotificationController)
 local RaidController = require(script.Parent.ui.RaidController)
 local GrowthController = require(script.Parent.ui.GrowthController)
+local GoalController = require(script.Parent.ui.GoalController)
 local CharacterController = require(script.Parent.ui.CharacterController)
 local RaidMenuController = require(script.Parent.ui.RaidMenuController)
 local StudioDebugController = require(script.Parent.ui.StudioDebugController)
@@ -70,7 +71,7 @@ function UIController.Start()
 	local pages = {}
 	local pageDefs = {
 		{ Key = "Character", Label = "캐릭터", Scrolling = true },
-		{ Key = "Bag", Label = "가방", Scrolling = false },
+		{ Key = "Bag", Label = "가방", Scrolling = true },
 		{ Key = "Growth", Label = "성장", Scrolling = false },
 		{ Key = "Raid", Label = "레이드", Scrolling = true },
 	}
@@ -108,14 +109,22 @@ function UIController.Start()
 	close.TextSize = 24
 	close.Activated:Connect(function() container.Visible = false end)
 
+	local function openPage(key)
+		if not pages[key] then return end
+		container.Visible = true
+		for pageKey, page in pairs(pages) do page.Visible = pageKey == key end
+	end
 	CharacterController.Start(pages.Character, StateController)
-	InventoryController.Start(pages.Bag, StateController)
+	local selectItem = InventoryController.Start(pages.Bag, StateController)
 	EquipmentController.Start(pages.Bag, StateController)
 	GrowthController.Start(pages.Growth, StateController)
 	RaidMenuController.Start(pages.Raid, StateController)
-	if RunService:IsStudio() then StudioDebugController.Start(pages.Debug) end
-	NotificationController.Start(gui, StateController)
+	if RunService:IsStudio() then StudioDebugController.Start(pages.Debug, StateController) end
+	NotificationController.Start(gui, StateController, function(itemId)
+		if selectItem(itemId) then openPage("Bag") end
+	end, openPage)
 	RaidController.Start(gui, StateController, DashController)
+	GoalController.Start(gui, StateController, openPage, selectItem)
 
 	local function resizeNavigation()
 		local camera = Workspace.CurrentCamera
@@ -142,7 +151,7 @@ function UIController.Start()
 		local inRaid = state.Raid and state.Raid.IsParticipant == true
 		if inRaid then container.Visible = false end
 		nav.Visible = not inRaid
-		autoButton.Visible = not inRaid
+		autoButton.Visible = true
 		local hud = gui:FindFirstChild("HUD")
 		if hud then hud.Visible = not inRaid end
 	end)

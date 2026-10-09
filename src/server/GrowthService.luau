@@ -81,7 +81,11 @@ function GrowthService.TryBreakthrough(player: Player, steps: any, expectedStage
 	end
 	profile.AvailableTrainingPower = remaining
 	profile.BreakthroughStage += steps
-	PlayerDataService.AfterGrowthChange(player, nil, { Kind = "Breakthrough", Steps = steps })
+	PlayerDataService.AfterGrowthChange(player, nil, {
+		Kind = "Breakthrough", Steps = steps, From = preview.Stage,
+		To = profile.BreakthroughStage, BeforeRate = preview.CurrentRate,
+		AfterRate = preview.TargetRate, Cost = cost,
+	})
 	return { Ok = true, Stage = profile.BreakthroughStage, Cost = cost }
 end
 
@@ -93,6 +97,7 @@ function GrowthService.TryUpgradeFacility(player: Player, expectedTier: any)
 	end
 	if ProfileStore.IsReceiptPending(player) then return failed("ReceiptSaving") end
 	if inRaid(player) then return failed("RaidInProgress") end
+	local beforeRate = GrowthMath.BaseRate(profile.BreakthroughStage, profile.TrainingFacilityTier)
 	local nextFacility = GrowthConfig.Facilities[profile.TrainingFacilityTier + 1]
 	if not nextFacility then return failed("MaxFacility") end
 	if nextFacility.RequiredGate and not profile.ClearedRaidGates[nextFacility.RequiredGate] then
@@ -102,7 +107,12 @@ function GrowthService.TryUpgradeFacility(player: Player, expectedTier: any)
 	if profile.Gold < nextFacility.GoldCost then return failed("InsufficientGold") end
 	profile.Gold -= nextFacility.GoldCost
 	profile.TrainingFacilityTier += 1
-	PlayerDataService.AfterGrowthChange(player, nil, { Kind = "Facility" })
+	PlayerDataService.AfterGrowthChange(player, nil, {
+		Kind = "Facility", Tier = profile.TrainingFacilityTier,
+		BeforeRate = beforeRate,
+		AfterRate = GrowthMath.BaseRate(profile.BreakthroughStage, profile.TrainingFacilityTier),
+		GoldSpent = nextFacility.GoldCost,
+	})
 	return { Ok = true, Tier = profile.TrainingFacilityTier }
 end
 
@@ -265,6 +275,7 @@ function GrowthService.Start()
 		debugGrant.Name = "StudioGrowthGrant"
 		debugGrant.Parent = folder
 		debugGrant.OnServerInvoke = function(player, kind, value)
+			if not ProfileStore.IsStudioSandbox(player) then return false end
 			if kind == "Power" and SafeInteger.IsValid(value) and value > 0 then
 				return PlayerDataService.AddPowerFinal(player, value, "StudioTest")
 			elseif kind == "Gold" and SafeInteger.IsValid(value) and value > 0 then
