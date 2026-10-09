@@ -89,7 +89,7 @@ function GrowthController.Start(panel: Frame, stateController)
 	local facilityBuy = button(views[2], "FacilityBuy", "Gold로 시설 업그레이드", 142)
 	local trainingToggle = button(views[2], "TrainingToggle", "기본 수련 켜기/끄기", 198)
 	local facilityNote = label(views[2], "FacilityNote",
-		"시설은 Gold로 영구 개선합니다.\n새 배수가 이전 배수를 대체하며 돌파 비용은 그대로입니다.", 254, 70)
+		"시설은 Gold로 개선합니다. 상위 등급이 하위 효과를 대체합니다.\n시설권 상품은 미정 · 판매 비활성", 254, 70)
 	facilityNote.TextColor3 = UiStyle.Colors.Muted
 
 	local voucherIntro = label(views[3], "VoucherIntro",
@@ -131,15 +131,18 @@ function GrowthController.Start(panel: Frame, stateController)
 			if not result.Ok then
 				selectedPreview = nil
 				confirm.Visible = false
-				previewLine.Text = UiText.Reason(result.Reason)
+				previewLine.Text = string.format("%d단계 → %s · 비용 %s / 보유 %s\n%s",
+					result.Stage or 1, result.TargetStage and tostring(result.TargetStage) or "이동 불가",
+					NumberFormatter.Format(result.Cost or 0), NumberFormatter.Format(result.AvailablePower or 0),
+					UiText.Reason(result.Reason))
 				return
 			end
 			selectedPreview = { Kind = "Breakthrough", Steps = steps, Stage = result.Stage }
-			previewLine.Text = string.format("%d → %d단계  |  배수 x%s → x%s\n기본 수련 %s → %s/초\n비용 %s · 다음 관문 %s",
+			previewLine.Text = string.format("%d → %d단계  |  배수 x%s → x%s\n기본 수련 %s → %s/초\n수련력 %s / 보유 %s · 다음 관문 %s",
 				result.Stage, result.TargetStage, NumberFormatter.Format(result.CurrentMultiplier),
 				NumberFormatter.Format(result.TargetMultiplier), NumberFormatter.Format(result.CurrentRate),
 				NumberFormatter.Format(result.TargetRate), NumberFormatter.Format(result.Cost),
-				result.NextGate and result.NextGate.Stage or "완료")
+				NumberFormatter.Format(result.AvailablePower), result.NextGate and result.NextGate.Stage or "완료")
 			confirm.Visible = true
 		end)
 	end
@@ -235,10 +238,19 @@ function GrowthController.Start(panel: Frame, stateController)
 		facilityLine.Text = string.format("현재 수련 시설 %d등급 · x%.1f", tier,
 			facility.Numerator / facility.Denominator)
 		if nextFacility then
-			facilityNext.Text = string.format("다음 %d등급 · x%.1f\n필요 Gold %s%s", tier + 1,
-				nextFacility.Numerator / nextFacility.Denominator,
-				NumberFormatter.Format(nextFacility.GoldCost),
-				if nextFacility.RequiredGate then "\n선행 " .. nextFacility.RequiredGate else "")
+			local beforeRate = GrowthMath.BaseRate(stage, tier)
+			local afterRate = GrowthMath.BaseRate(stage, tier + 1)
+			local hasGate = not nextFacility.RequiredGate
+				or (state.ClearedRaidGates or {})[nextFacility.RequiredGate] == true
+			local affordable = (state.Gold or 0) >= nextFacility.GoldCost
+			facilityNext.Text = string.format("현재 %s/초 → 적용 후 %s/초\nGold 비용 %s / 보유 %s\n%s",
+				NumberFormatter.Format(beforeRate), NumberFormatter.Format(afterRate),
+				NumberFormatter.Format(nextFacility.GoldCost), NumberFormatter.Format(state.Gold or 0),
+				if not hasGate then "선행 " .. nextFacility.RequiredGate .. " 클리어 필요"
+				elseif not affordable then "Gold 부족" else "업그레이드 가능")
+			facilityBuy.Text = string.format("Gold로 %d등급 개선", tier + 1)
+			facilityBuy.Active = hasGate and affordable
+			facilityBuy.BackgroundColor3 = if hasGate and affordable then UiStyle.Colors.Accent else UiStyle.Colors.Surface
 			facilityBuy.Visible = true
 		else
 			facilityNext.Text = "최고 시설 등급"

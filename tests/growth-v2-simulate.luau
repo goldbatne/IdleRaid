@@ -22,6 +22,8 @@ check("gate_8_plus_2", mathGrowth.CanAdvance(8, 2, {}) == true)
 check("gate_8_plus_5", mathGrowth.CanAdvance(8, 5, {}) == false)
 check("gate_9_plus_2", mathGrowth.CanAdvance(9, 2, {}) == false)
 check("gate_10_lock", mathGrowth.CanAdvance(10, 1, {}) == false)
+check("legacy_stage_above_uncleared_gate_locked", mathGrowth.CanAdvance(11, 1, {}) == false
+	and mathGrowth.NextGate(11, {}).Id == "Gate10")
 check("gate_10_clear", mathGrowth.CanAdvance(10, 5, { Gate10 = true }) == true)
 check("gate_18_plus_2", mathGrowth.CanAdvance(18, 2, { Gate10 = true }) == true)
 check("gate_18_plus_5", mathGrowth.CanAdvance(18, 5, { Gate10 = true }) == false)
@@ -68,6 +70,13 @@ local futureProfile = schema.New(9000)
 futureProfile.LastSettlementUnix = 10000
 local futureSummary = profileStore.TestOfflineSettle(futureProfile, 9000)
 check("offline_future_time", futureSummary.GrantedPower == 0 and futureProfile.LastSettlementUnix == 9000)
+local disabledProfile = schema.New(1000)
+disabledProfile.TrainingEnabled = false
+disabledProfile.OfflineRateSnapshot = 120
+local disabledSummary = profileStore.TestOfflineSettle(disabledProfile, 4600)
+check("offline_training_disabled", disabledSummary.GrantedPower == 0
+	and disabledSummary.Rate == 0 and disabledProfile.LastSettlementUnix == 4600)
+
 local cappedProfile = schema.New(1000)
 cappedProfile.OfflineRateSnapshot = 120
 local cappedSummary = profileStore.TestOfflineSettle(cappedProfile, 1000 + 24 * 3600)

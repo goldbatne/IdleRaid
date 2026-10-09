@@ -27,7 +27,7 @@ function EquipmentService.EquipItem(player: Player, itemId: any): boolean
 	local slot = definition.Type
 	if profile.Equipment[slot] == itemId then return true end
 	profile.Equipment[slot] = itemId
-	PlayerDataService.RecalculateStats(player)
+	PlayerDataService.RecalculateStats(player, { Kind = "Equipment", Action = "Equip", ItemId = itemId, Slot = slot })
 	print(string.format("[IdleRaid] %s equipped %s (%s)", player.Name, definition.Name, slot))
 	return true
 end
@@ -37,7 +37,7 @@ function EquipmentService.Unequip(player: Player, slot: any): boolean
 	local profile = ProfileStore.Get(player)
 	if not profile or not profile.Equipment[slot] then return false end
 	profile.Equipment[slot] = nil
-	PlayerDataService.RecalculateStats(player)
+	PlayerDataService.RecalculateStats(player, { Kind = "Equipment", Action = "Unequip", Slot = slot })
 	return true
 end
 

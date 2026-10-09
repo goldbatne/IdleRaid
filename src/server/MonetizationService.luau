@@ -108,6 +108,7 @@ function MonetizationService.Start()
 		debugRemote.Name = "StudioSyntheticReceipt"
 		debugRemote.Parent = ReplicatedStorage:WaitForChild("IdleRaidRemotes")
 		debugRemote.OnServerInvoke = function(player, purchaseId, productKey)
+			if not ProfileStore.IsStudioSandbox(player) then return Enum.ProductPurchaseDecision.NotProcessedYet end
 			return MonetizationService.ProcessSynthetic(player, purchaseId, productKey)
 		end
 	end

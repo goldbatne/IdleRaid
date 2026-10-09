@@ -1,0 +1,14 @@
+{
+  "name": "IdleRaid OneShot playable Rojo place",
+  "file": "build/IdleRaid-oneshot.rbxlx",
+  "sha256": "6681bf4eaf50a7178decf112820ae935a2137af590bbd7743220bc55ec5c7854",
+  "sourceInputSha256": "211a583f2b0e6d198ebf5c3ec1fe12d094bfb3a687e7ba5ca51d7897d6ec51c4",
+  "sourceBaselineCommit": "bba9a4f70b2f06ea9d698aed4ae27039419bc0e8",
+  "branch": "codex/oneshot-build",
+  "generatedAtUtc": "2026-10-09T14:54:19.903458+00:00",
+  "originalPlace": "IdleRaid.rbxl (untouched, untracked)",
+  "salesEnabled": false,
+  "testEnvironment": "Roblox Studio 0.742.0; Studio mock profiles; separate Rojo-built place",
+  "screenshotStatus": "not captured: computer-use Windows helper setup failed",
+  "sourceImplementationCommit": "c0aaf594658d2972d3d96c45646550bd77d57043"
+}

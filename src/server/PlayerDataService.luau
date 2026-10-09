@@ -67,6 +67,12 @@ function PlayerDataService.Start()
 	Players.PlayerRemoving:Connect(function(player) runtime[player] = nil end)
 end
 
+function PlayerDataService.RefreshProfile(player: Player)
+	if not ProfileStore.Get(player) then return end
+	recalculate(player)
+	StateSyncService.Push(player)
+end
+
 function PlayerDataService.GetProfile(player: Player)
 	return ProfileStore.Get(player)
 end
@@ -83,6 +89,7 @@ function PlayerDataService.GetGrowthSnapshot(player: Player)
 	local multiplier = GrowthMath.StageMultiplier(profile.BreakthroughStage)
 	return {
 		Ready = true,
+		StudioSandbox = ProfileStore.IsStudioSandbox(player),
 		StateRevision = profile.StateRevision,
 		Level = level,
 		Exp = exp,
@@ -129,11 +136,11 @@ function PlayerDataService.GetHealth(player: Player): number?
 	return if ProfileStore.Get(player) and data then data.Health else nil
 end
 
-function PlayerDataService.RecalculateStats(player: Player)
+function PlayerDataService.RecalculateStats(player: Player, notification)
 	if not ProfileStore.Get(player) then return end
 	ProfileStore.Touch(player)
 	recalculate(player)
-	StateSyncService.Push(player)
+	StateSyncService.Push(player, notification)
 end
 
 function PlayerDataService.AfterGrowthChange(player: Player, oldLifetime: number?, notification)
@@ -160,7 +167,8 @@ function PlayerDataService.AddPowerFinal(player: Player, amount: number, source:
 	local oldLifetime = profile.LifetimeTrainingPower
 	profile.AvailableTrainingPower = available
 	profile.LifetimeTrainingPower = lifetime
-	PlayerDataService.AfterGrowthChange(player, oldLifetime)
+	PlayerDataService.AfterGrowthChange(player, oldLifetime,
+		{ Kind = "Power", Amount = amount, Source = source or "Reward" })
 	if source and source ~= "OnlineTraining" then
 		print(string.format("[IdleRaid] %s gained %d Training Power from %s", player.Name, amount, source))
 	end
@@ -172,13 +180,13 @@ function PlayerDataService.AddExp(player: Player, amount: number)
 	return PlayerDataService.AddPowerFinal(player, amount, "LegacyReward")
 end
 
-function PlayerDataService.AddGold(player: Player, amount: number): boolean
+function PlayerDataService.AddGold(player: Player, amount: number, source: string?): boolean
 	local profile = ProfileStore.Get(player)
 	if not profile or not SafeInteger.IsValid(amount) or amount < 1 then return false end
 	local nextGold = SafeInteger.Add(profile.Gold, amount)
 	if not nextGold then return false end
 	profile.Gold = nextGold
-	PlayerDataService.AfterGrowthChange(player)
+	PlayerDataService.AfterGrowthChange(player, nil, { Kind = "Gold", Amount = amount, Source = source or "Reward" })
 	return true
 end
 

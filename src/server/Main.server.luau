@@ -16,6 +16,7 @@ local StateSyncService = require(script.Parent.StateSyncService)
 PlayerDataService.Start()
 InventoryService.Start()
 EquipmentService.Start()
+WorldVisualService.EnsureSpawn()
 EnemyService.Start()
 RaidService.Start()
 GrowthService.SetRaidBusyCheck(function(player)
@@ -58,9 +59,25 @@ if RunService:IsStudio() then
 	end
 	debugGrant.Parent = script.Parent
 
+	local modeRemote = Instance.new("RemoteFunction")
+	modeRemote.Name = "StudioProfileMode"
+	modeRemote.OnServerInvoke = function(player, enabled)
+		if typeof(enabled) ~= "boolean" then return false end
+		if RaidService.GetSnapshot(player).IsParticipant then return false end
+		TrainingService.Settle(player)
+		local switched = ProfileStore.SetStudioSandbox(player, enabled)
+		if switched then
+			TrainingService.ResetClock(player)
+			PlayerDataService.RefreshProfile(player)
+		end
+		return switched
+	end
+	modeRemote.Parent = game:GetService("ReplicatedStorage"):WaitForChild("IdleRaidRemotes")
+
 	local debugItemRemote = Instance.new("RemoteFunction")
 	debugItemRemote.Name = "StudioInventoryGrant"
 	debugItemRemote.OnServerInvoke = function(player, itemId)
+		if not ProfileStore.IsStudioSandbox(player) then return false end
 		return InventoryService.AddItem(player, itemId, 1)
 	end
 	debugItemRemote.Parent = game:GetService("ReplicatedStorage"):WaitForChild("IdleRaidRemotes")

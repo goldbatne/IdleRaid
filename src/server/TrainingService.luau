@@ -60,6 +60,10 @@ function TrainingService.SetEnabled(player: Player, enabled: any): boolean
 	return true
 end
 
+function TrainingService.ResetClock(player: Player)
+	lastAt[player] = os.clock()
+end
+
 function TrainingService.Start()
 	ProfileStore.SetBeforeSave(TrainingService.Settle)
 	Players.PlayerRemoving:Connect(function(player) lastAt[player] = nil end)

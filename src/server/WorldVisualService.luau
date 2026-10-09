@@ -5,6 +5,30 @@ local GameConfig = require(game:GetService("ReplicatedStorage").Shared.GameConfi
 
 local WorldVisualService = {}
 
+function WorldVisualService.EnsureSpawn()
+	if Workspace:FindFirstChildWhichIsA("SpawnLocation", true) then return end
+	local root = Workspace:FindFirstChild("IdleRaidVisuals")
+	if root and not root:IsA("Folder") then
+		warn("[IdleRaid] Workspace.IdleRaidVisuals must be a Folder")
+		return
+	end
+	if not root then
+		root = Instance.new("Folder")
+		root.Name = "IdleRaidVisuals"
+		root.Parent = Workspace
+	end
+	local spawn = Instance.new("SpawnLocation")
+	spawn.Name = "GeneratedPlayerSpawn"
+	spawn.Size = Vector3.new(7, 1, 7)
+	spawn.Position = Vector3.new(0, 0, 0)
+	spawn.Anchored = true
+	spawn.CanCollide = true
+	spawn.Neutral = true
+	spawn.Transparency = 0.45
+	spawn.Color = Color3.fromRGB(114, 190, 167)
+	spawn.Parent = root
+end
+
 local function piece(parent: Instance, name: string, size: Vector3, cframe: CFrame, color: Color3, material: Enum.Material, collide: boolean?)
 	local part = Instance.new("Part")
 	part.Name = name

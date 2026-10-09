@@ -1,6 +1,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local ItemConfig = require(ReplicatedStorage.Shared.ItemConfig)
+local NumberFormatter = require(ReplicatedStorage.Shared.NumberFormatter)
 local UiStyle = require(script.Parent.UiStyle)
 
 local InventoryController = {}
@@ -11,7 +12,7 @@ function InventoryController.Start(panel: Frame, stateController)
 	local section = Instance.new("Frame")
 	section.Name = "Inventory"
 	section.BackgroundTransparency = 1
-	section.Size = UDim2.new(1, -16, 0.56, -8)
+	section.Size = UDim2.new(1, -16, 0, 350)
 	section.Position = UDim2.fromOffset(8, 8)
 	section.Parent = panel
 
@@ -25,7 +26,7 @@ function InventoryController.Start(panel: Frame, stateController)
 	scroll.BorderSizePixel = 0
 	scroll.ScrollBarThickness = 6
 	scroll.CanvasSize = UDim2.fromOffset(0, 0)
-	scroll.Size = UDim2.new(1, -16, 1, -107)
+	scroll.Size = UDim2.new(1, -16, 1, -140)
 	scroll.Position = UDim2.fromOffset(8, 29)
 	UiStyle.Corner(scroll, 8)
 	scroll.Parent = section
@@ -38,8 +39,8 @@ function InventoryController.Start(panel: Frame, stateController)
 		scroll.CanvasSize = UDim2.fromOffset(0, layout.AbsoluteContentSize.Y + 8)
 	end)
 
-	local selectedLabel = UiStyle.Text(section, "Selected", "아이템을 선택하세요", UDim2.new(1, -16, 0, 22), UDim2.new(0, 8, 1, -72))
-	selectedLabel.TextSize = 14
+	local selectedLabel = UiStyle.Text(section, "Selected", "아이템을 선택하세요", UDim2.new(1, -16, 0, 58), UDim2.new(0, 8, 1, -108))
+	selectedLabel.TextSize = 12
 	local equipButton = UiStyle.Button(section, "Equip", "장착", UDim2.new(1, -16, 0, 42), UDim2.new(0, 8, 1, -46))
 	equipButton.Visible = false
 
@@ -47,13 +48,20 @@ function InventoryController.Start(panel: Frame, stateController)
 	local selectedItemId
 	local currentState
 	local lastInventory
+	local lastEquipment
+	local lastAttack
+	local lastDefense
 	local hasRendered = false
 
 	local function render(state, force)
 		currentState = state
-		if hasRendered and not force and state.Inventory == lastInventory then return end
+		if hasRendered and not force and state.Inventory == lastInventory and state.Equipment == lastEquipment
+		and state.FinalAttack == lastAttack and state.FinalDefense == lastDefense then return end
 		hasRendered = true
 		lastInventory = state.Inventory
+		lastEquipment = state.Equipment
+		lastAttack = state.FinalAttack
+		lastDefense = state.FinalDefense
 		local selectedStack
 		for _, child in ipairs(scroll:GetChildren()) do
 			if child:IsA("TextButton") then
@@ -98,7 +106,17 @@ function InventoryController.Start(panel: Frame, stateController)
 
 		if selectedStack then
 			equipButton.Visible = true
-			selectedLabel.Text = "선택: " .. ItemConfig.Items[selectedItemId].Name
+			local selected = ItemConfig.Items[selectedItemId]
+			local wornId = (state.Equipment or {})[selected.Type]
+			local worn = wornId and ItemConfig.Items[wornId]
+			local beforeAttack = state.FinalAttack or 0
+			local beforeDefense = state.FinalDefense or 0
+			local afterAttack = beforeAttack - (worn and worn.Attack or 0) + (selected.Attack or 0)
+			local afterDefense = beforeDefense - (worn and worn.Defense or 0) + (selected.Defense or 0)
+			selectedLabel.Text = string.format("%s → %s\n공격 %s → %s  ·  방어 %s → %s",
+				worn and worn.Name or "미착용", selected.Name,
+				NumberFormatter.Format(beforeAttack), NumberFormatter.Format(afterAttack),
+				NumberFormatter.Format(beforeDefense), NumberFormatter.Format(afterDefense))
 			equipButton.Active = true
 			equipButton.AutoButtonColor = true
 			equipButton.BackgroundColor3 = UiStyle.Colors.Accent
@@ -118,6 +136,24 @@ function InventoryController.Start(panel: Frame, stateController)
 		end
 	end)
 	stateController.Subscribe(render)
+	return function(itemId: string): boolean
+		if not currentState then return false end
+		for _, stack in ipairs(currentState.Inventory or {}) do
+			if stack.ItemId == itemId then
+				selectedItemId = itemId
+				render(currentState, true)
+				task.defer(function()
+					local row = scroll:FindFirstChild(itemId)
+					if row then
+						scroll.CanvasPosition = Vector2.new(0, math.max(0,
+							row.AbsolutePosition.Y - scroll.AbsolutePosition.Y + scroll.CanvasPosition.Y))
+					end
+				end)
+				return true
+			end
+		end
+		return false
+	end
 end
 
 return InventoryController

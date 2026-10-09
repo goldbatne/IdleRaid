@@ -1,0 +1,13 @@
+scenario,gate,reach_seconds,assumed_clear_seconds,actual_clear_seconds,stage,level,facility,available_power,lifetime_power,gold,ticket5_used,voucher10_used
+free_training,Gate10,945,1005,NOT_MEASURED,10,30,1,0,767850,0,0,0
+free_training,Gate20,3470,3560,NOT_MEASURED,20,59,1,0,1572863850,100,0,0
+free_training,Gate30,7525,7645,NOT_MEASURED,30,87,1,0,2415919103850,1100,0,0
+free_auto_facility,Gate10,589,649,NOT_MEASURED,10,30,2,520,768370,270,0,0
+free_auto_facility,Gate20,1774,1864,NOT_MEASURED,20,59,3,3482120,1576345970,2820,0,0
+free_auto_facility,Gate30,3127,3247,NOT_MEASURED,30,87,4,6043279880,2421962383730,15460,0,0
+studio_ticket5_once,Gate10,401,461,NOT_MEASURED,10,30,2,320,739970,145,1,0
+studio_ticket5_once,Gate20,1597,1687,NOT_MEASURED,20,59,3,3497280,1576332930,2717,1,0
+studio_ticket5_once,Gate30,2951,3071,NOT_MEASURED,30,87,4,3497280,2415922572930,15462,1,0
+studio_voucher10_once,Gate10,477,537,NOT_MEASURED,10,30,2,550,768400,195,0,1
+studio_voucher10_once,Gate20,1669,1759,NOT_MEASURED,20,59,3,3497510,1576361360,2767,0,1
+studio_voucher10_once,Gate30,3025,3145,NOT_MEASURED,30,87,4,5770665510,2421689769360,15512,0,1

@@ -350,12 +350,23 @@ finishRaid = function(session, success: boolean)
 				if profile then
 					local rewardStage = math.min(profile.BreakthroughStage, gate.Stage)
 					local rewardPower = GrowthMath.ReferenceRate(rewardStage) * GameConfig.Raid.RewardTrainingSeconds
-					PlayerDataService.AddPowerFinal(player, rewardPower, "RaidClear")
-					PlayerDataService.AddGold(player, session.Difficulty.Gold)
-					PlayerDataService.AddRaidToken(player, session.Difficulty.Tokens)
-					if session.GateEligible[player] and (metrics.DamageByPlayer[player] or 0) > 0 then
-						GrowthService.RecordGateClear(player, session.GateId)
+					local powerGranted = PlayerDataService.AddPowerFinal(player, rewardPower, "RaidClear")
+					local goldGranted = PlayerDataService.AddGold(player, session.Difficulty.Gold, "RaidClear")
+					local tokensGranted = PlayerDataService.AddRaidToken(player, session.Difficulty.Tokens)
+					if not powerGranted or not goldGranted or not tokensGranted then
+						warn("[IdleRaid] Raid reward cap prevented a full grant for " .. player.Name)
 					end
+					local gateCleared = false
+					if session.GateEligible[player] and (metrics.DamageByPlayer[player] or 0) > 0 then
+						gateCleared = GrowthService.RecordGateClear(player, session.GateId)
+					end
+					StateSyncService.Push(player, {
+						Kind = "RaidReward", GateId = session.GateId,
+						Power = if powerGranted then rewardPower else 0,
+						Gold = if goldGranted then session.Difficulty.Gold else 0,
+						Tokens = if tokensGranted then session.Difficulty.Tokens else 0,
+						GateCleared = gateCleared,
+					})
 				end
 			end
 		end

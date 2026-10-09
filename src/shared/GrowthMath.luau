@@ -45,7 +45,7 @@ end
 
 function GrowthMath.NextGate(stage: number, cleared): any
 	for _, gate in ipairs(GrowthConfig.Gates) do
-		if not cleared[gate.Id] and stage <= gate.Stage then return gate end
+		if not cleared[gate.Id] then return gate end
 	end
 	return nil
 end
@@ -56,7 +56,7 @@ function GrowthMath.CanAdvance(stage: number, steps: number, cleared): (boolean,
 	end
 	if stage >= GrowthConfig.MaxStage or stage + steps > GrowthConfig.MaxStage then return false, "MaxStage" end
 	for _, gate in ipairs(GrowthConfig.Gates) do
-		if not cleared[gate.Id] and stage <= gate.Stage and stage + steps > gate.Stage then
+		if not cleared[gate.Id] and (stage >= gate.Stage or stage + steps > gate.Stage) then
 			return false, "Gate" .. tostring(gate.Stage)
 		end
 	end

@@ -1,0 +1,134 @@
+{
+  "source": "src/shared/GrowthConfig.luau:44-52",
+  "monetizationEnabled": false,
+  "products": [
+    {
+      "key": "Ticket2",
+      "platformKind": "DeveloperProduct",
+      "productId": null,
+      "priceRobux": null,
+      "grant": {
+        "kind": "Ticket",
+        "value": 2,
+        "quantity": 1,
+        "ownership": "consumable held until use"
+      },
+      "freePath": "RaidToken exchange",
+      "purchaseEligibility": "disabled: missing ProductId and price; no prompt",
+      "useEligibility": "ticket requires matching held count, current-stage power cost, gate and stage limits",
+      "combination": "ticket moves total steps; voucher grants immediate power once; no new multiplier",
+      "clockBasis": "current stage at use",
+      "duplicates": "stacked ownership; repeated use consumes one; receipt PurchaseId deduplicated",
+      "gateRestriction": "every gate must be cleared directly; ticket cannot skip uncleared gate",
+      "inactiveReason": "actual sale disabled and ProductId/price unset"
+    },
+    {
+      "key": "Ticket3",
+      "platformKind": "DeveloperProduct",
+      "productId": null,
+      "priceRobux": null,
+      "grant": {
+        "kind": "Ticket",
+        "value": 3,
+        "quantity": 1,
+        "ownership": "consumable held until use"
+      },
+      "freePath": "RaidToken exchange",
+      "purchaseEligibility": "disabled: missing ProductId and price; no prompt",
+      "useEligibility": "ticket requires matching held count, current-stage power cost, gate and stage limits",
+      "combination": "ticket moves total steps; voucher grants immediate power once; no new multiplier",
+      "clockBasis": "current stage at use",
+      "duplicates": "stacked ownership; repeated use consumes one; receipt PurchaseId deduplicated",
+      "gateRestriction": "every gate must be cleared directly; ticket cannot skip uncleared gate",
+      "inactiveReason": "actual sale disabled and ProductId/price unset"
+    },
+    {
+      "key": "Ticket5",
+      "platformKind": "DeveloperProduct",
+      "productId": null,
+      "priceRobux": null,
+      "grant": {
+        "kind": "Ticket",
+        "value": 5,
+        "quantity": 1,
+        "ownership": "consumable held until use"
+      },
+      "freePath": "RaidToken exchange",
+      "purchaseEligibility": "disabled: missing ProductId and price; no prompt",
+      "useEligibility": "ticket requires matching held count, current-stage power cost, gate and stage limits",
+      "combination": "ticket moves total steps; voucher grants immediate power once; no new multiplier",
+      "clockBasis": "current stage at use",
+      "duplicates": "stacked ownership; repeated use consumes one; receipt PurchaseId deduplicated",
+      "gateRestriction": "every gate must be cleared directly; ticket cannot skip uncleared gate",
+      "inactiveReason": "actual sale disabled and ProductId/price unset"
+    },
+    {
+      "key": "Voucher10",
+      "platformKind": "DeveloperProduct",
+      "productId": null,
+      "priceRobux": null,
+      "grant": {
+        "kind": "Voucher",
+        "value": "Minutes10",
+        "quantity": 1,
+        "ownership": "consumable held until use"
+      },
+      "freePath": "no defined free voucher grant; ordinary training and hunting remain free",
+      "purchaseEligibility": "disabled: missing ProductId and price; no prompt",
+      "useEligibility": "voucher requires held count and uses current BaseRate at redemption",
+      "combination": "ticket moves total steps; voucher grants immediate power once; no new multiplier",
+      "clockBasis": "redemption-time stage/facility",
+      "duplicates": "stacked ownership; repeated use consumes one; receipt PurchaseId deduplicated",
+      "gateRestriction": "every gate must be cleared directly; ticket cannot skip uncleared gate",
+      "inactiveReason": "actual sale disabled and ProductId/price unset"
+    },
+    {
+      "key": "Voucher30",
+      "platformKind": "DeveloperProduct",
+      "productId": null,
+      "priceRobux": null,
+      "grant": {
+        "kind": "Voucher",
+        "value": "Minutes30",
+        "quantity": 1,
+        "ownership": "consumable held until use"
+      },
+      "freePath": "no defined free voucher grant; ordinary training and hunting remain free",
+      "purchaseEligibility": "disabled: missing ProductId and price; no prompt",
+      "useEligibility": "voucher requires held count and uses current BaseRate at redemption",
+      "combination": "ticket moves total steps; voucher grants immediate power once; no new multiplier",
+      "clockBasis": "redemption-time stage/facility",
+      "duplicates": "stacked ownership; repeated use consumes one; receipt PurchaseId deduplicated",
+      "gateRestriction": "every gate must be cleared directly; ticket cannot skip uncleared gate",
+      "inactiveReason": "actual sale disabled and ProductId/price unset"
+    },
+    {
+      "key": "Voucher120",
+      "platformKind": "DeveloperProduct",
+      "productId": null,
+      "priceRobux": null,
+      "grant": {
+        "kind": "Voucher",
+        "value": "Minutes120",
+        "quantity": 1,
+        "ownership": "consumable held until use"
+      },
+      "freePath": "no defined free voucher grant; ordinary training and hunting remain free",
+      "purchaseEligibility": "disabled: missing ProductId and price; no prompt",
+      "useEligibility": "voucher requires held count and uses current BaseRate at redemption",
+      "combination": "ticket moves total steps; voucher grants immediate power once; no new multiplier",
+      "clockBasis": "redemption-time stage/facility",
+      "duplicates": "stacked ownership; repeated use consumes one; receipt PurchaseId deduplicated",
+      "gateRestriction": "every gate must be cleared directly; ticket cannot skip uncleared gate",
+      "inactiveReason": "actual sale disabled and ProductId/price unset"
+    }
+  ],
+  "facilityProduct": {
+    "status": "Unresolved; no existing paid facility contract",
+    "saleEnabled": false
+  },
+  "passes": {
+    "status": "none defined",
+    "saleEnabled": false
+  }
+}

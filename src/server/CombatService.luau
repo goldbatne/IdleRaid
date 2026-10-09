@@ -24,7 +24,7 @@ local function grantKillRewards(player: Player, enemyId: string)
 	if not profile or not definition.ZoneId then return end
 	local power = GrowthMath.EnemyPower(profile.BreakthroughStage, definition.ZoneId)
 	if power then PlayerDataService.AddPowerFinal(player, power, "EnemyKill") end
-	PlayerDataService.AddGold(player, rewardRandom:NextInteger(definition.GoldMin, definition.GoldMax))
+	PlayerDataService.AddGold(player, rewardRandom:NextInteger(definition.GoldMin, definition.GoldMax), "EnemyKill")
 	for _, drop in ipairs(definition.DropTable) do
 		if typeof(drop.Chance) == "number" and drop.Chance >= 0 and drop.Chance <= 1 then
 			if rewardRandom:NextNumber() < drop.Chance then

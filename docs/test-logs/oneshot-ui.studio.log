@@ -1,0 +1,13 @@
+2026-10-09T15:01:25.281Z,28.281435,53c0,6,Info [FLog::CreatorOutput] IR_UI_LAUNCH true nil
+2026-10-09T15:01:41.096Z,44.096428,5660,6,Info [FLog::CreatorOutput] IR_UI_PASS auto_button
+2026-10-09T15:01:41.946Z,44.946430,53c0,6,Info [FLog::CreatorOutput] IR_UI_PASS debug_grant
+2026-10-09T15:01:42.896Z,45.896122,53c0,6,Info [FLog::CreatorOutput] IR_UI_PASS free_breakthrough
+2026-10-09T15:01:44.545Z,47.545940,53c0,6,Info [FLog::CreatorOutput] IR_UI_PASS facility_purchase
+2026-10-09T15:01:45.080Z,48.080341,53c0,6,Info [FLog::CreatorOutput] IR_UI_PASS preview_values
+2026-10-09T15:01:45.346Z,48.346298,20ac,6,Info [FLog::CreatorOutput] IR_UI_PASS equip
+2026-10-09T15:01:45.347Z,48.347301,20ac,6,Info [FLog::CreatorOutput] IR_UI_PASS next_goal_state
+2026-10-09T15:01:45.614Z,48.614876,20ac,6,Info [FLog::CreatorOutput] IR_UI_PASS unequip
+2026-10-09T15:01:47.377Z,50.377964,20ac,6,Info [FLog::CreatorOutput] IR_UI_PASS ticket_breakthrough
+2026-10-09T15:01:47.946Z,50.946007,533c,6,Info [FLog::CreatorOutput] IR_UI_PASS raid_join
+2026-10-09T15:01:47.946Z,50.946007,533c,6,Info [FLog::CreatorOutput] IR_UI_CLIENT_RESULT true nil
+2026-10-09T15:01:47.961Z,50.961010,20ac,6,Info [FLog::CreatorOutput] IR_UI_SERVER_RESULT true nil 7
