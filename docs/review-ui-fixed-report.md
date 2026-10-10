@@ -33,3 +33,18 @@ run01–05는 계측을 단계적으로 보강하는 중간 테스트 변형으�
 [프로필 회복](test-logs/review-ui-fixed-profile.studio.log), [영수증 복구](test-logs/review-ui-fixed-receipt.studio.log), [수련력 상한 저장](test-logs/review-ui-fixed-cap.studio.log), [부분 상태·자동사냥 전환](test-logs/review-ui-fixed-state-auto.studio.log), [모바일 공격 버튼 가상입력](test-logs/review-ui-fixed-mobile.studio.log), [성장 통합](test-logs/review-ui-fixed-integration.studio.log), [성장 UI](test-logs/review-ui-fixed-main-ui.studio.log), [모듈 41/41](test-logs/review-ui-fixed-modules.studio.log), [동시 영수증](test-logs/review-ui-fixed-receipt-concurrent.studio.log), [수련력 경계](test-logs/review-ui-fixed-cap-boundary.studio.log), [모의 지급 격리](test-logs/review-ui-fixed-sandbox.studio.log)는 수정 빌드에서 PASS다. [무료·+5권·10분권 Gate10 실측](review-ui-fixed-comparison.md)도 새 빌드의 각 원본 로그와 CSV로 분리한다.
 
 실제 판매는 `GrowthConfig.MonetizationEnabled=false`, 모든 `ProductId=nil` 상태다. 경제 수치·돌파 비용·권 효과·보스 수치·가격을 변경하지 않았으며, 원본 `IdleRaid.rbxl`과 기존 실패 로그를 수정하지 않았다. main 병합은 하지 않는다.
+
+## 재현 명령
+
+Rojo 7.7.1과 Roblox Studio 0.742.0 환경에서 프로젝트 루트에서 실행한다. 제출 파일을 보존하려면 빌드는 다른 이름으로 출력한다.
+
+```powershell
+rojo build default.project.json -o build/IdleRaid-review-ui-fixed-rebuilt.rbxlx
+python tests/review-build-source.py build/IdleRaid-review-ui-fixed.rbxlx
+./tests/run-review-play.ps1 -TestName review-ui-fixed-race.luau -Marker IR_UI_FIXED_RESULT -LogName review-ui-fixed-race-local.studio.log -TimeoutSeconds 110 -PlacePath build/IdleRaid-review-ui-fixed.rbxlx
+./tests/run-review-play.ps1 -TestName review-ui-list-lifecycle.luau -Marker IR_UI_LIFECYCLE_RESULT -LogName review-ui-fixed-lifecycle-local.studio.log -TimeoutSeconds 110 -PlacePath build/IdleRaid-review-ui-fixed.rbxlx
+python tests/review-extract-ui-fixed-matched.py
+python tests/generate-review-ui-fixed-manifest.py
+```
+
+Gate10 세 경로의 테스트 스크립트는 `tests/review-matched-free.luau`, `tests/review-matched-ticket5.luau`, `tests/review-matched-voucher10.luau`이다. 각 경로를 별도 Studio 실행에서 `IR_MATCH_SERVER_RESULT`까지 순차 실행한다. 로그 이름을 새로 지정해 기존 성공·실패 기록을 덮어쓰지 않는다.
