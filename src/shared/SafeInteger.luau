@@ -7,6 +7,11 @@ function SafeInteger.IsValid(value: any): boolean
 	return typeof(value) == "number" and value == value and value >= 0 and value <= LIMIT and value % 1 == 0
 end
 
+function SafeInteger.PowerRoom(available: number, lifetime: number): number?
+	if not SafeInteger.IsValid(available) or not SafeInteger.IsValid(lifetime) or available > lifetime then return nil end
+	return math.min(LIMIT - available, LIMIT - lifetime)
+end
+
 function SafeInteger.Add(a: number, b: number): number?
 	if not SafeInteger.IsValid(a) or not SafeInteger.IsValid(b) or a > LIMIT - b then return nil end
 	return a + b

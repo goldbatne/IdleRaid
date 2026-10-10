@@ -40,33 +40,34 @@ function MonetizationService.ProcessSynthetic(player: Player, purchaseId: string
 		return Enum.ProductPurchaseDecision.NotProcessedYet
 	end
 	local profile = ProfileStore.Get(player)
-	if not profile then return Enum.ProductPurchaseDecision.NotProcessedYet end
-	if receiptBusy[player] then return Enum.ProductPurchaseDecision.NotProcessedYet end
+	if not profile or receiptBusy[player] then return Enum.ProductPurchaseDecision.NotProcessedYet end
 	receiptBusy[player] = true
-	ProfileStore.SetReceiptPending(player, true)
-	local recorded = profile.ProcessedPurchases[purchaseId]
-	local expectedRecord = productKey .. ":v" .. tostring(contract.ContractVersion)
-	if recorded and recorded ~= expectedRecord then
-		receiptBusy[player] = nil
-		ProfileStore.SetReceiptPending(player, false)
-		return Enum.ProductPurchaseDecision.NotProcessedYet
-	end
-	if not recorded then
-		if not grantFixedOwnership(profile, productKey, contract) then
-			receiptBusy[player] = nil
-			ProfileStore.SetReceiptPending(player, false)
+	local ok, decision = pcall(function()
+		local recorded = profile.ProcessedPurchases[purchaseId]
+		local expectedRecord = productKey .. ":v" .. tostring(contract.ContractVersion)
+		if recorded and recorded ~= expectedRecord then
 			return Enum.ProductPurchaseDecision.NotProcessedYet
 		end
-		profile.ProcessedPurchases[purchaseId] = expectedRecord
-		PlayerDataService.AfterGrowthChange(player, nil, { Kind = "Ownership", Item = productKey, Count = 1 })
-	end
-	local saved = ProfileStore.SaveReceipt(player, purchaseId)
+		if not recorded then
+			if not grantFixedOwnership(profile, productKey, contract) then
+				return Enum.ProductPurchaseDecision.NotProcessedYet
+			end
+			profile.ProcessedPurchases[purchaseId] = expectedRecord
+			ProfileStore.Touch(player)
+			ProfileStore.MarkReceiptPending(player, purchaseId)
+			PlayerDataService.AfterGrowthChange(player, nil, { Kind = "Ownership", Item = productKey, Count = 1 })
+		end
+		local saved = ProfileStore.SaveReceipt(player, purchaseId)
+		return if saved then Enum.ProductPurchaseDecision.PurchaseGranted
+			else Enum.ProductPurchaseDecision.NotProcessedYet
+	end)
 	receiptBusy[player] = nil
-	if saved then
-		ProfileStore.SetReceiptPending(player, false)
-		return Enum.ProductPurchaseDecision.PurchaseGranted
+	if not ok then
+		if profile.ProcessedPurchases[purchaseId] then ProfileStore.MarkReceiptPending(player, purchaseId) end
+		warn("[IdleRaid] Receipt processing failed: " .. tostring(decision))
+		return Enum.ProductPurchaseDecision.NotProcessedYet
 	end
-	return Enum.ProductPurchaseDecision.NotProcessedYet
+	return decision
 end
 
 local function processReceipt(receiptInfo)

@@ -1,10 +1,12 @@
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
 local StarterGui = game:GetService("StarterGui")
 local Workspace = game:GetService("Workspace")
 
 local AutoCombatController = require(script.Parent.AutoCombatController)
+local CombatController = require(script.Parent.CombatController)
 local StateController = require(script.Parent.StateController)
 local EquipmentController = require(script.Parent.ui.EquipmentController)
 local DashController = require(script.Parent.DashController)
@@ -45,6 +47,10 @@ function UIController.Start()
 		autoButton.BackgroundColor3 = if enabled then UiStyle.Colors.Accent else UiStyle.Colors.Surface
 	end)
 
+	local attackButton = UiStyle.Button(gui, "TouchAttack", "공격",
+		UDim2.fromOffset(108, 56), UDim2.new(1, -12, 1, -144))
+	attackButton.AnchorPoint = Vector2.new(1, 0)
+	attackButton.Visible = UserInputService.TouchEnabled
 	local nav = Instance.new("Frame")
 	nav.Name = "MenuNavigation"
 	nav.BackgroundTransparency = 1
@@ -67,6 +73,9 @@ function UIController.Start()
 	sizeLimit.MinSize = Vector2.new(280, 270)
 	sizeLimit.Parent = container
 	container.Parent = gui
+	attackButton.Activated:Connect(function()
+		if not container.Visible then CombatController.AttackFocused() end
+	end)
 
 	local pages = {}
 	local pageDefs = {

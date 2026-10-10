@@ -194,15 +194,26 @@ function AutoCombatController.Toggle()
 	AutoCombatController.SetEnabled(not enabled)
 end
 
+function AutoCombatController.ShouldResetForRaid(
+	wasParticipant: boolean, wasActive: boolean, wasDefeated: boolean,
+	nextParticipant: boolean, nextActive: boolean, nextDefeated: boolean
+): boolean
+	local wasBlocked = wasParticipant and (not wasActive or wasDefeated)
+	local blocked = nextParticipant and (not nextActive or nextDefeated)
+	return wasParticipant ~= nextParticipant or wasBlocked ~= blocked
+end
+
 function AutoCombatController.Start()
 	local attackRemote = ReplicatedStorage:WaitForChild("IdleRaidRemotes"):WaitForChild("BasicAttack")
 	StateController.Subscribe(function(state)
 		local raid = state.Raid or {}
-		local wasParticipant = raidParticipant
-		raidParticipant = raid.IsParticipant == true
-		raidActive = raid.Status == "Active"
-		raidDefeated = raid.Defeated == true
-		if wasParticipant ~= raidParticipant or not raidActive or raidDefeated then
+		local nextParticipant = raid.IsParticipant == true
+		local nextActive = raid.Status == "Active"
+		local nextDefeated = raid.Defeated == true
+		local reset = AutoCombatController.ShouldResetForRaid(
+			raidParticipant, raidActive, raidDefeated, nextParticipant, nextActive, nextDefeated)
+		raidParticipant, raidActive, raidDefeated = nextParticipant, nextActive, nextDefeated
+		if reset then
 			target = nil
 			stopAutoMove()
 		end

@@ -18,6 +18,7 @@ local UiText = {
 		ReceiptSaving = "구매 기록 저장 중",
 		RaidInProgress = "전투 종료 후 사용 가능",
 		InsufficientPower = "수련력 부족",
+		PowerCap = "수련력 상한에 도달했습니다. 수련권은 소비되지 않았습니다",
 		InsufficientGold = "Gold 부족",
 		InsufficientToken = "Raid Token 부족",
 		NoTicket = "돌파권 없음",
@@ -34,6 +35,15 @@ local UiText = {
 		InvalidRequest = "요청을 확인할 수 없습니다",
 	},
 }
+function UiText.LoadStatus(status)
+	if status == "Loading" or status == nil then return UiText.Loading end
+	if status == "SessionLocked" then return "다른 서버 접속이 끝나지 않았습니다. 다시 접속하세요" end
+	if status == "SessionLost" then return "저장 세션 연결이 끊겼습니다. 다시 접속하세요" end
+	if status == "UnsupportedDataVersion" then return "저장 데이터 버전 확인이 필요합니다" end
+	if status ~= "LoadFailed" then return "저장 데이터 확인이 필요합니다: " .. tostring(status) end
+	return "데이터 연결에 실패했습니다. 잠시 후 다시 접속하세요"
+end
+
 function UiText.Reason(code)
 	return UiText.Reasons[code] or "요청을 처리하지 못했습니다"
 end

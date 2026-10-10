@@ -10,6 +10,7 @@ local StateSyncService = require(script.Parent.StateSyncService)
 
 local TrainingService = {}
 local lastAt = {}
+local capWarned = {}
 local MAX_CHUNK_MILLIS = 60000
 
 function TrainingService.Settle(player: Player): boolean
@@ -24,6 +25,17 @@ function TrainingService.Settle(player: Player): boolean
 	if not profile.TrainingEnabled then return true end
 	local rate = GrowthMath.BaseRate(profile.BreakthroughStage, profile.TrainingFacilityTier)
 	if not rate then return false end
+	local room = SafeInteger.PowerRoom(profile.AvailableTrainingPower, profile.LifetimeTrainingPower)
+	if not room then return false end
+	if room == 0 then
+		profile.TrainingRemainderMillis = 0
+		if not capWarned[player] then
+			capWarned[player] = true
+			warn("[IdleRaid] Online training capped at " .. tostring(os.time()) .. " for " .. player.Name)
+		end
+		return true
+	end
+	capWarned[player] = nil
 	local remaining = millis
 	local remainder = profile.TrainingRemainderMillis
 	local grant = 0
@@ -34,16 +46,17 @@ function TrainingService.Settle(player: Player): boolean
 		local total = SafeInteger.Add(numerator, remainder)
 		if not total then return false end
 		local gained = math.floor(total / 1000)
-		local nextGrant = SafeInteger.Add(grant, gained)
-		if not nextGrant then return false end
-		grant = nextGrant
+		if gained >= room - grant then
+			grant = room
+			remainder = 0
+			remaining = 0
+			break
+		end
+		grant += gained
 		remainder = total % 1000
 		remaining -= chunk
 	end
-	if grant > 0 and not PlayerDataService.AddPowerFinal(player, grant, "OnlineTraining") then
-		warn("[IdleRaid] Training power cap reached for " .. player.Name)
-		return false
-	end
+	if grant > 0 and not PlayerDataService.AddPowerFinal(player, grant, "OnlineTraining") then return false end
 	profile.TrainingRemainderMillis = remainder
 	return true
 end
@@ -66,7 +79,7 @@ end
 
 function TrainingService.Start()
 	ProfileStore.SetBeforeSave(TrainingService.Settle)
-	Players.PlayerRemoving:Connect(function(player) lastAt[player] = nil end)
+	Players.PlayerRemoving:Connect(function(player) lastAt[player] = nil capWarned[player] = nil end)
 	local remote = Instance.new("RemoteEvent")
 	remote.Name = "SetTrainingEnabled"
 	remote.Parent = ReplicatedStorage:WaitForChild("IdleRaidRemotes")

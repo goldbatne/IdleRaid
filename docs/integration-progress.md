@@ -9,7 +9,7 @@
 3. **개발 체험 격리:** Studio UI 지급 전 서버의 별도 Sandbox 프로필 전환을 필수로 했다. 일반 프로필과 Sandbox는 서로 다른 mock key를 사용한다. 운영에서는 개발 원격 자체가 만들어지지 않는다.
 4. **관문 예외:** 저장 단계가 미클리어 관문보다 높아진 예외 프로필에서 추가 돌파가 허용될 수 있던 순수 계산 경계를 수정했다.
 5. **회귀 검사:** 제출 Rojo 빌드 SHA-256은 [manifest](build-manifest.json)에 기록했다. Studio 통합 34개 검사, Luau 수식·이관·오프라인 시뮬레이션, 실제 UI 버튼, Sandbox 원격, 2인 서버 보상 검사가 통과했다.
-6. **실제 무료 Play:** 제출 `build/IdleRaid-oneshot.rbxlx`에서 정상 신규 프로필로 사냥→Gold·실제 장비 드롭→비교·장착→시설 개선→무료 +1 돌파→Gate10 솔로 클리어를 실행했다. Gate10 도달 294초, 보스 전투 107.2초, 시작 후 클리어 406초. [CreatorOutput 발췌](test-logs/oneshot-free-play.studio.log)에 서버/클라이언트 PASS가 있다.
+6. **Studio 가상입력 자동 통합 Play:** 제출 `build/IdleRaid-oneshot.rbxlx`에서 정상 신규 프로필로 사냥→Gold·실제 장비 드롭→비교·장착→시설 개선→무료 +1 돌파→Gate10 솔로 클리어를 실행했다. Gate10 도달 294초, 보스 전투 107.2초, 시작 후 클리어 406초. [CreatorOutput 발췌](test-logs/oneshot-free-play.studio.log)에 서버/클라이언트 PASS가 있다.
 
 ## 현재 확인된 범위
 

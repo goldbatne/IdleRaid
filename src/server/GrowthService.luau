@@ -124,7 +124,8 @@ function GrowthService.PreviewVoucher(player: Player, voucherId: any)
 	if not voucher then return failed("InvalidVoucher") end
 	local rate = GrowthMath.BaseRate(profile.BreakthroughStage, profile.TrainingFacilityTier)
 	local grant = SafeInteger.Multiply(rate, voucher.Seconds)
-	if not grant then return failed("PowerCap") end
+	local room = SafeInteger.PowerRoom(profile.AvailableTrainingPower, profile.LifetimeTrainingPower)
+	if not grant or not room or grant > room then return failed("PowerCap") end
 	return {
 		Ok = (profile.TrainingVouchers[voucherId] or 0) > 0 and not inRaid(player),
 		Reason = if inRaid(player) then "RaidInProgress"
@@ -142,6 +143,7 @@ function GrowthService.TryUseVoucher(player: Player, voucherId: any, expectedRat
 	if inRaid(player) then return failed("RaidInProgress") end
 	TrainingService.Settle(player)
 	local preview = GrowthService.PreviewVoucher(player, voucherId)
+	if preview.Reason == "PowerCap" then return failed("PowerCap") end
 	if expectedRate ~= preview.Rate or expectedCount ~= preview.Count then
 		return failed("StalePreview", preview)
 	end

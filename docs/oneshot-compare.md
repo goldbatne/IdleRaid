@@ -25,16 +25,16 @@
 
 시설 유료권은 현재 정의가 없으므로 모의 비교에 포함하지 않았다. 실제 상품 ID·가격도 없고 판매는 비활성이다.
 
-## 제출 빌드에서 실제로 수행한 무료 Play
+## 제출 빌드의 Studio 가상입력 자동 통합 테스트
 
-[동일 제출 파일](build-manifest.json)을 연 Studio Play 세션에서 정상 프로필로 시작했다. 사냥으로 Gold를 얻고 ClothArmor를 획득해 비교·장착했으며, Gold 120으로 시설 2등급을 샀다. UI에서 무료 +1 돌파를 반복해 Gate10에 도달했고 Slime King을 직접 클리어했다.
+[동일 제출 파일](build-manifest.json)을 연 Studio Play 세션에서 가상입력 스크립트 `tests/oneshot-free-play.luau`가 정상 프로필로 시작했다. 이 스크립트는 RaidTelegraph의 공격 종류와 좌표를 직접 읽어 WASD/Q 회피 입력을 생성한다. 사람의 육안 판단·조작 시간이나 시각적 가독성 검사가 아니다. 사냥으로 Gold를 얻고 ClothArmor를 획득해 비교·장착했으며, Gold 120으로 시설 2등급을 샀다. UI에서 무료 +1 돌파를 반복해 Gate10에 도달했고 Slime King을 직접 클리어했다.
 
 | 측정 | 실제 시간/결과 |
 | --- | --- |
 | Gate10 도달 | 시작 후 294초 (4:54) |
 | Raid 시작 | 시작 후 약 299초 |
-| Boss 실제 전투 | 107.2초 (1:47.2) |
-| Gate10 실제 클리어 | 시작 후 406초 (6:46) |
+| 자동 테스트의 Boss 실제 전투 | 107.2초 (1:47.2) |
+| 자동 테스트의 Gate10 실제 클리어 | 시작 후 406초 (6:46) |
 | 패턴/피격 | Ground Slam 12회, Charge 11회, 피격 0회 |
 
 [Studio Play CreatorOutput 발췌](test-logs/oneshot-free-play.studio.log)에 `IR_FREE_SERVER_RESULT true`와 `RaidMetrics Clear`가 있다. 이 실측 경로는 장비 드롭·실제 이동/킬 속도·회피를 포함한다. 위 계산표는 초당 고정 적 처치율과 가정 보스 시간을 쓰므로 그 수치와 직접 동일 조건으로 간주하지 않는다. 모의 유료 경로의 **실제** 관문 클리어 시간은 측정하지 않았다.

@@ -216,7 +216,7 @@ function GrowthController.Start(panel: Frame, stateController)
 	stateController.Subscribe(function(state)
 		currentState = state
 		if not state.Ready then
-			feedback.Text = UiText.Loading
+			feedback.Text = UiText.LoadStatus(state.LoadStatus)
 			return
 		end
 		local stage = state.BreakthroughStage or 1

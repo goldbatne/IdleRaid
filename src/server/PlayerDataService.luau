@@ -111,6 +111,7 @@ function PlayerDataService.GetGrowthSnapshot(player: Player)
 		BaseTrainingRate = GrowthMath.BaseRate(profile.BreakthroughStage, profile.TrainingFacilityTier),
 		BreakthroughCost = if profile.BreakthroughStage < GrowthConfig.MaxStage
 			then GrowthMath.BreakthroughCost(profile.BreakthroughStage) else nil,
+		_ClearKeys = if profile.BreakthroughStage >= GrowthConfig.MaxStage then { "BreakthroughCost" } else nil,
 		BreakthroughTickets = table.clone(profile.BreakthroughTickets),
 		TrainingVouchers = table.clone(profile.TrainingVouchers),
 		ClearedRaidGates = table.clone(profile.ClearedRaidGates),
@@ -161,6 +162,11 @@ end
 function PlayerDataService.AddPowerFinal(player: Player, amount: number, source: string?): boolean
 	local profile = ProfileStore.Get(player)
 	if not profile or not SafeInteger.IsValid(amount) or amount < 1 then return false end
+	local automatic = source == "OnlineTraining" or source == "EnemyKill"
+	local room = SafeInteger.PowerRoom(profile.AvailableTrainingPower, profile.LifetimeTrainingPower)
+	if not room then return false end
+	if automatic then amount = math.min(amount, room) end
+	if amount == 0 then return true end
 	local available = SafeInteger.Add(profile.AvailableTrainingPower, amount)
 	local lifetime = SafeInteger.Add(profile.LifetimeTrainingPower, amount)
 	if not available or not lifetime then return false end

@@ -61,19 +61,19 @@ local function offlineSettle(profile, now: number)
 	local accepted = math.min(elapsed, GrowthConfig.OfflineMaxSeconds)
 	local oldLifetime = profile.LifetimeTrainingPower
 	local oldRate = if profile.TrainingEnabled then profile.OfflineRateSnapshot else 0
-	local grant = SafeInteger.MultiplyRatioFloor(oldRate,
+	local room = SafeInteger.PowerRoom(profile.AvailableTrainingPower, profile.LifetimeTrainingPower)
+	if not room then return nil, "InvalidGrowthState" end
+	local requested = SafeInteger.MultiplyRatioFloor(oldRate,
 		accepted * GrowthConfig.OfflineRateNumerator, GrowthConfig.OfflineRateDenominator)
-	if not grant then return nil, "OfflineOverflow" end
-	local available = SafeInteger.Add(profile.AvailableTrainingPower, grant)
-	local lifetime = SafeInteger.Add(profile.LifetimeTrainingPower, grant)
-	if not available or not lifetime then return nil, "PowerCap" end
-	profile.AvailableTrainingPower = available
-	profile.LifetimeTrainingPower = lifetime
+	local capped = requested == nil or requested > room
+	local grant = if requested then math.min(requested, room) else room
+	profile.AvailableTrainingPower += grant
+	profile.LifetimeTrainingPower += grant
 	profile.LastSettlementUnix = now
 	profile.OfflineRateSnapshot = GrowthMath.BaseRate(profile.BreakthroughStage, profile.TrainingFacilityTier)
 	if grant > 0 then profile.StateRevision += 1 end
 	local beforeLevel = GrowthMath.LevelProgress(oldLifetime)
-	local afterLevel = GrowthMath.LevelProgress(lifetime)
+	local afterLevel = GrowthMath.LevelProgress(profile.LifetimeTrainingPower)
 	return {
 		ElapsedSeconds = elapsed,
 		AcceptedSeconds = accepted,
@@ -81,44 +81,81 @@ local function offlineSettle(profile, now: number)
 		EfficiencyNumerator = GrowthConfig.OfflineRateNumerator,
 		EfficiencyDenominator = GrowthConfig.OfflineRateDenominator,
 		GrantedPower = grant,
+		Capped = capped and oldRate > 0 and accepted > 0,
+		CapReason = if capped and oldRate > 0 and accepted > 0 then "PowerCap" else nil,
+		SettledAtUnix = now,
 		LevelBefore = beforeLevel,
 		LevelAfter = afterLevel,
 	}, nil
 end
 
-local function load(player: Player)
-	local entry = { Status = "Loading", Saving = false, Mode = "Normal" }
-	entries[player] = entry
-	local now = os.time()
-	local failure
-	local offlineSummary
-	local ok, record = tryUpdate(keyFor(player), function(raw)
-		local lock = raw and raw._Session
-		if lock and lock.Owner ~= sessionId and SafeInteger.IsValid(lock.ExpiresAt) and lock.ExpiresAt > now then
-			failure = "SessionLocked"
-			return nil
-		end
-		local profile, reason = ProfileSchema.Migrate(raw, now)
-		if not profile then failure = reason return nil end
-		local summary, settleReason = offlineSettle(profile, now)
-		if not summary then failure = settleReason return nil end
-		offlineSummary = summary
-		profile._Session = { Owner = sessionId, ExpiresAt = now + GrowthConfig.SessionLeaseSeconds }
-		return profile
+local function releaseAbandonedLock(key: string)
+	local ok, reason = tryUpdate(key, function(raw)
+		if not raw or not raw._Session or raw._Session.Owner ~= sessionId then return nil end
+		local released = clone(raw)
+		released._Session = nil
+		return released
 	end)
-	if entries[player] ~= entry or player.Parent ~= Players then return end
-	if not ok or not record or not record._Session or record._Session.Owner ~= sessionId then
-		entry.Status = failure or "LoadFailed"
-		warn(string.format("[IdleRaid] Profile load blocked for %s: %s", player.Name, entry.Status))
-		if onReady then onReady(player, false) end
-		return
+	if not ok then warn("[IdleRaid] Abandoned profile lock release failed: " .. tostring(reason)) end
+end
+
+local function load(player: Player)
+	if entries[player] then return end
+	local entry = { Status = "Loading", Saving = false, Mode = "Normal", PendingReceipts = {} }
+	entries[player] = entry
+	local key = keyFor(player)
+	local deadline = os.clock() + GrowthConfig.SessionLeaseSeconds + 15
+	local attempt = 0
+	local lastFailure = "LoadFailed"
+	while entries[player] == entry and player.Parent == Players do
+		attempt += 1
+		local now = os.time()
+		local failure
+		local offlineSummary
+		local ok, record = tryUpdate(key, function(raw)
+			local lock = raw and raw._Session
+			if lock and (typeof(lock) ~= "table" or typeof(lock.Owner) ~= "string"
+				or not SafeInteger.IsValid(lock.ExpiresAt)) then
+				failure = "InvalidSessionLock"
+				return nil
+			end
+			if lock and lock.Owner ~= sessionId and lock.ExpiresAt > now then
+				failure = "SessionLocked"
+				return nil
+			end
+			local profile, reason = ProfileSchema.Migrate(raw, now)
+			if not profile then failure = reason return nil end
+			local summary, settleReason = offlineSettle(profile, now)
+			if not summary then failure = settleReason return nil end
+			offlineSummary = summary
+			profile._Session = { Owner = sessionId, ExpiresAt = now + GrowthConfig.SessionLeaseSeconds }
+			return profile
+		end)
+		if entries[player] ~= entry or player.Parent ~= Players then
+			if ok and record and record._Session and record._Session.Owner == sessionId then
+				releaseAbandonedLock(key)
+			end
+			return
+		end
+		if ok and record and record._Session and record._Session.Owner == sessionId and not failure then
+			record._Session = nil
+			entry.Profile = record
+			entry.Status = "Ready"
+			entry.OfflineSummary = offlineSummary
+			entry.SavedRevision = record.StateRevision
+			if onReady then onReady(player, true) end
+			return
+		end
+		lastFailure = failure or "LoadFailed"
+		if failure and failure ~= "SessionLocked" then break end
+		if os.clock() >= deadline then break end
+		local pause = math.min(5, 0.5 * 2 ^ math.min(attempt - 1, 4)) + math.random() * 0.3
+		task.wait(math.min(pause, math.max(0, deadline - os.clock())))
 	end
-	record._Session = nil
-	entry.Profile = record
-	entry.Status = "Ready"
-	entry.OfflineSummary = offlineSummary
-	entry.SavedRevision = record.StateRevision
-	if onReady then onReady(player, true) end
+	if entries[player] ~= entry or player.Parent ~= Players then return end
+	entry.Status = lastFailure
+	warn(string.format("[IdleRaid] Profile load blocked for %s: %s", player.Name, lastFailure))
+	if onReady then onReady(player, false) end
 end
 
 function ProfileStore.Get(player: Player)
@@ -174,14 +211,17 @@ function ProfileStore.GetOfflineSummary(player: Player)
 	return entry and entry.OfflineSummary or nil
 end
 
-function ProfileStore.SetReceiptPending(player: Player, pending: boolean)
+function ProfileStore.MarkReceiptPending(player: Player, purchaseId: string)
 	local entry = entries[player]
-	if entry and entry.Status == "Ready" then entry.ReceiptPending = pending end
+	if entry and entry.Status == "Ready" and entry.Profile.ProcessedPurchases[purchaseId] then
+		entry.PendingReceipts = entry.PendingReceipts or {}
+		entry.PendingReceipts[purchaseId] = entry.Profile.StateRevision
+	end
 end
 
 function ProfileStore.IsReceiptPending(player: Player): boolean
 	local entry = entries[player]
-	return entry ~= nil and entry.ReceiptPending == true
+	return entry ~= nil and entry.PendingReceipts ~= nil and next(entry.PendingReceipts) ~= nil
 end
 
 function ProfileStore.Touch(player: Player): boolean
@@ -239,11 +279,20 @@ function ProfileStore.Save(player: Player, release: boolean?): (boolean, string?
 	end)
 	entry.Saving = false
 	if not ok or not record or failure or (not release and (not record._Session or record._Session.Owner ~= sessionId)) then
-		if failure == "SessionLost" then entry.Status = "SessionLost" end
+		if failure == "SessionLost" then
+			entry.Status = "SessionLost"
+			if onReady then onReady(player, false) end
+		end
 		warn(string.format("[IdleRaid] Profile save failed for %s: %s", player.Name, tostring(failure or record)))
 		return false, failure or "SaveFailed"
 	end
 	entry.SavedRevision = savedRevision
+	for purchaseId, revision in pairs(entry.PendingReceipts or {}) do
+		if revision <= savedRevision and snapshot.ProcessedPurchases[purchaseId]
+			and record.ProcessedPurchases and record.ProcessedPurchases[purchaseId] == snapshot.ProcessedPurchases[purchaseId] then
+			entry.PendingReceipts[purchaseId] = nil
+		end
+	end
 	if release then entries[player] = nil end
 	return true, nil
 end
@@ -255,7 +304,11 @@ function ProfileStore.SaveReceipt(player: Player, purchaseId: string): (boolean,
 	if not ok then return false, reason end
 	local entry = entries[player]
 	if entry and entry.SavedRevision < profile.StateRevision then
-		return ProfileStore.Save(player)
+		ok, reason = ProfileStore.Save(player)
+		if not ok then return false, reason end
+	end
+	if entry and entry.PendingReceipts and entry.PendingReceipts[purchaseId] then
+		return false, "ReceiptNotDurable"
 	end
 	return true, nil
 end

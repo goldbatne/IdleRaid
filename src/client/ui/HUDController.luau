@@ -60,7 +60,7 @@ function HUDController.Start(gui: ScreenGui, stateController)
 	stateController.Subscribe(function(state)
 		if not state.Ready then
 			lifetime.Text = "--"
-			level.Text = UiText.Loading
+			level.Text = UiText.LoadStatus(state.LoadStatus)
 			return
 		end
 		lifetime.Text = NumberFormatter.Format(state.LifetimeTrainingPower or 0)

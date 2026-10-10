@@ -1,0 +1,59 @@
+{
+  "name": "IdleRaid OneShot review stabilization",
+  "branch": "codex/oneshot-review-stabilization",
+  "baseHead": "5ac1da7b115359314390d152ff880294911b5a39",
+  "baselineReviewedBuildSha256": "6681bf4eaf50a7178decf112820ae935a2137af590bbd7743220bc55ec5c7854",
+  "build": "build/IdleRaid-review-stabilized.rbxlx",
+  "buildSha256": "d2daa8a8edc7a551cc3bd7e1fa251ec4285a49671224653bfb7e3b1d67d78313",
+  "sourceInputSha256": "7fec3001a388a875b57dddae6c3a6576095b187714aab49f4fe53ecf25660022",
+  "sourceFiles": 43,
+  "embeddedSourceMatch": "43/43",
+  "tools": {
+    "Rojo": "7.7.1",
+    "RobloxStudio": "0.742.0"
+  },
+  "storage": "Studio memory mock; published DataStore not tested",
+  "salesEnabled": false,
+  "mainMerged": false,
+  "comparison": {
+    "mode": "Studio Edit deterministic formula model",
+    "actualClearMeasured": false,
+    "eventCsvSha256": "74355eba02bf2ee2e698c2c816cc743173cc3a83cd4694188044abcc962a9c02",
+    "rowCsvSha256": "407f726f623ca4109411006d68822fdcb7ad95413668509ec3a95536870635c2"
+  },
+  "screenshots": {
+    "pc": null,
+    "narrow": null,
+    "reason": "computer-use helper exited unexpectedly after retry"
+  },
+  "redaction": [
+    "local user path",
+    "player name",
+    "player UserId",
+    "URLs",
+    "email",
+    "authorization/cookie/token/key values"
+  ],
+  "logs": {
+    "review-before-profile-full.studio.log": "2dad1d26f22735d816b582d777f8eb68dadc69b91d8e08e8e70e9058ff0c785b",
+    "review-before-receipt-full.studio.log": "b19899eae7e1de67cb9b28ff6482e6022a6451ffba7ab68b029d902d2d3da492",
+    "review-before-cap.studio.log": "6a9e97fad46b4e23952a499499c585f008bb53a14f847cc465f0b4990dc3a188",
+    "review-before-cap-full.studio.log": "55c69663341af8e160f11f11c004c09ce6e67161dbcace33de0839e286507488",
+    "review-before-client-paths.studio.log": "69ec21dfa97d230ddb1ad25365a418b2bf82d1c86603548dcf927fc36072765d",
+    "review-final-profile-full.studio.log": "7746773798bb783291c82f433129b94f01977409c4e9a81be5a3feba0fa5449b",
+    "review-final-receipt-full.studio.log": "1d2f2ba8efc6539bfc1bfc986389490121ffa39e2292686eb6d8e2c47550a8ea",
+    "review-final-cap-boundary.studio.log": "861d079dc6aad24321fbb75b537c94e50824126afca3f76847875eb8cb13b12b",
+    "review-final-cap-full.studio.log": "c12a65d199fcb66727fc0f9edb38e9695b88f4dc0948c15fc5c19495a36b56db",
+    "review-final-state-auto.studio.log": "3cc0fde4ef0c04f7c71c51996fbcf1e4ca6315e65bfdc3ba05ff413438cdee12",
+    "review-final-client-paths.studio.log": "a6b7bd9a83f74621cbbe8e29be417e0bcdd3f5a6402ea0adc29a689ae79c2b72",
+    "review-final-mobile-full.studio.log": "4e70b2e34de3905f60db0801f2eff722cd74e67da630bfb60ff279d56e5a7a06",
+    "review-final-receipt-concurrent-full.studio.log": "7dc8b6550eb9fa7c9b9b14768be5ee4db0fc06f361be03f0fe889d5e63aeefd8",
+    "review-final-integration-full.studio.log": "dcc7a3f6b4800dea2cdb197ecda24e0937ace6da03e36eef917017d16056d405",
+    "review-final-ui-full.studio.log": "94c8c7dd948d8702a2e752acfdf18fa7fe0d9284809e4c16a902aa902ffde143",
+    "review-final-ui-retry-full.studio.log": "a471d129a61a47b9e8e3521ef55e01e5a5d6c34a5978fab8134ecab202119f32",
+    "review-final-free-play-full.studio.log": "dbe0aa938d98dfd22531553d99655f2fd94d49592e51a5f88909946d240d01ed",
+    "review-final-modules.studio.log": "446f5431e5dbec5264e1e6e8382c59abab297a1370d2ccfd02aa9c36f45b9548",
+    "review-final-equal-compare.studio.log": "c3da13108cd87c337b8926286cfd3c6ff0aabb008dbf96ca9bb672a7325fd48e"
+  },
+  "sourceStateAtBuild": "working tree on review branch; 43 embedded scripts match the src input SHA-256; exact commit is reported after commit"
+}
