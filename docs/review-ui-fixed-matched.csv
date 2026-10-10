@@ -1,0 +1,4 @@
+scenario,log,status,use_stage,use_time_s,gate_reached_s,raid_click_s,entry_wait_s,boss_fight_s,clear_s,initial_stage,initial_gold,initial_facility,initial_attack,initial_inventory_count,initial_ticket5,initial_voucher10
+free,docs/test-logs/review-ui-fixed-gate10-free.studio.log,PASS,,,294.311,294.512,5.100,98.678,398.29,1,0,1,10,0,0,0
+ticket5,docs/test-logs/review-ui-fixed-gate10-ticket5.studio.log,PASS,1,26.691,180.686,180.885,5.120,106.826,292.831,1,0,1,10,0,1,0
+voucher10,docs/test-logs/review-ui-fixed-gate10-voucher10.studio.log,PASS,1,5.109,216.069,216.283,5.132,104.063,325.478,1,0,1,10,0,0,1

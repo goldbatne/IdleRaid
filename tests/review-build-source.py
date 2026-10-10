@@ -36,16 +36,22 @@ def walk(item, parent=""):
 
 for item in ET.parse(build).getroot().findall("Item"):
     walk(item)
-source_files = sorted((root / "src").rglob("*.luau"))
+source_files = sorted((root / "src").rglob("*.luau"),
+                      key=lambda path: path.relative_to(root).as_posix().casefold())
 digest = hashlib.sha256()
+file_hashes = {}
 for file in source_files:
     relative = file.relative_to(root).as_posix()
-    digest.update(relative.encode("utf-8") + b"\0" + file.read_bytes())
+    content = file.read_bytes()
+    digest.update(relative.encode("utf-8") + b"\0" + content)
+    file_hashes[relative] = hashlib.sha256(content).hexdigest()
 result = {
     "build": str(build),
     "buildSha256": hashlib.sha256(build.read_bytes()).hexdigest(),
     "sourceFiles": len(source_files),
     "sourceInputSha256": digest.hexdigest(),
+    "sourceInputHashAlgorithm": "SHA-256 over casefold/POSIX sorted relative path + NUL + raw bytes",
+    "sourceFileSha256": file_hashes,
     "embeddedScripts": len(seen),
     "matchingScripts": sum(ok for _, ok in seen),
     "mismatches": [path for path, ok in seen if not ok],

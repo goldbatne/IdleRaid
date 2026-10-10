@@ -2,11 +2,12 @@ param(
     [Parameter(Mandatory=$true)][string]$TestName,
     [Parameter(Mandatory=$true)][string]$Marker,
     [Parameter(Mandatory=$true)][string]$LogName,
-    [int]$TimeoutSeconds=100
+    [int]$TimeoutSeconds=100,
+    [string]$PlacePath="build/IdleRaid-review-stabilized.rbxlx"
 )
 $studio=Get-ChildItem (Join-Path $env:LOCALAPPDATA 'Roblox/Versions') -Filter 'RobloxStudioBeta.exe' -Recurse | Sort-Object LastWriteTime -Descending | Select-Object -First 1 -ExpandProperty FullName
 if (-not $studio) { throw 'Roblox Studio executable not found' }
-$place=(Resolve-Path 'build/IdleRaid-review-stabilized.rbxlx').Path
+$place=(Resolve-Path -LiteralPath $PlacePath).Path
 $test=(Resolve-Path (Join-Path 'tests' $TestName)).Path
 $destination=Join-Path (Resolve-Path 'docs/test-logs').Path $LogName
 $started=Get-Date
@@ -32,7 +33,7 @@ try {
     $resultLine=Select-String -LiteralPath $destination -Pattern $Marker -SimpleMatch | Select-Object -Last 1 -ExpandProperty Line
     if (-not $resultLine) { throw "Result marker missing from redacted log: $Marker" }
     Write-Output $resultLine
-    if ($resultLine -match ([regex]::Escape($Marker) + "\s+false")) { throw "Studio test failed: $resultLine" }
+    if ($resultLine.Split(@($Marker), 2, [System.StringSplitOptions]::None)[1] -match "(^|\s)false(\s|$)") { throw "Studio test failed: $resultLine" }
     Write-Output "BUILD_SHA256=$((Get-FileHash -LiteralPath $place -Algorithm SHA256).Hash.ToLowerInvariant())"
 } finally {
     Stop-Process -Id $process.Id -ErrorAction SilentlyContinue

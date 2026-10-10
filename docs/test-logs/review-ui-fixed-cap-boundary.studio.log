@@ -1,0 +1,1493 @@
+[FLog::Output] All use of Roblox services must comply with Roblox's Terms of Use, Privacy Policy, Community Standards, and applicable laws. Processing of User personal information is limited to the purposes expressly permitted therein.
+2026-10-10T06:46:36.578Z,0.578371,4bd4,6,Info [FLog::StudioMain] RobloxGitHash: 1c8ca3efc668590d4a4a6fa1d1fd55945891d456
+2026-10-10T06:46:36.579Z,0.579371,4bd4,6,Info [FLog::StudioMain]
+
+Command line:
+C:\Users\<REDACTED_USER>\AppData\Local\Roblox\Versions\version-9b554450a0fc4e65\RobloxStudioBeta.exe --task RunScript --localPlaceFile D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx --runScriptFile D:\ROBLOX_GAME\IdleRaid\tests\review-cap-boundary.luau
+
+
+2026-10-10T06:46:36.579Z,0.579371,4bd4,6 [FLog::Output] Creating PolicyContext(Root)
+2026-10-10T06:46:36.580Z,0.580371,4bd4,6 [FLog::Output] BaseUrl: <REDACTED_URL>
+2026-10-10T06:46:36.580Z,0.580371,4bd4,6,Info [FLog::StudioKeyEvents] fast flags loading [start]
+2026-10-10T06:46:36.582Z,0.582372,4bd4,6,Debug [FLog::BackendConfigCacheManager] Header version / timestamp is empty
+2026-10-10T06:46:36.582Z,0.582372,4bd4,6,Info [FLog::BackendConfigManager] Fetching startup config from remote
+2026-10-10T06:46:36.596Z,0.596372,5328,6,Debug [FLog::BackendConfigManager] startTimestampMs: 1791614796147. Thread start took 14ms
+2026-10-10T06:46:36.597Z,0.597372,5328,6,Warning [FLog::Output] settingsUrl: <REDACTED_URL>
+2026-10-10T06:46:36.842Z,0.842449,2528,6,Warning [FLog::UpdateRequest] Didn't receive 'flagOnly' property for channel. Assuming it's false.
+2026-10-10T06:46:36.844Z,0.844450,5328,6,Debug [FLog::BackendConfigManager] Wait flag took 248ms. Flag Source remoteCDN
+2026-10-10T06:46:36.923Z,0.923509,38e0,6,Info [FLog::StudioGuac] GUAC request succeeded
+2026-10-10T06:46:36.924Z,0.924509,5328,6,Debug [FLog::BackendConfigManager] Wait guac took 80ms. Guac Source remoteCDN. Total startup config fetching time = 342
+2026-10-10T06:46:36.924Z,0.924509,5328,6,Debug [FLog::BackendConfigManager] Wait latest version took 0ms. Total startup config fetching time = 342
+2026-10-10T06:46:37.049Z,1.049413,5328,6,Warning [FLog::ClientSettings] LoadIxpSettingsFromLocal path: "C:\Users\<REDACTED_USER>\AppData\Local\Roblox\ClientSettings\StudioIxpSettings.json"
+2026-10-10T06:46:37.097Z,1.097414,5328,6 [FLog::ClientSettings] LoadClientSettingsFromLocal group: "ClientAppSettings"
+2026-10-10T06:46:37.097Z,1.097414,5328,6 [FLog::ClientSettings] LoadClientSettingsFromLocal: Couldn't fetch any data from local
+2026-10-10T06:46:37.100Z,1.100414,4bd4,6 [FLog::ClientRunInfo] RobloxGitHash: 1c8ca3efc668590d4a4a6fa1d1fd55945891d456
+2026-10-10T06:46:37.102Z,1.102414,4bd4,6 [FLog::ClientRunInfo] The base url is <REDACTED_URL>
+2026-10-10T06:46:37.102Z,1.102414,4bd4,6 [FLog::ClientRunInfo] The channel is production
+2026-10-10T06:46:37.105Z,1.105414,4bd4,6,Info [DFLog::SystemDialogHandler] Platform handler was instanced.
+2026-10-10T06:46:37.105Z,1.105414,4bd4,6,Info [DFLog::AppPlatformQoSEmergency] AppPlatformQoSEmergencyHandler was instanced.
+2026-10-10T06:46:37.106Z,1.106414,4bd4,6,Info [FLog::StudioKeyEvents] fast flags loading [end][success]
+2026-10-10T06:46:37.108Z,1.108414,4bd4,6,Warning [FLog::Output] Session GUID is 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:37.108Z,1.108414,4bd4,6,Warning [FLog::Output] Machine GUID is A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:37.108Z,1.108414,4bd4,6,Warning [FLog::Output] Studio Launch Intent is RunScript
+2026-10-10T06:46:37.108Z,1.108414,4bd4,6,Warning [FLog::Output] Is Studio Configured User Id Present: false
+2026-10-10T06:46:37.109Z,1.109414,4bd4,6,Info [FLog::UIThreadNotifier] Constructing UIThreadNotifier for process '13452' with id '<REDACTED_URL>
+2026-10-10T06:46:37.112Z,1.112414,5328,6,Info [FLog::BackendConfigManager] SetCachedStartupConfig result for initial fetch true
+2026-10-10T06:46:37.130Z,1.130415,4bd4,6 [FLog::Output] isSupportedInstallLocation - Launching from supported install path
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6 [DFLog::NamedMutex] NamedMutex(0000000AEB6FE260, name:InstallerInfo.log)
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6 [DFLog::NamedMutex] ~NamedMutex(0000000AEB6FE260, name:InstallerInfo.log)
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Info [FLog::StartupUpdateUtils] interruptWithApplicationUpdateIfAvailable - Application is currently at version 0.742.0.7421053 and channel production. Latest version 0.742.0.7421053 with guid version-9b554450a0fc4e65
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Critical [DFLog::Mimalloc] Mimalloc integration detected, settings:
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Critical [DFLog::Mimalloc] mi_option_show_errors=1
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Info [DFLog::Mimalloc] mi_option_show_stats=0
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Info [DFLog::Mimalloc] mi_option_verbose=0
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Info [DFLog::Mimalloc] mi_option_eager_commit=1
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Info [DFLog::Mimalloc] mi_option_arena_eager_commit=2
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Info [DFLog::Mimalloc] mi_option_purge_decommits=1
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Info [DFLog::Mimalloc] mi_option_allow_large_os_pages=0
+2026-10-10T06:46:37.132Z,1.132415,4bd4,6,Info [DFLog::Mimalloc] mi_option_reserve_huge_os_pages=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_reserve_huge_os_pages_at=-1
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_reserve_os_memory=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_deprecated_segment_cache=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_deprecated_page_reset=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_abandoned_page_purge=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Critical [DFLog::Mimalloc] mi_option_purge_delay=10
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_deprecated_segment_reset=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_eager_commit_delay=1
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_use_numa_nodes=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_disallow_os_alloc=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_os_tag=100
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_max_errors=32
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_max_warnings=32
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_deprecated_max_segment_reclaim=10
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_destroy_on_exit=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_arena_reserve=1048576
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_arena_reserve_max=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_arena_purge_mult=1
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_deprecated_purge_extend_delay=1
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_disallow_arena_alloc=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_retry_on_oom=400
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_visit_abandoned=0
+2026-10-10T06:46:37.133Z,1.133415,4bd4,6,Info [DFLog::Mimalloc] mi_option_guarded_min=0
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_guarded_max=1073741824
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_guarded_precise=0
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_guarded_sample_rate=0
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_guarded_sample_seed=0
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_generic_collect=10000
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_page_reclaim_on_free=0
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Critical [DFLog::Mimalloc] mi_option_page_full_retain=0
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_page_max_candidates=4
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_max_vabits=0
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_pagemap_commit=0
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Critical [DFLog::Mimalloc] mi_option_page_commit_on_demand=1
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_page_max_reclaim=-1
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_page_cross_thread_max_reclaim=32
+2026-10-10T06:46:37.134Z,1.134415,4bd4,6,Info [DFLog::Mimalloc] mi_option_palette_drain_budget=32
+2026-10-10T06:46:37.137Z,1.137427,4bd4,6,Error [FLog::Error] Redundant Flag ID: AnimationGraphStateMachine
+2026-10-10T06:46:37.137Z,1.137427,4bd4,6,Error [FLog::Error] Redundant Flag ID: AssetQualityValidation
+2026-10-10T06:46:37.137Z,1.137427,4bd4,6,Error [FLog::Error] Redundant Flag ID: AutoReimport
+2026-10-10T06:46:37.137Z,1.137427,4bd4,6,Error [FLog::Error] Redundant Flag ID: AvatarAbilities
+2026-10-10T06:46:37.137Z,1.137427,4bd4,6,Error [FLog::Error] Redundant Flag ID: Collections
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: CreateAnimationFromVideo
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: CreateAssetAsync
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: CustomVideoUpload
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: EditableMeshQuads
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: FacialAnimationRecording
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: InputActionLabel
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: InputActionManager
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: LuauIfLocal
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: MVAlphaMode
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: NewCameraControls
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: NextGenDraggers
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: PartyEmulator
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: PlaytestSubagent
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: SlimDebugTint
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: SolidModelingOnMeshes
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: UpgradedUIGradients
+2026-10-10T06:46:37.138Z,1.138427,4bd4,6,Error [FLog::Error] Redundant Flag ID: VideoApi
+2026-10-10T06:46:37.139Z,1.139428,4bd4,6,Info [FLog::BetaFeatures] Applying settings for beta feature id CreateAnimationFromVideo
+2026-10-10T06:46:37.241Z,1.241407,4bd4,6,Info [FLog::SessionL2ValidationHelper] onSessionChange sc_count 1 sh_count 0 cur_l2ts 0 elapsed_l2b 0
+2026-10-10T06:46:37.243Z,1.243406,4bd4,6,Info [FLog::StudioKeyEvents] starting Qt main event loop
+2026-10-10T06:46:37.248Z,1.248405,4bd4,6 [FLog::Output] preferredLocale.name() = ko_KR
+2026-10-10T06:46:37.248Z,1.248405,4bd4,6 [FLog::Output] systemLocale.name() = ko_KR
+2026-10-10T06:46:37.248Z,1.248405,4bd4,6 [FLog::Output] setAssetFolder C:/Users/dddd/AppData/Local/Roblox/Versions/version-9b554450a0fc4e65/content
+2026-10-10T06:46:37.255Z,1.255404,4bd4,6 [FLog::Output] setExtraAssetFolder C:/Users\dddd\AppData\Local\Roblox\Versions\version-9b554450a0fc4e65\ExtraContent
+2026-10-10T06:46:37.259Z,1.259403,4bd4,6 [FLog::Output] Reflection::load C:\Users\<REDACTED_USER>\AppData\Local\Roblox\Versions\version-9b554450a0fc4e65\ReflectionMetadata.xml
+2026-10-10T06:46:37.300Z,1.300395,1a3c,6,Info [FLog::BackendConfigFetcher] Obtained meta data result with 199 ms for try 1
+2026-10-10T06:46:37.443Z,1.443464,4bd4,6,Info [FLog::StudioApplicationState] State: Qt::ApplicationInactive
+2026-10-10T06:46:37.443Z,1.443464,4bd4,6,Info [FLog::StudioApplicationState] Screen 0: 0x15c75d82f40
+2026-10-10T06:46:37.443Z,1.443464,4bd4,6,Info [FLog::StudioApplicationState] Screen 1: 0x15c75d82ef0
+2026-10-10T06:46:37.444Z,1.444464,4bd4,6,Info [FLog::StudioApplicationState] PrimaryScreen: 0x15c75d82f40
+2026-10-10T06:46:37.700Z,1.700714,3f6c,6 [FLog::Output] Studio D3D9 GPU: NVIDIA GeForce GT 1030
+2026-10-10T06:46:37.700Z,1.700714,3f6c,6 [FLog::Output] Studio D3D9 GPU: Vendor 10de Device 1d01
+2026-10-10T06:46:37.700Z,1.700714,3f6c,6 [FLog::Output] Studio D3D9 Driver: nvldumdx.dll 32.0.15.6094
+2026-10-10T06:46:37.716Z,1.716729,3f6c,6 [FLog::Output] ESGamePerfMonitor GPU: Vendor 000010de Device 00001d01
+2026-10-10T06:46:37.716Z,1.716729,3f6c,6 [FLog::Output] ESGamePerfMonitor GPU: SubSys 147619da Revision 000000a1
+2026-10-10T06:46:37.716Z,1.716729,3f6c,6 [FLog::Output] ESGamePerfMonitor GPU: DedicatedVidMem 2062606336 DedicatedSysMem 0 SharedSystemMemory 8558800896
+2026-10-10T06:46:38.665Z,2.665723,4bd4,6,Info [FLog::SystemCheck] Running instance count at launch 1
+2026-10-10T06:46:38.665Z,2.665723,4bd4,6,Info [FLog::SystemCheck] User has 16384 total memory in MB with conversion unit of 1024
+2026-10-10T06:46:38.665Z,2.665723,4bd4,6,Info [DFLog::RbxTransportIoLibContext] RbxTransport I/O backend chosen: sys
+2026-10-10T06:46:38.666Z,2.666723,4bd4,6,Info [DFLog::RbxTransportRnaExp] Initialized RtcIoRna with 1 event loop threads
+2026-10-10T06:46:38.676Z,2.676723,4bd4,6 [FLog::Output] Evaluating deferred inferred crashes
+2026-10-10T06:46:38.717Z,2.717723,4bd4,6 [FLog::Output] *******
+** Validated reflection database in 23.999712 ms, found 8505 entries with the following skipped: 0 enums, 0 properties, 0 functions, 0 events, 0 callbacks, 0 classes.
+*******
+
+2026-10-10T06:46:38.719Z,2.719723,4bd4,6,Info [FLog::RuntimeInjector] Application Injector constructed 204 bindings.
+2026-10-10T06:46:38.851Z,2.851729,4bd4,6,Info [FLog::LoginPageExperiment] isInLoginPageTreatment: hashValue=2561414833, bucket=33, rolloutPercent=50, inTreatment=true
+2026-10-10T06:46:38.852Z,2.852729,4bd4,6 [DFLog::NamedMutex] NamedMutex(0000015C0471E818, name:RobloxStudioCookieManager)
+2026-10-10T06:46:38.852Z,2.852729,4bd4,6 [DFLog::NamedMutex] NamedMutex(0000015C04330B30, name:www.roblox.com-oauth2RefreshToken-Studio)
+2026-10-10T06:46:38.852Z,2.852729,4bd4,6 [DFLog::NamedMutex] NamedMutex(0000015C04330B68, name:www.roblox.com-RefreshingAccessTokenMutex-Studio)
+2026-10-10T06:46:38.852Z,2.852729,4bd4,6,Info [FLog::LoginController] Obtained meta data result with 0 ms
+2026-10-10T06:46:38.856Z,2.856730,4bd4,6 [FLog::Output] Studio Version: "0.742.0.7421053"
+2026-10-10T06:46:38.866Z,2.866730,4bd4,6 [FLog::Output] Studio Architecture: x86_64 - Host Architecture: x86_64
+2026-10-10T06:46:38.876Z,2.876731,4bd4,6,Info [FLog::MainWindow] MainWindow::MainWindow - start
+2026-10-10T06:46:38.912Z,2.912734,4bd4,6,Info [FLog::MainWindow] MainWindow::MainWindow - end
+2026-10-10T06:46:38.913Z,2.913734,4bd4,6,Info [DFLog::StudioPerformanceMeasurementsSummary] StudioPerformanceMeasurements summary for StudioStartup: 2754ms
+2026-10-10T06:46:38.916Z,2.916734,4bd4,6,Error [FLog::CreateGraphicsEngine] Potential graphics modes:
+2026-10-10T06:46:38.916Z,2.916734,4bd4,6,Info [FLog::CreateGraphicsEngine] - 2-Direct3D11
+2026-10-10T06:46:38.916Z,2.916734,4bd4,6,Info [FLog::CreateGraphicsEngine] - 4-OpenGL
+2026-10-10T06:46:38.916Z,2.916734,4bd4,6,Info [FLog::CreateGraphicsEngine] Trying graphics mode 2-Direct3D11
+2026-10-10T06:46:38.916Z,2.916734,4bd4,6,Info [DFLog::CoordinatorMemoryPressure] Setting memory pressure threshold to none
+2026-10-10T06:46:38.916Z,2.916734,4bd4,6,Warning [FLog::Graphics] RenderView created[1]
+2026-10-10T06:46:38.917Z,2.917734,4bd4,6 [FLog::Graphics] Adapter[0] info: Description=NVIDIA GeForce GT 1030, VendorId=0x10de, DeviceId=0x1d01, DedicatedVideoMemory=2062606336, DedicatedSystemMemory=0, SharedSystemMemory=8558800896
+2026-10-10T06:46:38.917Z,2.917734,4bd4,6 [FLog::Graphics] Adapter[1] info: Description=Microsoft Basic Render Driver, VendorId=0x1414, DeviceId=0x8c, DedicatedVideoMemory=0, DedicatedSystemMemory=0, SharedSystemMemory=8558800896
+2026-10-10T06:46:39.265Z,3.265815,4bd4,6,Warning [FLog::Graphics] VRAM Local Budget: 1753215387 bytes, CurrentUsage: 6889472 bytes.
+2026-10-10T06:46:39.265Z,3.265815,4bd4,6,Warning [FLog::Graphics] VRAM Non Local Budget: 7862425396 bytes, CurrentUsage: 524288 bytes.
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [FLog::Graphics] D3D11 Adapter: NVIDIA GeForce GT 1030
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [FLog::Graphics] D3D11 Adapter: Vendor 10de Device 1d01 VRAM 1967 RAM 8162
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: ThreadSafe 0 Framebuffer 1 FpFramebuffer 1 Shaders 1 Compute 1 Instancing 1 PerInstanceStream 1 ConstBuffers 1
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Framebuffer: MRT 8 MSAA 8 Stencil 1
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Framebuffer: Depth16 1 Depth24 1 DepthFloat 1 DepthClamp 1
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Border Color 1
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Texture: RGB10A2 1 RG11B10F 1 R16I 1
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Texture: BC6H 1 ASTC HDR 0
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Texture: DXT 1 PVR 0 ETC1 0 ETC2 0 Half 1
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Texture: 3D 1 Array 1 Depth 1 MSAA 1 MSAAFP16 0
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Texture: NPOT 1 PartialMips 1 CubeMipGen 1 CubeFramebuffer 1
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: Texture: Size 16384 Units 32 VertexUnits 16
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: ConstantBufferSize 65536
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: isAppleGPU 0
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: 32bIdx 1 Memoryless 0
+2026-10-10T06:46:39.267Z,3.267817,4bd4,6 [channel] Caps: RTFlip 0 MinusOneToOneDepth 0
+2026-10-10T06:46:39.299Z,3.299840,4bd4,6,Warning [FLog::Graphics] D3D11: GfxCardName NVIDIA GeForce GT 1030 GfxCardVendor 10de GfxFeatureLevel D3D11.1
+2026-10-10T06:46:39.300Z,3.300841,4bd4,6 [FLog::Graphics] Video memory size: 2147483648
+2026-10-10T06:46:39.432Z,3.432688,4bd4,6,Warning [FLog::Graphics] Loaded 4324 shaders from pack d3d11 variant default (23193311 bytes)
+2026-10-10T06:46:39.432Z,3.432688,4bd4,6,Warning [FLog::Graphics] Compiled 1242 shaders in 132 ms. Is Multi-Threaded Loading: false. Shader Loading Threads: 0 (TaskScheduler: 4, Requested: 8, HardMax: 8).
+2026-10-10T06:46:39.443Z,3.443726,4bd4,6,Warning [FLog::Graphics] TM2: maxCloudAssetDimension: 4096
+2026-10-10T06:46:39.443Z,3.443726,4bd4,6 [FLog::Graphics] Using TM2 in MipPackStream mode
+2026-10-10T06:46:39.443Z,3.443726,4bd4,6,Warning [FLog::Graphics] LightGrid is unified
+2026-10-10T06:46:39.477Z,3.477721,4bd4,6,Warning [FLog::Graphics] DRS init: denied=false fullSizeFramebufferDenied=false canUseHighDPIFullFB=false
+2026-10-10T06:46:39.495Z,3.495719,4bd4,6,Info [FLog::CreateGraphicsEngine] Using graphics mode 2-Direct3D11
+2026-10-10T06:46:39.521Z,3.521715,4bd4,6 [DFLog::NamedMutex] NamedMutex(0000000AEB6F9D20, name:InstallerInfo.log)
+2026-10-10T06:46:39.522Z,3.522715,4bd4,6 [DFLog::NamedMutex] ~NamedMutex(0000000AEB6F9D20, name:InstallerInfo.log)
+2026-10-10T06:46:39.531Z,3.531714,4bd4,6 [FLog::DataModelPatchConfigurer] [_DataModelPatch] Load configs for user key: app:17455186379031048267
+2026-10-10T06:46:39.534Z,3.534714,4bd4,6,Verbose [FLog::StudioPluginOTANew] Initializing OTA manager
+2026-10-10T06:46:39.534Z,3.534714,4bd4,6,Info [FLog::StudioPluginOTANew] Attempting to acquire download lock - ensuring only one Studio instance handles OTA downloads
+2026-10-10T06:46:39.539Z,3.539788,4bd4,6 [FLog::StudioPluginOTA] Scan plugin files from C:\Users\<REDACTED_USER>\AppData\Local\Roblox\OTAPlugins\Downloaded\BuiltInPlugins, found 0 plugins
+2026-10-10T06:46:39.539Z,3.539788,4bd4,6 [FLog::StudioPluginOTA] Scan plugin files from C:\Users\<REDACTED_USER>\AppData\Local\Roblox\OTAPlugins\Downloaded\BuiltInStandalonePlugins, found 0 plugins
+2026-10-10T06:46:39.540Z,3.540788,4bd4,6,Info [FLog::StudioPluginOTANew] Download lock acquired!
+2026-10-10T06:46:39.540Z,3.540788,3f6c,6,Info [FLog::StudioPluginOTANew] Successfully acquired deploy lock for file store initialization (attempt 1)
+2026-10-10T06:46:39.546Z,3.546792,3f6c,6 [FLog::StudioPluginOTA] Scan plugin files from C:\Users\<REDACTED_USER>\AppData\Local\Roblox\OTAPlugins\Deployed\BuiltInPlugins, found 1 plugins
+2026-10-10T06:46:39.547Z,3.547793,3f6c,6 [FLog::StudioPluginOTA] Scan plugin files from C:\Users\<REDACTED_USER>\AppData\Local\Roblox\OTAPlugins\Deployed\BuiltInStandalonePlugins, found 4 plugins
+2026-10-10T06:46:39.548Z,3.548793,3f6c,6,Verbose [FLog::StudioPluginOTANew] Cleaning up obsoleted plugins in deployed folder
+2026-10-10T06:46:39.549Z,3.549794,3f6c,6,Info [FLog::StudioPluginOTANew] Successfully initialized file stores
+2026-10-10T06:46:39.560Z,3.560800,4bd4,6,Info [FLog::LoginPageExperiment] isInLoginPageTreatment: hashValue=2561414833, bucket=33, rolloutPercent=50, inTreatment=true
+2026-10-10T06:46:39.560Z,3.560800,4bd4,6,Info [FLog::LoginPageExperiment] isInLoginPageTreatment: hashValue=2561414833, bucket=33, rolloutPercent=50, inTreatment=true
+2026-10-10T06:46:39.566Z,3.566804,3f6c,6 [FLog::CloseDataModel] Create DataModel - heartbeat(1)
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello world, CLI-208683!
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello world, CLI-207485!
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello again, world 206748!
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello world CLI-206426!
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello world ...!
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello 198367!
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World! **CLI-199819**
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World! from CLI-206127
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World! CLI210530
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World CLI-212185!
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World! CLI-222132
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World <3 CLI-225598
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World CLI-226375
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World! CLI-226477
+2026-10-10T06:46:39.575Z,3.575809,3f6c,6,Warning [FLog::Output] Hello World! CLI-226592
+2026-10-10T06:46:39.635Z,3.635845,3f6c,6,Info [FLog::Audio] OutputDevice 0: 스피커(Realtek High Definition Audio) [HDAUDIO] 48000/2
+2026-10-10T06:46:39.702Z,3.702841,4bd4,6 [FLog::UpdateUIManager] Setting up status bar (0000015C75D83690)
+2026-10-10T06:46:39.727Z,3.727849,3f6c,6,Info [FLog::Audio] InputDevice 0: 마이크(2- MP300)([88e82cd1-4f5f-4bd7-9bbf413444859a33]) 48000/1/4
+2026-10-10T06:46:39.727Z,3.727849,3f6c,6,Info [FLog::Audio] InputDevice 1: 마이크(Realtek High Definition Audio)([c6d65d91-29c9-4360-ab0fba6ecf7b24e3]) 48000/2/4
+2026-10-10T06:46:39.780Z,3.780770,4bd4,6,Info [FLog::LoginPageExperiment] isInLoginPageTreatment: hashValue=2561414833, bucket=33, rolloutPercent=50, inTreatment=true
+2026-10-10T06:46:39.780Z,3.780770,4bd4,6 [FLog::StudioTimingLog] ======== Studio Startup Times =======
+2026-10-10T06:46:39.780Z,3.780770,4bd4,6 [FLog::StudioTimingLog] FastFlagsLoadTime  : 0.5550 sec
+2026-10-10T06:46:39.780Z,3.780770,4bd4,6 [FLog::StudioTimingLog] Authenticated : NO
+2026-10-10T06:46:39.780Z,3.780770,4bd4,6 [FLog::StudioTimingLog] LoginPageOpenTime  : 3.6215 sec
+2026-10-10T06:46:39.862Z,3.862172,4bd4,6,Info [FLog::StudioHardwareSleepListenerLog] onMonitorOn
+2026-10-10T06:46:39.863Z,3.863168,4bd4,6,Info [FLog::StudioKeyEvents] login (automatic) [start]
+2026-10-10T06:46:39.863Z,3.863168,4bd4,6,Info [FLog::LoginController] LoginController::login with category 'Local'
+2026-10-10T06:46:39.897Z,3.897997,4bd4,6,Info [DFLog::StudioPerformanceMeasurementsSummary] StudioPerformanceMeasurements summary for StudioUnifiedLogin: 21ms
+2026-10-10T06:46:39.911Z,3.911929,4bd4,6,Info [FLog::RenderSchedulerState] Setting fallback DataModel Standalone
+2026-10-10T06:46:39.911Z,3.911929,4bd4,6,Info [FLog::RenderSchedulerState] syncDataModels setting to fallback
+2026-10-10T06:46:39.911Z,3.911929,4bd4,6,Info [FLog::RenderSchedulerState] Setting up for DataModel Standalone with fallback nullptr
+2026-10-10T06:46:39.911Z,3.911929,4bd4,6,Warning [FLog::Graphics] TM2: maxCloudAssetDimension: 4096
+2026-10-10T06:46:39.924Z,3.924866,4bd4,6,Info [FLog::RenderSchedulerState] Change RenderJobMode None -> TaskScheduler
+2026-10-10T06:46:39.925Z,3.925861,4bd4,6,Info [FLog::RuntimeInjector] StandaloneDataModel Injector constructed 32 bindings.
+2026-10-10T06:46:39.927Z,3.927851,4bd4,6,Info [FLog::AssetManagementController] Registered listener for CreatorInventoryRefresh
+2026-10-10T06:46:39.929Z,3.929842,1a3c,6,Info [FLog::CustomizedDefaultInstancesLogs] Loaded 0 default instances
+2026-10-10T06:46:39.943Z,3.943853,4bd4,6,Info [FLog::LoginController] Login got Standalone DM ready to enter User scope
+2026-10-10T06:46:39.944Z,3.944858,4bd4,6,Info [FLog::StudioKeyEvents] enter LifecycleManager StandaloneDataModel scope
+2026-10-10T06:46:39.955Z,3.955915,0cb8,6,Info [FLog::PluginLoadingEnhanced] sabuiltin_AnimationGraphEditor.rbxm, sabuiltin_DeviceSimulatorToolbar.rbxm, sabuiltin_AssetExport.rbxm, sabuiltin_AssetQualityValidation.rbxm, sabuiltin_AudioCompressorEditor.rbxm, sabuiltin_AudioPlayerEditor.rbxm, sabuiltin_ConnectionIndicator.rbxm, sabuiltin_CreatorConfig.rbxm, sabuiltin_Dialog.rbxm, sabuiltin_Footer.rbxm, sabuiltin_Gen3d.rbxm, sabuiltin_HotModuleReplacement.rbxm, sabuiltin_InputActionManager.rbxm, sabuiltin_LoginPage.rbxm, sabuiltin_MultitouchEmulator.rbxm, sabuiltin_PartyEmulator.rbxm, sabuiltin_PerformanceTools.rbxm, sabuiltin_PlaceVersionHistory.rbxm, sabuiltin_Reimport.rbxm, sabuiltin_SceneAnalysis.rbxm, sabuiltin_StartPage.rbxm, sabuiltin_TeamCreateCollaborators.rbxm plugins requested to load for gst 'Standalone'
+2026-10-10T06:46:40.075Z,4.075148,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetExport.rbxm' took 15.1037 msec
+2026-10-10T06:46:40.075Z,4.075148,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetExport.rbxm' took 109.1812 msec
+2026-10-10T06:46:40.075Z,4.075148,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AssetExport.rbxm took 113.90990000000033 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:40.076Z,4.076150,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AnimationGraphEditor.rbxm' took 0.9728 msec
+2026-10-10T06:46:40.076Z,4.076150,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AnimationGraphEditor.rbxm' took 115.2095 msec
+2026-10-10T06:46:40.077Z,4.077153,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AnimationGraphEditor.rbxm took 120.13969999999973 msec [dm=Standalone otaVersion=24569]
+2026-10-10T06:46:40.160Z,4.160757,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AssetExport.rbxm took 86.15269999999953 msec
+2026-10-10T06:46:40.161Z,4.161755,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AnimationGraphEditor.rbxm took 0.5307999999999424 msec
+2026-10-10T06:46:40.217Z,4.217620,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_DeviceSimulatorToolbar.rbxm' took 0.7464 msec
+2026-10-10T06:46:40.217Z,4.217620,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_DeviceSimulatorToolbar.rbxm' took 255.6739 msec
+2026-10-10T06:46:40.219Z,4.219615,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_DeviceSimulatorToolbar.rbxm took 259.0168000000004 msec [dm=Standalone otaVersion=24621]
+2026-10-10T06:46:40.226Z,4.226598,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_DeviceSimulatorToolbar.rbxm took 2.985100000000074 msec
+2026-10-10T06:46:40.400Z,4.400816,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetQualityValidation.rbxm' took 6.3077 msec
+2026-10-10T06:46:40.400Z,4.400816,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetQualityValidation.rbxm' took 319.6543 msec
+2026-10-10T06:46:40.402Z,4.402816,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AssetQualityValidation.rbxm took 325.79070000000064 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:40.416Z,4.416816,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AssetQualityValidation.rbxm took 0.48259999999977765 msec
+2026-10-10T06:46:40.447Z,4.447821,4bd4,6,Info [DFLog::StudioPerformanceMeasurementsSummary] StudioPerformanceMeasurements summary for StudioLogin: 561ms
+2026-10-10T06:46:40.448Z,4.448822,4bd4,6,Info [FLog::StudioKeyEvents] login [end][success]
+2026-10-10T06:46:40.448Z,4.448822,4bd4,6,Info [FLog::LoginController] Login got user info, fetching AB test config async
+2026-10-10T06:46:40.545Z,4.545812,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AnimationGraphEditor.rbxm' took 1.0324 msec
+2026-10-10T06:46:40.545Z,4.545812,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AnimationGraphEditor.rbxm' took 379.0689 msec
+2026-10-10T06:46:40.567Z,4.567810,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_HotModuleReplacement.rbxm' took 0.0081 msec
+2026-10-10T06:46:40.568Z,4.568810,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_HotModuleReplacement.rbxm' took 3.9997 msec
+2026-10-10T06:46:40.568Z,4.568810,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_HotModuleReplacement.rbxm took 8.082499999999548 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:40.622Z,4.622805,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Gen3d.rbxm' took 0.8009 msec
+2026-10-10T06:46:40.623Z,4.623805,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Gen3d.rbxm' took 59.9949 msec
+2026-10-10T06:46:40.623Z,4.623805,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Gen3d.rbxm took 63.70889999999996 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:40.634Z,4.634804,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_InputActionManager.rbxm' took 2.9004 msec
+2026-10-10T06:46:40.634Z,4.634804,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_InputActionManager.rbxm' took 56.9952 msec
+2026-10-10T06:46:40.634Z,4.634804,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_InputActionManager.rbxm took 66.31069999999983 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:40.717Z,4.717826,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Dialog.rbxm' took 0.8559 msec
+2026-10-10T06:46:40.717Z,4.717826,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Dialog.rbxm' took 244.0042 msec
+2026-10-10T06:46:40.719Z,4.719826,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Dialog.rbxm took 253.53080000000006 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:40.746Z,4.746825,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_HotModuleReplacement.rbxm took 0.2076999999998108 msec
+2026-10-10T06:46:40.747Z,4.747825,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Gen3d.rbxm took 0.5127000000006987 msec
+2026-10-10T06:46:40.747Z,4.747825,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_InputActionManager.rbxm took 0.2321000000007345 msec
+2026-10-10T06:46:40.899Z,4.899826,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_LoginPage.rbxm' took 0.8513 msec
+2026-10-10T06:46:40.899Z,4.899826,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_LoginPage.rbxm' took 268.0214 msec
+2026-10-10T06:46:40.901Z,4.901826,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_LoginPage.rbxm took 277.6527 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:40.926Z,4.926826,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Dialog.rbxm took 178.65879999999913 msec
+2026-10-10T06:46:40.931Z,4.931826,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_MultitouchEmulator.rbxm' took 0.8876 msec
+2026-10-10T06:46:40.931Z,4.931826,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_MultitouchEmulator.rbxm' took 286.0052 msec
+2026-10-10T06:46:40.934Z,4.934826,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_MultitouchEmulator.rbxm took 298.7088 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.096Z,5.096408,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PerformanceTools.rbxm' took 6.7539 msec
+2026-10-10T06:46:41.096Z,5.096408,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PerformanceTools.rbxm' took 244.5828 msec
+2026-10-10T06:46:41.098Z,5.098408,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PerformanceTools.rbxm took 275.6888000000002 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.202Z,5.202416,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PlaceVersionHistory.rbxm' took 0.7779 msec
+2026-10-10T06:46:41.202Z,5.202416,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PlaceVersionHistory.rbxm' took 249.0783 msec
+2026-10-10T06:46:41.208Z,5.208416,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PlaceVersionHistory.rbxm took 259.8398000000008 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.234Z,5.234417,0cb8,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_LoginPage.rbxm took 287.0619999999997 msec
+2026-10-10T06:46:41.242Z,5.242421,0cb8,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_MultitouchEmulator.rbxm took 7.122199999999523 msec
+2026-10-10T06:46:41.245Z,5.245421,0cb8,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PerformanceTools.rbxm took 3.319099999999686 msec
+2026-10-10T06:46:41.257Z,5.257422,0cb8,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PlaceVersionHistory.rbxm took 11.370199999999997 msec
+2026-10-10T06:46:41.292Z,5.292425,1a3c,6 [FLog::Output] ABTestFramework using UserId with hash 5deFpzb/ZIpn/K+tNMDcnQ==
+2026-10-10T06:46:41.294Z,5.294425,4bd4,6,Info [FLog::LoginPageExperiment] isInLoginPageTreatment: hashValue=2561414833, bucket=33, rolloutPercent=50, inTreatment=true
+2026-10-10T06:46:41.317Z,5.317427,4bd4,6,Info [FLog::LoginPageExperiment] isInLoginPageTreatment: hashValue=2561414833, bucket=33, rolloutPercent=50, inTreatment=true
+2026-10-10T06:46:41.348Z,5.348412,4bd4,6 [FLog::Graphics] Future is bright shadows
+2026-10-10T06:46:41.360Z,5.360411,4bd4,6 [FLog::Graphics] LayeredClothingMode updated: LC=1 HSR=1
+2026-10-10T06:46:41.413Z,5.413406,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AudioPlayerEditor.rbxm' took 1.6612 msec
+2026-10-10T06:46:41.413Z,5.413406,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AudioPlayerEditor.rbxm' took 1169.5849 msec
+2026-10-10T06:46:41.415Z,5.415406,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AudioPlayerEditor.rbxm took 1178.833 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.416Z,5.416406,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AudioPlayerEditor.rbxm took 0.4182000000003683 msec
+2026-10-10T06:46:41.460Z,5.460402,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ConnectionIndicator.rbxm' took 19.1224 msec
+2026-10-10T06:46:41.461Z,5.461402,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ConnectionIndicator.rbxm' took 1110.5839 msec
+2026-10-10T06:46:41.462Z,5.462402,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ConnectionIndicator.rbxm took 1115.3286000000007 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.526Z,5.526396,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_CreatorConfig.rbxm' took 0.9675 msec
+2026-10-10T06:46:41.526Z,5.526396,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_CreatorConfig.rbxm' took 1075.5748 msec
+2026-10-10T06:46:41.528Z,5.528396,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_CreatorConfig.rbxm took 1081.3615999999993 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.627Z,5.627431,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_StartPage.rbxm' took 0.9071 msec
+2026-10-10T06:46:41.627Z,5.627431,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_StartPage.rbxm' took 437.0156 msec
+2026-10-10T06:46:41.628Z,5.628431,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ConnectionIndicator.rbxm took 0.6715000000001581 msec
+2026-10-10T06:46:41.629Z,5.629431,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_StartPage.rbxm took 448.8661000000001 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.631Z,5.631432,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_CreatorConfig.rbxm took 2.622699999999867 msec
+2026-10-10T06:46:41.632Z,5.632432,4bd4,6,Info [FLog::LoginController] Login ready to enter User scope
+2026-10-10T06:46:41.633Z,5.633432,4bd4,6,Info [FLog::RuntimeInjector] User Injector constructed 66 bindings.
+2026-10-10T06:46:41.686Z,5.686409,4bd4,6,Info [FLog::PluginManagementFetch] Starting fetch of cloud plugin info
+2026-10-10T06:46:41.686Z,5.686409,4bd4,6,Info [FLog::PluginManagementFetch] Fetching plugin permission details for 2 permission types
+2026-10-10T06:46:41.686Z,5.686409,4bd4,6,Info [FLog::PluginManagementFetch] Fetching plugin permissions for permission type HttpService
+2026-10-10T06:46:41.686Z,5.686409,4bd4,6,Info [FLog::PluginManagementFetch] Fetching plugin permissions for permission type ScriptInjection
+2026-10-10T06:46:41.709Z,5.709408,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Footer.rbxm' took 6.2955 msec
+2026-10-10T06:46:41.709Z,5.709408,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Footer.rbxm' took 1223.5859 msec
+2026-10-10T06:46:41.711Z,5.711408,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Footer.rbxm took 1230.3160000000003 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.732Z,5.732407,4bd4,6,Info [FLog::WebBrowserManager] Skipping preInitializeWebBrowser for non-default launch task
+2026-10-10T06:46:41.733Z,5.733407,4bd4,6,Info [FLog::ModerationControllerTest] ModerationController create
+2026-10-10T06:46:41.734Z,5.734407,4bd4,6 [DFLog::NamedMutex] NamedMutex(0000015C0C05D700, name:RibbonFileSystemHelper::m_fileSystemMutex)
+2026-10-10T06:46:41.749Z,5.749456,4bd4,6,Info [FLog::StudioPluginOTANew] place session context change (nullptr <-> nullptr), skipping
+2026-10-10T06:46:41.749Z,5.749456,4bd4,6,Verbose [FLog::StudioPluginOTANew] Starting download timer
+2026-10-10T06:46:41.751Z,5.751457,3f6c,6,Info [FLog::StudioPluginOTANew] waiting for 0 seconds to start next OTA download
+2026-10-10T06:46:41.751Z,5.751457,3f6c,6,Info [FLog::StudioPluginOTANew] Download starting for Plugin OTA
+2026-10-10T06:46:41.751Z,5.751457,3f6c,6 [FLog::StudioPluginOTA] checkOTAUpdate check new ota update.
+2026-10-10T06:46:41.751Z,5.751457,3f6c,6,Verbose [FLog::StudioPluginOTANew] Download OTA manifest start
+2026-10-10T06:46:41.760Z,5.760461,4bd4,6,Info [FLog::StudioKeyEvents] enter LifecycleManager UserSession scope
+2026-10-10T06:46:41.760Z,5.760461,4bd4,6 [DFLog::NamedMutex] NamedMutex(0000015C4F77F210, name:LoggedInUsersStore)
+2026-10-10T06:46:41.760Z,5.760461,4bd4,6 [DFLog::NamedMutex] ~NamedMutex(0000015C4F77F210, name:LoggedInUsersStore)
+2026-10-10T06:46:41.761Z,5.761461,4bd4,6,Info [FLog::PageWidgetsManager] showStartPageWidgets
+2026-10-10T06:46:41.762Z,5.762462,4bd4,6,Info [FLog::UserLoginTracker] Logged in User GUID is 404DCFED-F2CF-404F-879D-2F0C1D41944B
+2026-10-10T06:46:41.827Z,5.827487,4bd4,6,Info [FLog::PlaceManager] Start to open place with traceId: C7FE3E8B-4BF8-4463-828D-3A047A916787
+2026-10-10T06:46:41.827Z,5.827487,4bd4,6,Info [FLog::PlaceManager] PlaceManager::createAndShowIDEDoc with task EditFile
+2026-10-10T06:46:41.830Z,5.830488,4bd4,6 [FLog::UpdateUIManager] Pausing status bar update (0000015C75D83690)
+2026-10-10T06:46:41.845Z,5.845631,0cb8,6,Info [DFLog::RealtimeMedia] disconnect
+2026-10-10T06:46:41.861Z,5.861657,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PartyEmulator.rbxm' took 0.9160 msec
+2026-10-10T06:46:41.875Z,5.875680,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PartyEmulator.rbxm' took 1148.8535 msec
+2026-10-10T06:46:41.877Z,5.877684,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PartyEmulator.rbxm took 1154.7754000000002 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.881Z,5.881691,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetExport.rbxm' took 0.8449 msec
+2026-10-10T06:46:41.881Z,5.881691,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetExport.rbxm' took 669.2741 msec
+2026-10-10T06:46:41.885Z,5.885697,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_StartPage.rbxm took 253.79540000000046 msec
+2026-10-10T06:46:41.897Z,5.897717,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Gen3d.rbxm' took 0.8685 msec
+2026-10-10T06:46:41.897Z,5.897717,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Gen3d.rbxm' took 986.8908 msec
+2026-10-10T06:46:41.913Z,5.913743,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_SceneAnalysis.rbxm' took 0.8569 msec
+2026-10-10T06:46:41.914Z,5.914745,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_SceneAnalysis.rbxm' took 918.5865 msec
+2026-10-10T06:46:41.916Z,5.916748,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_SceneAnalysis.rbxm took 924.8706999999996 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.935Z,5.935779,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_InputActionManager.rbxm' took 0.9537 msec
+2026-10-10T06:46:41.935Z,5.935779,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_InputActionManager.rbxm' took 993.3959 msec
+2026-10-10T06:46:41.949Z,5.949378,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_TeamCreateCollaborators.rbxm' took 0.8533 msec
+2026-10-10T06:46:41.949Z,5.949378,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_TeamCreateCollaborators.rbxm' took 736.9623 msec
+2026-10-10T06:46:41.950Z,5.950377,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_TeamCreateCollaborators.rbxm took 743.0743000000009 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.957Z,5.957362,4bd4,6,Info [FLog::PluginManagementFetch] All plugin permissions fetch finished
+2026-10-10T06:46:41.961Z,5.961353,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Reimport.rbxm' took 0.9504 msec
+2026-10-10T06:46:41.961Z,5.961353,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Reimport.rbxm' took 968.1826 msec
+2026-10-10T06:46:41.963Z,5.963349,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Reimport.rbxm took 974.3992999999999 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.975Z,5.975324,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AudioCompressorEditor.rbxm' took 5.4028 msec
+2026-10-10T06:46:41.975Z,5.975324,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AudioCompressorEditor.rbxm' took 1742.7403 msec
+2026-10-10T06:46:41.977Z,5.977320,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AudioCompressorEditor.rbxm took 1749.5569 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:41.977Z,5.977320,3f6c,6,Info [FLog::PluginLoadingEnhanced] Loading Plugins in 3 total took 2021.8676000000003 msec
+2026-10-10T06:46:41.985Z,5.985303,3f6c,6,Info [FLog::PluginManagementFetch] Fetched user's plugin metadata, contains 0 plugin(s)
+2026-10-10T06:46:41.985Z,5.985303,3f6c,6,Info [FLog::PluginManagementFetch] Plugin metadata store is empty, searching for legacy file to migrate
+2026-10-10T06:46:41.985Z,5.985303,3f6c,6,Info [FLog::PluginManagementFetch] Fetching asset details for 0 plugin(s), with 50 per batch
+2026-10-10T06:46:41.985Z,5.985303,3f6c,6,Info [FLog::PluginManagementFetch] Fetching version details for 0 plugin(s), with 50 per batch
+2026-10-10T06:46:41.986Z,5.986301,4bd4,6,Info [FLog::PluginManagementFetch] Fetching plugin asset details succeeded
+2026-10-10T06:46:41.986Z,5.986301,4bd4,6,Info [FLog::PluginManagementFetch] Fetching plugin version details succeeded
+2026-10-10T06:46:41.986Z,5.986301,4bd4,6,Info [FLog::PluginManagementFetch] User plugins metadata fetch has succeeded
+2026-10-10T06:46:41.986Z,5.986301,4bd4,6,Info [FLog::PluginManagementFetch] Setting user's cloud plugins list to 0 plugin(s)
+2026-10-10T06:46:41.986Z,5.986301,4bd4,6,Info [FLog::PluginInstall] No plugins to auto update
+2026-10-10T06:46:42.052Z,6.052420,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Footer.rbxm took 101.94610000000014 msec
+2026-10-10T06:46:42.052Z,6.052420,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PartyEmulator.rbxm took 0.3077999999998582 msec
+2026-10-10T06:46:42.057Z,6.057420,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_SceneAnalysis.rbxm took 4.970700000000328 msec
+2026-10-10T06:46:42.134Z,6.134429,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_TeamCreateCollaborators.rbxm took 76.30689999999962 msec
+2026-10-10T06:46:42.135Z,6.135429,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Reimport.rbxm took 1.5606000000003561 msec
+2026-10-10T06:46:42.229Z,6.229395,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AudioCompressorEditor.rbxm took 93.8732 msec
+2026-10-10T06:46:42.229Z,6.229395,3f6c,6,Info [FLog::PluginLoadingEnhanced] sabuiltin_ActivityFeed.rbxm, sabuiltin_AssetAccess.rbxm, sabuiltin_AssetManager.rbxm, sabuiltin_Assistant.rbxm, sabuiltin_AttenuationCurveEditor.rbxm, sabuiltin_AudioActions.rbxm, sabuiltin_AudioEqualizerEditor.rbxm, sabuiltin_AvatarSettings.rbxm, sabuiltin_CancellableDialog.rbxm, sabuiltin_CollisionGroupsEditor.rbxm, sabuiltin_ControlsEmulator.rbxm, sabuiltin_Debugger.rbxm, sabuiltin_DirectionalCurveEditor.rbxm, sabuiltin_ExplorerPlugin.rbxm, sabuiltin_FindReplaceAll.rbxm, sabuiltin_ModerationDialog.rbxm, sabuiltin_Notifications.rbxm, sabuiltin_PlaceAnnotations.rbxm, sabuiltin_PluginManagement.rbxm, sabuiltin_PropertiesPlugin.rbxm, sabuiltin_Ribbon.rbxm, sabuiltin_TransformDragger.rbxm, sabuiltin_Tutorials.rbxm, sabuiltin_VisualizationModes.rbxm plugins requested to load for gst 'Standalone'
+2026-10-10T06:46:42.536Z,6.536419,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c4472c7a0 windowHandle=0x810730 dims=1278x837
+2026-10-10T06:46:42.538Z,6.538419,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 1278x837 swapChain=0x15c4472c7a0
+2026-10-10T06:46:42.541Z,6.541420,3f6c,6,Info [FLog::SessionL2ValidationHelper] onSessionChange sc_count 1 sh_count 0 cur_l2ts 0 elapsed_l2b 0
+2026-10-10T06:46:42.564Z,6.564423,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::initializeFromInfo: rplg_sabuiltin_AudioCompressorEditor.rbxm_AudioCompressorEditor - Failed Empty
+2026-10-10T06:46:42.581Z,6.581425,3f6c,6 [FLog::Output] Flag DebugLogAssistantUI referenced from Lua isn't defined in C++ code
+2026-10-10T06:46:42.582Z,6.582425,3f6c,6 [FLog::Output] Flag AssistantImageGenAbortPollOn4xx referenced from Lua isn't defined in C++ code
+2026-10-10T06:46:42.746Z,6.746409,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetManager.rbxm' took 1.0393 msec
+2026-10-10T06:46:42.750Z,6.750409,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetManager.rbxm' took 500.0013 msec
+2026-10-10T06:46:42.752Z,6.752409,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AssetManager.rbxm took 521.5603 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:42.768Z,6.768408,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AssetManager.rbxm took 2.5700999999997975 msec
+2026-10-10T06:46:42.780Z,6.780408,4bd4,6,Warning [FLog::StudioPluginRelay] PluginWidgetRelay::updateWidgetTitle: rplg_sabuiltin_AudioCompressorEditor.rbxm_AudioCompressorEditor - Failed Empty
+2026-10-10T06:46:42.792Z,6.792408,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetAccess.rbxm' took 8.5976 msec
+2026-10-10T06:46:42.793Z,6.793408,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetAccess.rbxm' took 544.0005 msec
+2026-10-10T06:46:42.794Z,6.794408,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AssetAccess.rbxm took 564.4518999999999 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:42.976Z,6.976405,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AssetAccess.rbxm took 181.69669999999982 msec
+2026-10-10T06:46:43.307Z,7.307412,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AudioEqualizerEditor.rbxm' took 5.8786 msec
+2026-10-10T06:46:43.307Z,7.307412,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AudioEqualizerEditor.rbxm' took 521.0040 msec
+2026-10-10T06:46:43.313Z,7.313413,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AudioEqualizerEditor.rbxm took 531.8135000000002 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:43.495Z,7.495505,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AudioEqualizerEditor.rbxm took 182.11610000000002 msec
+2026-10-10T06:46:43.545Z,7.545486,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::initializeFromInfo: rplg_sabuiltin_AudioEqualizerEditor.rbxm_AudioEqualizerEditor - Failed Empty
+2026-10-10T06:46:43.562Z,7.562489,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AvatarSettings.rbxm' took 0.8668 msec
+2026-10-10T06:46:43.563Z,7.563489,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AvatarSettings.rbxm' took 737.0813 msec
+2026-10-10T06:46:43.565Z,7.565489,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AvatarSettings.rbxm took 746.7848999999998 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:43.577Z,7.577491,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AvatarSettings.rbxm took 10.350999999999999 msec
+2026-10-10T06:46:43.579Z,7.579491,4bd4,6,Warning [FLog::StudioPluginRelay] PluginWidgetRelay::updateWidgetTitle: rplg_sabuiltin_AudioEqualizerEditor.rbxm_AudioEqualizerEditor - Failed Empty
+2026-10-10T06:46:43.651Z,7.651470,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Debugger.rbxm' took 1.0576 msec
+2026-10-10T06:46:43.651Z,7.651470,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Debugger.rbxm' took 262.0600 msec
+2026-10-10T06:46:43.652Z,7.652470,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Debugger.rbxm took 275.3494999999999 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:43.673Z,7.673467,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_DirectionalCurveEditor.rbxm' took 0.6538 msec
+2026-10-10T06:46:43.673Z,7.673467,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_DirectionalCurveEditor.rbxm' took 230.9936 msec
+2026-10-10T06:46:43.675Z,7.675467,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_DirectionalCurveEditor.rbxm took 242.7646999999995 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:43.723Z,7.723461,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_CancellableDialog.rbxm' took 0.7261 msec
+2026-10-10T06:46:43.723Z,7.723461,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_CancellableDialog.rbxm' took 716.0581 msec
+2026-10-10T06:46:43.725Z,7.725461,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_CancellableDialog.rbxm took 727.4817999999996 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:43.527Z,7.527525,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_CollisionGroupsEditor.rbxm' took 0.7026 msec
+2026-10-10T06:46:43.762Z,7.762491,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_CollisionGroupsEditor.rbxm' took 581.0946 msec
+2026-10-10T06:46:43.763Z,7.763491,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_CollisionGroupsEditor.rbxm took 586.4670999999993 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:43.792Z,7.792495,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Debugger.rbxm took 139.01060000000064 msec
+2026-10-10T06:46:43.865Z,7.865487,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_FindReplaceAll.rbxm' took 0.9180 msec
+2026-10-10T06:46:43.865Z,7.865487,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_FindReplaceAll.rbxm' took 276.9945 msec
+2026-10-10T06:46:43.867Z,7.867487,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_FindReplaceAll.rbxm took 287.909 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:43.884Z,7.884487,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_DirectionalCurveEditor.rbxm took 83.71249999999986 msec
+2026-10-10T06:46:44.015Z,8.015139,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PlaceAnnotations.rbxm' took 0.7716 msec
+2026-10-10T06:46:44.015Z,8.015139,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PlaceAnnotations.rbxm' took 245.6470 msec
+2026-10-10T06:46:44.016Z,8.016137,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PlaceAnnotations.rbxm took 253.04469999999935 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.032Z,8.032106,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_CancellableDialog.rbxm took 147.85360000000037 msec
+2026-10-10T06:46:44.050Z,8.050947,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PluginManagement.rbxm' took 0.8673 msec
+2026-10-10T06:46:44.050Z,8.050947,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PluginManagement.rbxm' took 233.4480 msec
+2026-10-10T06:46:44.052Z,8.052958,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PluginManagement.rbxm took 239.3881000000002 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.063Z,8.063016,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_TransformDragger.rbxm' took 0.0323 msec
+2026-10-10T06:46:44.064Z,8.064022,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_TransformDragger.rbxm' took 4.0230 msec
+2026-10-10T06:46:44.064Z,8.064022,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_TransformDragger.rbxm took 10.867400000000416 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.151Z,8.151875,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Notifications.rbxm' took 0.6291 msec
+2026-10-10T06:46:44.151Z,8.151875,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Notifications.rbxm' took 460.4098 msec
+2026-10-10T06:46:44.157Z,8.157875,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Notifications.rbxm took 472.1206000000011 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.157Z,8.157875,1a3c,6 [FLog::StudioPluginOTA] fetchSuccess Fetch plugin versions success
+2026-10-10T06:46:44.157Z,8.157875,1a3c,6,Info [FLog::StudioPluginOTANew] Download OTA manifest complete
+2026-10-10T06:46:44.157Z,8.157875,1a3c,6,Verbose [FLog::StudioPluginOTANew] Selected plugin version: 24625, studio version: 0.742.0.7421053 for plugin SuperTemplate
+2026-10-10T06:46:44.158Z,8.158875,1a3c,6,Verbose [FLog::StudioPluginOTANew] Selected plugin version: 24622, studio version: 0.742.0.7421053 for plugin ManageCollaborators
+2026-10-10T06:46:44.158Z,8.158875,1a3c,6,Verbose [FLog::StudioPluginOTANew] Selected plugin version: 24569, studio version: 0.742.0.7421053 for plugin AnimationGraphEditor
+2026-10-10T06:46:44.158Z,8.158875,1a3c,6,Verbose [FLog::StudioPluginOTANew] Selected plugin version: 24621, studio version: 0.742.0.7421053 for plugin DeviceSimulatorToolbar
+2026-10-10T06:46:44.158Z,8.158875,1a3c,6,Verbose [FLog::StudioPluginOTANew] Write OTA cache
+2026-10-10T06:46:44.159Z,8.159875,1a3c,6,Info [FLog::StudioPluginOTANew] Found 0 plugins to download in the manifest
+2026-10-10T06:46:44.159Z,8.159875,1a3c,6 [FLog::StudioPluginOTA] downloadCompleteSuccess Download complete successfully
+2026-10-10T06:46:44.159Z,8.159875,1a3c,6,Info [FLog::StudioPluginOTANew] Download completed successfully for Plugin OTA
+2026-10-10T06:46:44.159Z,8.159875,1a3c,6,Warning [FLog::StudioPluginOTANew] Failed to acquire deploy lock for plugin deployment, this can happen if you're still loading plugins or if another process has the deploy lock, retrying in 50 ms (attempt 1)
+2026-10-10T06:46:44.159Z,8.159875,1a3c,6,Info [FLog::StudioPluginOTANew] waiting for 628.3309326171875 seconds to start next OTA download
+2026-10-10T06:46:44.226Z,8.226880,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ActivityFeed.rbxm' took 7.8173 msec
+2026-10-10T06:46:44.227Z,8.227880,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ActivityFeed.rbxm' took 1978.4722 msec
+2026-10-10T06:46:44.228Z,8.228880,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ActivityFeed.rbxm took 1998.9998 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.228Z,8.228880,1a3c,6,Warning [FLog::StudioPluginOTANew] Failed to acquire deploy lock for plugin deployment, this can happen if you're still loading plugins or if another process has the deploy lock, retrying in 50 ms (attempt 2)
+2026-10-10T06:46:44.261Z,8.261863,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_CollisionGroupsEditor.rbxm took 228.57839999999996 msec
+2026-10-10T06:46:44.264Z,8.264863,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_FindReplaceAll.rbxm took 2.8586999999991036 msec
+2026-10-10T06:46:44.351Z,8.351865,4ac8,6,Error [DFLog::SQLite] sqlite3_error_log: 283 - recovered 284 frames from WAL file C:\Users\<REDACTED_USER>\AppData\Local\Roblox\rbx-storage.db-wal
+2026-10-10T06:46:44.357Z,8.357864,4ac8,6,Critical <log line elided due to exception: precision not allowed for this argument type>
+2026-10-10T06:46:44.357Z,8.357864,4ff8,6,Critical [DFLog::RbxStorage] RbxStorage::getStorageInterface double-checked locking succeeded after waiting 148.986 ms by AssetProvider
+2026-10-10T06:46:44.364Z,8.364864,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AudioActions.rbxm' took 1.0208 msec
+2026-10-10T06:46:44.364Z,8.364864,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AudioActions.rbxm' took 1666.4585 msec
+2026-10-10T06:46:44.367Z,8.367865,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AudioActions.rbxm took 1673.087099999999 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.377Z,8.377864,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Assistant.rbxm' took 1.6587 msec
+2026-10-10T06:46:44.377Z,8.377864,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Assistant.rbxm' took 2060.4557 msec
+2026-10-10T06:46:44.379Z,8.379864,0cb8,6,Warning [FLog::StudioPluginOTANew] Failed to acquire deploy lock for plugin deployment, this can happen if you're still loading plugins or if another process has the deploy lock, retrying in 50 ms (attempt 3)
+2026-10-10T06:46:44.380Z,8.380864,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Assistant.rbxm took 2067.2520999999992 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.422Z,8.422864,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PropertiesPlugin.rbxm' took 1.0076 msec
+2026-10-10T06:46:44.422Z,8.422864,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PropertiesPlugin.rbxm' took 546.3768 msec
+2026-10-10T06:46:44.424Z,8.424864,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PropertiesPlugin.rbxm took 556.8992000000002 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.429Z,8.429864,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PlaceAnnotations.rbxm took 164.62959999999958 msec
+2026-10-10T06:46:44.430Z,8.430863,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PluginManagement.rbxm took 0.9947999999990742 msec
+2026-10-10T06:46:44.430Z,8.430863,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_TransformDragger.rbxm took 0.2881999999999607 msec
+2026-10-10T06:46:44.455Z,8.455864,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ControlsEmulator.rbxm' took 2.7819 msec
+2026-10-10T06:46:44.455Z,8.455864,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ControlsEmulator.rbxm' took 1115.4541 msec
+2026-10-10T06:46:44.456Z,8.456863,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ControlsEmulator.rbxm took 1125.5470999999995 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.480Z,8.480864,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_VisualizationModes.rbxm' took 0.8181 msec
+2026-10-10T06:46:44.480Z,8.480864,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_VisualizationModes.rbxm' took 389.6866 msec
+2026-10-10T06:46:44.482Z,8.482863,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_VisualizationModes.rbxm took 398.7997000000014 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.527Z,8.527864,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AttenuationCurveEditor.rbxm' took 0.8665 msec
+2026-10-10T06:46:44.527Z,8.527864,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AttenuationCurveEditor.rbxm' took 1945.4384 msec
+2026-10-10T06:46:44.528Z,8.528863,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AttenuationCurveEditor.rbxm took 1951.4392999999995 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.534Z,8.534863,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ModerationDialog.rbxm' took 0.8583 msec
+2026-10-10T06:46:44.534Z,8.534863,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ModerationDialog.rbxm' took 844.3982 msec
+2026-10-10T06:46:44.539Z,8.539865,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ModerationDialog.rbxm took 855.1310999999995 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.545Z,8.545866,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Notifications.rbxm took 114.51279999999997 msec
+2026-10-10T06:46:44.624Z,8.624866,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ExplorerPlugin.rbxm' took 1.0274 msec
+2026-10-10T06:46:44.624Z,8.624866,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ExplorerPlugin.rbxm' took 1048.3760 msec
+2026-10-10T06:46:44.626Z,8.626867,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ExplorerPlugin.rbxm took 1077.0574999999997 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.627Z,8.627867,0848,6,Warning [FLog::StudioPluginOTANew] Failed to acquire deploy lock for plugin deployment, this can happen if you're still loading plugins or if another process has the deploy lock, retrying in 50 ms (attempt 4)
+2026-10-10T06:46:44.677Z,8.677869,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Tutorials.rbxm' took 0.8594 msec
+2026-10-10T06:46:44.677Z,8.677869,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Tutorials.rbxm' took 608.8184 msec
+2026-10-10T06:46:44.679Z,8.679869,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Tutorials.rbxm took 615.9136000000008 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.679Z,8.679869,0848,6,Warning [FLog::StudioPluginOTANew] Failed to acquire deploy lock for plugin deployment, this can happen if you're still loading plugins or if another process has the deploy lock, retrying in 50 ms (attempt 5)
+2026-10-10T06:46:44.680Z,8.680869,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ActivityFeed.rbxm took 135.52549999999997 msec
+2026-10-10T06:46:44.681Z,8.681869,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AudioActions.rbxm took 0.5225000000006474 msec
+2026-10-10T06:46:44.689Z,8.689869,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Ribbon.rbxm' took 1.0654 msec
+2026-10-10T06:46:44.689Z,8.689869,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Ribbon.rbxm' took 727.6272 msec
+2026-10-10T06:46:44.691Z,8.691870,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Ribbon.rbxm took 733.607000000001 msec [dm=Standalone otaVersion=-3]
+2026-10-10T06:46:44.691Z,8.691870,1a3c,6,Info [FLog::PluginLoadingEnhanced] Loading Plugins in 3 total took 2462.0496999999996 msec
+2026-10-10T06:46:44.735Z,8.735870,3f6c,6,Info [FLog::StudioPluginOTANew] Successfully acquired deploy lock for plugin deployment - proceeding with deployment
+2026-10-10T06:46:44.735Z,8.735870,3f6c,6,Info [FLog::StudioPluginOTANew] Deploy starting for Plugin OTA
+2026-10-10T06:46:44.739Z,8.739872,3f6c,6,Verbose [FLog::StudioPluginOTANew] Deployed 0 plugins
+2026-10-10T06:46:44.739Z,8.739872,3f6c,6,Info [FLog::StudioPluginOTANew] Deploy finished successfully for Plugin OTA
+2026-10-10T06:46:44.739Z,8.739872,3f6c,6,Info [FLog::StudioPluginOTANew] Hot reload attempted but not actually enabled, skipping hot reload
+2026-10-10T06:46:44.862Z,8.862863,0848,6,Warning [FLog::StudioCommands] Unable to find component AccessTokenPermissions in histogram map.
+2026-10-10T06:46:44.862Z,8.862863,0848,6,Warning [FLog::StudioCommands] Unable to find component AssistantBridge in histogram map.
+2026-10-10T06:46:44.862Z,8.862863,0848,6,Warning [FLog::StudioCommands] Unable to find component InstancePicker in histogram map.
+2026-10-10T06:46:44.862Z,8.862863,0848,6,Warning [FLog::StudioCommands] Unable to find component AssetAccessController in histogram map.
+2026-10-10T06:46:44.862Z,8.862863,0848,6,Warning [FLog::StudioCommands] Unable to find component CapabilitiesHandler in histogram map.
+2026-10-10T06:46:44.863Z,8.863863,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Assistant.rbxm took 181.52030000000076 msec
+2026-10-10T06:46:44.863Z,8.863863,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PropertiesPlugin.rbxm took 0.3925000000002399 msec
+2026-10-10T06:46:44.865Z,8.865863,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ControlsEmulator.rbxm took 1.7954000000006687 msec
+2026-10-10T06:46:44.915Z,8.915859,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_VisualizationModes.rbxm took 49.69649999999959 msec
+2026-10-10T06:46:45.018Z,9.018884,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AttenuationCurveEditor.rbxm took 102.5779 msec
+2026-10-10T06:46:45.065Z,9.065860,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ModerationDialog.rbxm took 47.40759999999966 msec
+2026-10-10T06:46:45.067Z,9.067859,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ExplorerPlugin.rbxm took 1.2472000000016692 msec
+2026-10-10T06:46:45.067Z,9.067859,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Tutorials.rbxm took 0.18530000000005487 msec
+2026-10-10T06:46:45.129Z,9.129851,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Ribbon.rbxm took 61.97760000000052 msec
+2026-10-10T06:46:45.129Z,9.129851,3f6c,6,Info [FLog::PluginLoadingEnhanced]  plugins requested to load for gst 'Standalone'
+2026-10-10T06:46:45.132Z,9.132851,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::onResizeEvent: rplg_sabuiltin_Ribbon.rbxm_Ribbon - Failed Empty
+2026-10-10T06:46:45.145Z,9.145871,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::initializeFromInfo: rplg_sabuiltin_DirectionalCurveEditor.rbxm_DirectionalCurveEditor - Failed Empty
+2026-10-10T06:46:45.170Z,9.170874,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::initializeFromInfo: rplg_sabuiltin_PlaceAnnotations.rbxm_PlaceAnnotations - Failed Empty
+2026-10-10T06:46:45.201Z,9.201876,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::initializeFromInfo: rplg_sabuiltin_AttenuationCurveEditor.rbxm_AttenuationCurveEditor - Failed Empty
+2026-10-10T06:46:45.292Z,9.292106,0848,6,Info [FLog::CreatorOutput] Loading Lua Ribbon, was enabled? true
+2026-10-10T06:46:45.315Z,9.315988,4bd4,6,Warning [FLog::StudioPluginRelay] PluginWidgetRelay::updateWidgetTitle: rplg_sabuiltin_DirectionalCurveEditor.rbxm_DirectionalCurveEditor - Failed Empty
+2026-10-10T06:46:45.330Z,9.330914,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::onResizeEvent: rplg_sabuiltin_CancellableDialog.rbxm_Dialog{de88be5c-48d5-4ff9-9917-3a197a58af62} - Failed Empty
+2026-10-10T06:46:45.352Z,9.352989,4bd4,6,Info [FLog::StudioApplicationState] State: Qt::ApplicationActive
+2026-10-10T06:46:45.367Z,9.367063,4bd4,6,Warning [FLog::CreatorWarning] Warning: Failed to apply StyleRule property 'CornerRadius' from '>> .RoundedCorner8 ::UICorner': Unable to cast string to UDim
+2026-10-10T06:46:45.367Z,9.367063,4bd4,6,Warning [FLog::CreatorWarning] Warning: Failed to apply StyleRule property 'CornerRadius' from '>> .RoundedCorner8 ::UICorner': Unable to cast string to UDim
+2026-10-10T06:46:45.367Z,9.367063,4bd4,6,Warning [FLog::CreatorWarning] Warning: Failed to apply StyleRule property 'CornerRadius' from '>> .RoundedCorner8 ::UICorner': Unable to cast string to UDim
+2026-10-10T06:46:45.367Z,9.367063,4bd4,6,Warning [FLog::CreatorWarning] Warning: Failed to apply StyleRule property 'CornerRadius' from '>> .RoundedCorner8 ::UICorner': Unable to cast string to UDim
+2026-10-10T06:46:45.368Z,9.368068,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c45298390 windowHandle=0x1a0d6a dims=1280x29
+2026-10-10T06:46:45.368Z,9.368068,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 1280x29 swapChain=0x15c45298390
+2026-10-10T06:46:45.369Z,9.369073,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c449e1760 windowHandle=0x60085e dims=1278x808
+2026-10-10T06:46:45.369Z,9.369073,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 1278x808 swapChain=0x15c449e1760
+2026-10-10T06:46:45.425Z,9.425367,4bd4,6,Warning [FLog::StudioPluginRelay] PluginWidgetRelay::updateWidgetTitle: rplg_sabuiltin_AttenuationCurveEditor.rbxm_AttenuationCurveEditor - Failed Empty
+2026-10-10T06:46:45.428Z,9.428383,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c440f3fb0 windowHandle=0x820730 dims=510x130
+2026-10-10T06:46:45.428Z,9.428383,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 510x130 swapChain=0x15c440f3fb0
+2026-10-10T06:46:45.445Z,9.445430,4bd4,6,Info [FLog::StudioKeyEvents] open place (identifier = D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx) [start]
+2026-10-10T06:46:45.446Z,9.446425,4bd4,6,Info [FLog::RuntimeInjector] Place Injector constructed 182 bindings.
+2026-10-10T06:46:45.481Z,9.481273,4bd4,6,Info [FLog::StateMachine] Creating StateMachine 'PlaceSessionStateMachine'
+2026-10-10T06:46:45.482Z,9.482268,3f6c,6,Warning [FLog::StudioCommands] Unable to find component StudioDeviceEmulator in histogram map.
+2026-10-10T06:46:45.482Z,9.482268,3f6c,6,Warning [FLog::StudioCommands] Unable to find component StudioDeviceEmulator in histogram map.
+2026-10-10T06:46:45.485Z,9.485255,4bd4,6,Info [FLog::AssetAccessController] Registered global listener for kSignalRAssetDependencyGrantEvent
+2026-10-10T06:46:45.485Z,9.485255,4bd4,6,Info [FLog::AssetAccessController] Registered global listener for kSignalRAssetUsePermissionGrantedImage
+2026-10-10T06:46:45.485Z,9.485255,4bd4,6,Info [FLog::AssetAccessController] Registered global listener for kSignalRAssetUsePermissionGrantedMesh
+2026-10-10T06:46:46.882Z,10.882649,4bd4,6,Info [FLog::StateMachine] Creating StateMachine 'PublishSessionStateMachine'
+2026-10-10T06:46:46.916Z,10.916649,4bd4,6,Info [FLog::RenderSchedulerState] Change RenderJobMode TaskScheduler -> Manual
+2026-10-10T06:46:47.143Z,11.143641,2528,12 [DFLog::HttpTraceError] HttpResponse(#38 0x15c27c607f8) time:183.0ms (net:182.9ms timeInRetryQueue:0.0ms)status:400 Bad Request bodySize:99 url:{ "<REDACTED_URL>" } ip:128.116.120.3 external:0 numberOfTimesRetried:0
+2026-10-10T06:46:47.143Z,11.143641,3f6c,6,Error [FLog::UserHeartbeats] HTTP Request user-heartbeats-api/action-report failed: {"sessionId":"535F76CF-A3BF-4CD0-8735-1393A8090B36","status":400,"message":"Place does not exist."}
+2026-10-10T06:46:47.157Z,11.157640,4bd4,6,Warning [FLog::StudioPluginRelay] PluginWidgetRelay::updateWidgetTitle: rplg_sabuiltin_PlaceAnnotations.rbxm_PlaceAnnotations - Failed Empty
+2026-10-10T06:46:47.160Z,11.160640,4bd4,6 [FLog::Output] Info: 	Initializing EngineWidget
+2026-10-10T06:46:47.172Z,11.172639,4bd4,6 [FLog::Output] Info: 	Initializing View
+2026-10-10T06:46:47.180Z,11.180638,3f6c,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:47.180Z,11.180638,3f6c,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:47.180Z,11.180638,3f6c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:47.180Z,11.180638,3f6c,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:47.180Z,11.180638,3f6c,6 [telemetryLog] TotalTimeInMs: 78
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] ramAvailableMb: 5804
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] TaskCount: 3
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] PerStateTraceId: CE035D3F-7FCA-43BB-BDF9-573841623028
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] State: OpenPlaceInitialization
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] TaskNames: PlaceSessionMainViewManager-InitializeQtWidgets;ApplyProjectConfig;UiPreparation;
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:47.181Z,11.181638,3f6c,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:47.182Z,11.182638,3f6c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:47.183Z,11.183638,3f6c,6 [FLog::CloseDataModel] Create DataModel - heartbeat(1)
+2026-10-10T06:46:47.189Z,11.189637,3f6c,6,Warning [FLog::Output] Hello world, CLI-208683!
+2026-10-10T06:46:47.189Z,11.189637,3f6c,6,Warning [FLog::Output] Hello world, CLI-207485!
+2026-10-10T06:46:47.189Z,11.189637,3f6c,6,Warning [FLog::Output] Hello again, world 206748!
+2026-10-10T06:46:47.190Z,11.190638,3f6c,6,Warning [FLog::Output] Hello world CLI-206426!
+2026-10-10T06:46:47.190Z,11.190638,3f6c,6,Warning [FLog::Output] Hello world ...!
+2026-10-10T06:46:47.190Z,11.190638,3f6c,6,Warning [FLog::Output] Hello 198367!
+2026-10-10T06:46:47.190Z,11.190638,3f6c,6,Warning [FLog::Output] Hello World! **CLI-199819**
+2026-10-10T06:46:47.190Z,11.190638,3f6c,6,Warning [FLog::Output] Hello World! from CLI-206127
+2026-10-10T06:46:47.190Z,11.190638,3f6c,6,Warning [FLog::Output] Hello World! CLI210530
+2026-10-10T06:46:47.190Z,11.190638,3f6c,6,Warning [FLog::Output] Hello World CLI-212185!
+2026-10-10T06:46:47.190Z,11.190638,3f6c,6,Warning [FLog::Output] Hello World! CLI-222132
+2026-10-10T06:46:47.191Z,11.191637,3f6c,6,Warning [FLog::Output] Hello World <3 CLI-225598
+2026-10-10T06:46:47.191Z,11.191637,3f6c,6,Warning [FLog::Output] Hello World CLI-226375
+2026-10-10T06:46:47.191Z,11.191637,3f6c,6,Warning [FLog::Output] Hello World! CLI-226477
+2026-10-10T06:46:47.191Z,11.191637,3f6c,6,Warning [FLog::Output] Hello World! CLI-226592
+2026-10-10T06:46:47.192Z,11.192637,3f6c,6,Info [FLog::Audio] InputDevice 0: 마이크(2- MP300)([88e82cd1-4f5f-4bd7-9bbf413444859a33]) 48000/1/4
+2026-10-10T06:46:47.193Z,11.193637,3f6c,6,Info [FLog::Audio] InputDevice 1: 마이크(Realtek High Definition Audio)([c6d65d91-29c9-4360-ab0fba6ecf7b24e3]) 48000/2/4
+2026-10-10T06:46:47.240Z,11.240652,3f6c,6,Info [FLog::DMListenerBridge] registerDataModel dm=0x15c1d243cd0, gst=StudioGameStateType_Edit, dmId=2, isOriginalDM=true
+2026-10-10T06:46:47.247Z,11.247652,1a3c,6 [telemetryLog] Sending 'OpenPlaceDataModelTaskTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:47.248Z,11.248652,1a3c,6 [telemetryLog] Intro message: DataModel Task Telemetry Summary
+2026-10-10T06:46:47.248Z,11.248652,1a3c,6 [telemetryLog] 'OpenPlaceDataModelTaskTelemetry' fields logging starts.
+2026-10-10T06:46:47.248Z,11.248652,4bd4,6,Info [FLog::DMListenerBridge] setCurrentGameStateTypeAndDmId currentGst=StudioGameStateType_Edit, currentDmId=2
+2026-10-10T06:46:47.248Z,11.248652,1a3c,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] UiDmTaskTotalTimeMs: 0
+2026-10-10T06:46:47.248Z,11.248652,4bd4,6,Info [FLog::AssetDataModelManager] Setting StudioGameStateType to StudioGameStateType_Edit
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] UiDmTaskScheduleTimeMs: 0
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] UiDmTaskAcquireLockTimeMs: 0
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] ParallelDmTaskTotalTimeMs: 7
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] ramAvailableMb: 5784
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] UiDmTaskCount: 2
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] ParallelDmTaskCount: 28
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:47.248Z,11.248652,3f6c,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] DmId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx-StudioGameStateType_Edit
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] DmTaskPhase: PostCreation
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] UiDmTaskNames: AssetManager;BulkImport;
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] ParallelDmTaskNames: Default;UsageTrackerPlaceSessionListenerOnCreatedDataModel;LuaFlag;ScriptVersion;DeviceEmulatorServicePlaceListener-SetEmulator;ExplorerServiceVisibilityPlaceListener-SetPSC;Register StylingSavePublishEventSendTelemetry;LegacyStudioBridgeService;Modeling;StartModelMeshJob;Physics;PlaceSessionDataModelListenerOnCreatedDataModel;PlacesServicePlaceListener-SetPlaySoloManager;SoundJobManager-PostCreation;setPluginRibbonActionHostDm;PluginWidgetsViewOnCreatedDataModel;ScriptCloneTrackerOnCreatedDataModel;ScriptExecutionCounterTrackerOnCreatedDataModel;RobloxDocManagerOnCreatedDataModel;ServiceVisibilityServiceRegister;StudioDockPanelManagerOnCreatedDataModel;TutorialServicePlaceListener-SetPlaceSessionContext;PathFinding;Gizmo;DebuggerPlaceSessionListenerOnCreatedDataModel;DeviceEmulator;MarketPlace;TextScraperListenerOnCreatedDataModel;
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:47.249Z,11.249653,3f6c,6 [telemetryLog] PerStateTraceId: 902D4C99-B683-4C44-8D13-1E8794F2F5A4
+2026-10-10T06:46:47.250Z,11.250652,3f6c,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:47.250Z,11.250652,3f6c,6 [telemetryLog] AllDmTasksSuccess: true
+2026-10-10T06:46:47.250Z,11.250652,3f6c,6 [telemetryLog] 'OpenPlaceDataModelTaskTelemetry' fields logging ends.
+2026-10-10T06:46:47.256Z,11.256653,0cb8,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:47.256Z,11.256653,0cb8,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:47.256Z,11.256653,0cb8,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] TotalTimeInMs: 73
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] ramAvailableMb: 5795
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] TaskCount: 2
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:47.257Z,11.257653,0cb8,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] PerStateTraceId: 902D4C99-B683-4C44-8D13-1E8794F2F5A4
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] State: OpenPlaceCreateDataModel
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] TaskNames: OriginalDataModelCreation;InitializeEmulationMode;
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:47.258Z,11.258654,0cb8,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] Sending 'OpenPlaceDataModelTaskTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] Intro message: DataModel Task Telemetry Summary
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] 'OpenPlaceDataModelTaskTelemetry' fields logging starts.
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] ParallelDmTaskTotalTimeMs: 5
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] ramAvailableMb: 5778
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] ParallelDmTaskCount: 5
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:47.260Z,11.260653,3f6c,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] DmId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx-StudioGameStateType_Edit
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] DmTaskPhase: PreLoading
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] ParallelDmTaskNames: RegisterCommandDataBridge;PublishMediator-setupSignals;StudioTestServiceDMBridgeForClient;Package;RemoteSystemOutputTaskRegister;
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] PerStateTraceId: BB2FA515-E432-46CA-B6DB-A118E1808F37
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] AllDmTasksSuccess: true
+2026-10-10T06:46:47.261Z,11.261654,3f6c,6 [telemetryLog] 'OpenPlaceDataModelTaskTelemetry' fields logging ends.
+2026-10-10T06:46:47.266Z,11.266654,3f6c,6,Info [FLog::PlaceSessionTaskRegister] Start to process OpenPlacePostLoadDataModelTasks, Cancel button will be disabled now
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:47.266Z,11.266654,4bd4,6,Info [FLog::StudioDocking] Restoring Layout: StudioGameStateType_Edit
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] TotalTimeInMs: 13
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] ramAvailableMb: 5778
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] TaskCount: 1
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:47.266Z,11.266654,1a3c,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] PerStateTraceId: BB2FA515-E432-46CA-B6DB-A118E1808F37
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] State: OpenPlaceLoadDataModel
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] LaunchTask: EditFile
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] TaskNames: OpenPlaceLoadDataModel;
+2026-10-10T06:46:47.267Z,11.267654,1a3c,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:47.268Z,11.268655,1a3c,6 [telemetryLog] IsTeamCreate: false
+2026-10-10T06:46:47.268Z,11.268655,1a3c,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:47.268Z,11.268655,1a3c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:47.269Z,11.269654,1a3c,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:47.269Z,11.269654,1a3c,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:47.272Z,11.272655,1a3c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] TotalTimeInMs: 0
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] ramAvailableMb: 5777
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] TaskCount: 1
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] PerStateTraceId: 2FFBB5BC-AE3C-44CA-9227-77ACF81FBAB8
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] State: OpenPlaceWaitForStreaming
+2026-10-10T06:46:47.273Z,11.273655,1a3c,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:47.274Z,11.274655,1a3c,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:47.274Z,11.274655,1a3c,6 [telemetryLog] TaskNames: OpenPlaceWaitForStreaming;
+2026-10-10T06:46:47.274Z,11.274655,1a3c,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:47.274Z,11.274655,1a3c,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:47.274Z,11.274655,1a3c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:47.291Z,11.291656,4bd4,6,Info [StudioQtCategoryLog_qtitan_docking] qtitan.docking: DockPanelManager::loadStateFromDevice - Start QBuffer(0xaeb6fa7e0, name = "Layout_StudioGameStateType_Edit")
+2026-10-10T06:46:47.329Z,11.329660,0848,6 [FLog::StudioDebuggerV2] DebuggerConnection(0000015C285A06F0): Service provider changed (old 0000000000000000, new 0000015C02220EC0)
+2026-10-10T06:46:47.329Z,11.329660,0848,6 [FLog::StudioDebuggerV2] DAPClient: Invoking method: setExceptionBreakpoints
+2026-10-10T06:46:47.329Z,11.329660,0848,6 [FLog::StudioDebuggerV2] DAPClient: Invoking method: continue
+2026-10-10T06:46:47.582Z,11.582719,4bd4,6,Info [StudioQtCategoryLog_qtitan_docking] qtitan.docking: DockPanelManager::loadStateFromDevice - End
+2026-10-10T06:46:47.593Z,11.593724,0848,6 [FLog::StudioDebuggerV2] DAPClient: Response was an error: Failed to send message to server.
+2026-10-10T06:46:47.593Z,11.593724,0848,6 [FLog::StudioDebuggerV2] DAPClient: Response was an error: Failed to send message to server.
+2026-10-10T06:46:47.635Z,11.635743,4bd4,6,Info [FLog::RobloxDocManager] Setting current doc to type 0
+2026-10-10T06:46:47.636Z,11.636701,4bd4,6,Info [FLog::RobloxIDEDoc] RobloxIDEDoc::activate - start
+2026-10-10T06:46:47.640Z,11.640700,4bd4,6,Info [FLog::StudioDocking] Update for New Document
+2026-10-10T06:46:47.682Z,11.682702,4bd4,6,Info [FLog::StudioPluginOTANew] place session context change oldctx: false <-> newctx: true
+2026-10-10T06:46:47.683Z,11.683702,1a3c,6,Info [FLog::StudioPluginOTANew] Hot reload attempted but not actually enabled, skipping hot reload
+2026-10-10T06:46:47.683Z,11.683702,4bd4,6 [FLog::Output] TeamCreateWidget - Setting DataModel
+2026-10-10T06:46:47.716Z,11.716702,4bd4,6,Info [FLog::D3D11SwapChain] validate: resize triggered swapChain=0x15c7b7c7050 dims=1072x754 hasFB=true
+2026-10-10T06:46:47.716Z,11.716702,4bd4,6,Info [FLog::D3D11SwapChain] validate: gpu=NVIDIA GeForce GT 1030
+2026-10-10T06:46:47.716Z,11.716702,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c7b7c7050 windowHandle=0xe0cd4 dims=1072x754
+2026-10-10T06:46:47.716Z,11.716702,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 1072x754 swapChain=0x15c7b7c7050
+2026-10-10T06:46:47.717Z,11.717703,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c45298390 windowHandle=0x1a0d6a dims=1280x36
+2026-10-10T06:46:47.717Z,11.717703,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 1280x36 swapChain=0x15c45298390
+2026-10-10T06:46:47.718Z,11.718702,4bd4,6 [FLog::Graphics] SceneManager: resizing main targets to 1072x754
+2026-10-10T06:46:47.843Z,11.843695,4bd4,6,Warning [FLog::Graphics] WARNING: D3D Frame query much longer than expected (100.0 ms).
+2026-10-10T06:46:47.893Z,11.893693,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::onResizeEvent: rplg_sabuiltin_DeviceSimulatorToolbar.rbxm_DeviceSimulatorToolbar - Failed Empty
+2026-10-10T06:46:48.010Z,12.010739,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::addOrRestoreToMainWindow: rplg_sabuiltin_StartPage.rbxm_StartPage - Failed Already Added
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] Sending 'OpenPlaceDataModelTaskTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] Intro message: DataModel Task Telemetry Summary
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] 'OpenPlaceDataModelTaskTelemetry' fields logging starts.
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] ParallelDmTaskTotalTimeMs: 1102
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] ramAvailableMb: 5436
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] ParallelDmTaskCount: 7
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:48.368Z,12.368404,3f6c,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] DmId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx-StudioGameStateType_Edit
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] DmTaskPhase: PostLoading
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] ParallelDmTaskNames: EnableChangeHistory;ExpandedTerrainContextProvider-Initialize;CacheLiveScriptingSandboxedSources;PackageNestedRootUniquification;CaptureDataModelProxyForInstanceCount;TeamCreateWidget-SetDataModel;DebuggerHostAppServices-onDataModelLoaded;
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] PerStateTraceId: C2D68636-8C9F-4736-BDB8-B094A81A6BBF
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] AllDmTasksSuccess: true
+2026-10-10T06:46:48.369Z,12.369410,3f6c,6 [telemetryLog] 'OpenPlaceDataModelTaskTelemetry' fields logging ends.
+2026-10-10T06:46:48.374Z,12.374435,3f6c,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:48.374Z,12.374435,3f6c,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:48.374Z,12.374435,3f6c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:48.374Z,12.374435,3f6c,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:48.374Z,12.374435,3f6c,6 [telemetryLog] TotalTimeInMs: 1102
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] ramAvailableMb: 5777
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] TaskCount: 2
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] PerStateTraceId: C2D68636-8C9F-4736-BDB8-B094A81A6BBF
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] State: OpenPlacePostLoadDataModel
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:48.375Z,12.375441,3f6c,6 [telemetryLog] TaskNames: OpenPlacePostLoadDataModelTasks;PlaceManager-onPlaceOpenPostLoadDataModel;
+2026-10-10T06:46:48.376Z,12.376446,3f6c,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:48.376Z,12.376446,3f6c,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:48.376Z,12.376446,4bd4,6,Info [FLog::D3D11SwapChain] validate: resize triggered swapChain=0x15c7b7c7050 dims=1072x734 hasFB=true
+2026-10-10T06:46:48.376Z,12.376446,3f6c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:48.376Z,12.376446,4bd4,6,Info [FLog::D3D11SwapChain] validate: gpu=NVIDIA GeForce GT 1030
+2026-10-10T06:46:48.376Z,12.376446,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c7b7c7050 windowHandle=0xe0cd4 dims=1072x734
+2026-10-10T06:46:48.376Z,12.376446,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 1072x734 swapChain=0x15c7b7c7050
+2026-10-10T06:46:48.376Z,12.376446,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c449e1760 windowHandle=0xf0cde dims=1076x40
+2026-10-10T06:46:48.376Z,12.376446,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 1076x40 swapChain=0x15c449e1760
+2026-10-10T06:46:48.377Z,12.377451,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c458f6be0 windowHandle=0x540952 dims=197x393
+2026-10-10T06:46:48.377Z,12.377451,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 197x393 swapChain=0x15c458f6be0
+2026-10-10T06:46:48.385Z,12.385491,4bd4,6 [FLog::Graphics] SceneManager: resizing main targets to 1072x734
+2026-10-10T06:46:48.400Z,12.400569,4bd4,6,Info [FLog::RuntimeInjector] AssetDataModel Injector constructed 227 bindings.
+2026-10-10T06:46:48.402Z,12.402579,1a3c,6,Info [FLog::StudioLinkedSourceMigrator] Checking for linked sources to migrate
+2026-10-10T06:46:48.402Z,12.402579,1a3c,6,Info [FLog::StudioLinkedSourceMigrator] No linked source to migrate
+2026-10-10T06:46:48.409Z,12.409615,1a3c,6,Info [FLog::AssetAccessDataModelObserver] Connected to ContentProvider assetFetchFailedNoExperienceAccess signal
+2026-10-10T06:46:48.414Z,12.414640,1a3c,6,Info [FLog::PluginLoadingEnhanced] builtin_ManageCollaborators.rbxm, builtin_9SliceEditor.rbxm, builtin_AdaptiveAnimationSupport.rbxm, builtin_AlignmentTool.rbxm, builtin_AnimationClipEditor.rbxm, builtin_AssetImporter.rbxm, builtin_AudioDiscovery.rbxm, builtin_AvatarCompatibilityPreviewer.rbxm, builtin_CompositorDebugger.rbxm, builtin_ConstraintTool.rbxm, builtin_ConvertToPackage.rbxm, builtin_DEPRECATED_AssetManager.rbxm, builtin_DeviceEmulator.rbxm, builtin_DraftsWidget.rbxm, builtin_EventEmulator.rbxm, builtin_ForceVisualizationControl.rbxm, builtin_GameSettings.rbxm, builtin_KnowledgeTutorials.rbxm, builtin_LayeredClothingEditor.rbxm, builtin_LegacyChatDeprecation.rbxm, builtin_LightGuides.rbxm, builtin_LocalizationTools.rbxm, builtin_MaterialGenerator.rbxm, builtin_MaterialManager.rbxm, builtin_MaterialPicker.rbxm, builtin_MoveDragger.rbxm, builtin_PathEditor.rbxm, builtin_PivotEditor.rbxm, builtin_PlayerEmulator.rbxm, builtin_PublishPlaceAs.rbxm, builtin_RigG
+2026-10-10T06:46:48.455Z,12.455247,4bd4,6,Info [FLog::RobloxViewStudioManager] Setting up view for DM with ID 2 type Edit
+2026-10-10T06:46:48.455Z,12.455247,4bd4,6 [FLog::Output] Info: 		RobloxViewStudio::RobloxViewStudio - start
+2026-10-10T06:46:48.455Z,12.455247,4bd4,6 [FLog::Output] Info: 			Marshaller
+2026-10-10T06:46:48.455Z,12.455247,4bd4,6 [FLog::Output] Info: 			BindToWorkspace
+2026-10-10T06:46:48.456Z,12.456247,4bd4,6 [FLog::Output] Info: 		RobloxView::RobloxView - end
+2026-10-10T06:46:48.456Z,12.456247,4bd4,6,Info [FLog::RenderSchedulerState] Setting asset DataModel Edit
+2026-10-10T06:46:48.456Z,12.456247,4bd4,6,Info [FLog::RenderSchedulerState] syncDataModels setting to asset
+2026-10-10T06:46:48.456Z,12.456247,4bd4,6,Info [FLog::RenderSchedulerState] Tearing down for DataModel Standalone with fallback nullptr
+2026-10-10T06:46:48.456Z,12.456247,4bd4,6,Info [FLog::RenderSchedulerState] Change RenderJobMode Manual -> None
+2026-10-10T06:46:48.469Z,12.469247,4bd4,6,Warning [FLog::Graphics] TM2: maxCloudAssetDimension: 4096
+2026-10-10T06:46:48.472Z,12.472247,4bd4,6,Info [FLog::RenderSchedulerState] Setting up for DataModel Edit with fallback Standalone
+2026-10-10T06:46:48.552Z,12.552246,3f6c,6 [FLog::StudioDebuggerV2] DAPClient: Invoking method: initialize
+2026-10-10T06:46:48.758Z,12.758244,4bd4,6,Warning [FLog::Graphics] TM2: maxCloudAssetDimension: 4096
+2026-10-10T06:46:48.786Z,12.786242,4bd4,6,Info [FLog::RenderSchedulerState] Change RenderJobMode None -> TaskScheduler
+2026-10-10T06:46:48.820Z,12.820242,4bd4,6,Info [FLog::PageWidgetsManager] showTabWidgets
+2026-10-10T06:46:48.822Z,12.822242,4bd4,6,Debug [FLog::DataModelSoundManager] onDataModelBecameCurrent: with shouldMute after considering application state = false
+2026-10-10T06:46:48.879Z,12.879586,3f6c,6 [FLog::Output] Flag UnifyModelPackagePublish3 referenced from Lua isn't defined in C++ code
+2026-10-10T06:46:48.989Z,12.989774,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_AlignmentTool.rbxm' took 3.6094 msec
+2026-10-10T06:46:48.998Z,12.998773,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_ManageCollaborators.rbxm' took 0.8108 msec
+2026-10-10T06:46:48.998Z,12.998773,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_ManageCollaborators.rbxm' took 582.1226 msec
+2026-10-10T06:46:48.999Z,12.999773,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_ManageCollaborators.rbxm took 585.7974000000006 msec [dm=Edit otaVersion=24622]
+2026-10-10T06:46:49.029Z,13.029771,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_AlignmentTool.rbxm' took 343.5215 msec
+2026-10-10T06:46:49.030Z,13.030771,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_AlignmentTool.rbxm took 347.22960000000035 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.056Z,13.056206,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_9SliceEditor.rbxm' took 2.7937 msec
+2026-10-10T06:46:49.056Z,13.056206,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_9SliceEditor.rbxm' took 606.9589 msec
+2026-10-10T06:46:49.057Z,13.057201,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_9SliceEditor.rbxm took 642.4918000000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.423Z,13.423374,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_AssetImporter.rbxm' took 4.3701 msec
+2026-10-10T06:46:49.424Z,13.424375,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_AssetImporter.rbxm' took 321.3929 msec
+2026-10-10T06:46:49.426Z,13.426375,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_AssetImporter.rbxm took 367.7471000000008 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.466Z,13.466396,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_ManageCollaborators.rbxm took 464.4821000000014 msec
+2026-10-10T06:46:49.474Z,13.474400,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_AlignmentTool.rbxm took 4.907000000001105 msec
+2026-10-10T06:46:49.475Z,13.475400,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_9SliceEditor.rbxm took 0.551700000000821 msec
+2026-10-10T06:46:49.531Z,13.531425,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_ConstraintTool.rbxm' took 0.8697 msec
+2026-10-10T06:46:49.531Z,13.531425,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_ConstraintTool.rbxm' took 266.1288 msec
+2026-10-10T06:46:49.532Z,13.532425,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_ConstraintTool.rbxm took 269.7491999999997 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.602Z,13.602444,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_AnimationClipEditor.rbxm' took 1.0641 msec
+2026-10-10T06:46:49.602Z,13.602444,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_AnimationClipEditor.rbxm' took 566.6737 msec
+2026-10-10T06:46:49.606Z,13.606445,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_AnimationClipEditor.rbxm took 575.121900000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] TotalTimeInMs: 1175
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] ramAvailableMb: 5436
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] TaskCount: 2
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:49.609Z,13.609447,1a3c,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] PerStateTraceId: 8DB633F8-6EA1-4B15-AA5B-CB06351E8EF8
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] State: OpenPlaceEnterDataModelScope
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] TaskNames: OpenPlaceEnterDataModelScope;PageWidgetsPlaceListener;
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:49.610Z,13.610447,1a3c,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:49.611Z,13.611447,4bd4,6 [FLog::StudioTimingLog] ======== Studio Startup Times =======
+2026-10-10T06:46:49.612Z,13.612448,4bd4,6 [FLog::StudioTimingLog] FastFlagsLoadTime  : 0.5550 sec
+2026-10-10T06:46:49.612Z,13.612448,4bd4,6 [FLog::StudioTimingLog] Authenticated : YES
+2026-10-10T06:46:49.612Z,13.612448,4bd4,6 [FLog::StudioTimingLog] StartPageOpenTime  : 13.4522 sec
+2026-10-10T06:46:49.616Z,13.616449,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_AdaptiveAnimationSupport.rbxm' took 1.4353 msec
+2026-10-10T06:46:49.616Z,13.616449,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_AdaptiveAnimationSupport.rbxm' took 1026.2036 msec
+2026-10-10T06:46:49.619Z,13.619451,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_AdaptiveAnimationSupport.rbxm took 1073.3946999999996 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.695Z,13.695492,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_AssetImporter.rbxm took 219.9296000000004 msec
+2026-10-10T06:46:49.711Z,13.711499,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_ConstraintTool.rbxm took 13.492300000001123 msec
+2026-10-10T06:46:49.712Z,13.712500,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::initializeFromInfo: edit_builtin_AnimationClipEditor.rbxm_AnimationClipEditor - Failed Empty
+2026-10-10T06:46:49.712Z,13.712500,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_AnimationClipEditor.rbxm took 1.419200000000842 msec
+2026-10-10T06:46:49.714Z,13.714500,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_AdaptiveAnimationSupport.rbxm took 2.2346999999989237 msec
+2026-10-10T06:46:49.715Z,13.715501,3f6c,6 [FLog::StudioDebuggerV2] DAPClient: Invoking method: configurationDone
+2026-10-10T06:46:49.717Z,13.717502,4bd4,6,Warning [FLog::StudioPluginRelay] PluginWidgetRelay::updateWidgetTitle: edit_builtin_AnimationClipEditor.rbxm_AnimationClipEditor - Failed Empty
+2026-10-10T06:46:49.752Z,13.752529,4bd4,6 [FLog::Graphics] Terrain TextureArray 512x512, arraySize: 37, mip: 10
+2026-10-10T06:46:49.799Z,13.799555,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_ConvertToPackage.rbxm' took 0.7180 msec
+2026-10-10T06:46:49.799Z,13.799555,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_ConvertToPackage.rbxm' took 221.1193 msec
+2026-10-10T06:46:49.800Z,13.800555,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_ConvertToPackage.rbxm took 225.3443999999991 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.801Z,13.801556,0cb8,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_ConvertToPackage.rbxm took 0.7121000000012145 msec
+2026-10-10T06:46:49.881Z,13.881553,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_DeviceEmulator.rbxm' took 0.6421 msec
+2026-10-10T06:46:49.881Z,13.881553,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_DeviceEmulator.rbxm' took 215.0737 msec
+2026-10-10T06:46:49.882Z,13.882552,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_DeviceEmulator.rbxm took 219.98040000000074 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.883Z,13.883553,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_DeviceEmulator.rbxm took 0.5360999999997063 msec
+2026-10-10T06:46:49.933Z,13.933564,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_DraftsWidget.rbxm' took 1.8220 msec
+2026-10-10T06:46:49.933Z,13.933564,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_DraftsWidget.rbxm' took 206.0577 msec
+2026-10-10T06:46:49.934Z,13.934565,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_DraftsWidget.rbxm took 211.17770000000036 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:49.974Z,13.974644,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::onResizeEvent: rplg_sabuiltin_DeviceSimulatorToolbar.rbxm_Popovers/305efa55-eea1-4dc6-bf77-36b71c65e8da - Failed Empty
+2026-10-10T06:46:50.274Z,14.274695,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_DraftsWidget.rbxm took 338.9839999999999 msec
+2026-10-10T06:46:50.275Z,14.275695,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::initializeFromInfo: edit_builtin_DraftsWidget.rbxm_Drafts - Failed Empty
+2026-10-10T06:46:50.334Z,14.334694,1940,6,Error [FLog::HangMonitor] Timeout while checking if the monitor step should be skipped
+2026-10-10T06:46:50.450Z,14.450781,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_GameSettings.rbxm' took 57.7308 msec
+2026-10-10T06:46:50.450Z,14.450781,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_GameSettings.rbxm' took 418.0945 msec
+2026-10-10T06:46:50.451Z,14.451780,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_GameSettings.rbxm took 421.83780000000047 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:50.540Z,14.540781,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_LightGuides.rbxm' took 0.7245 msec
+2026-10-10T06:46:50.540Z,14.540781,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_LightGuides.rbxm' took 257.0863 msec
+2026-10-10T06:46:50.542Z,14.542781,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_LightGuides.rbxm took 262.80060000000026 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:50.663Z,14.663217,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_LocalizationTools.rbxm' took 0.7487 msec
+2026-10-10T06:46:50.664Z,14.664212,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_LocalizationTools.rbxm' took 249.3446 msec
+2026-10-10T06:46:50.666Z,14.666203,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_LocalizationTools.rbxm took 254.5763000000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:50.729Z,14.729918,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_MoveDragger.rbxm' took 0.2397 msec
+2026-10-10T06:46:50.729Z,14.729918,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_MoveDragger.rbxm' took 60.7289 msec
+2026-10-10T06:46:50.729Z,14.729918,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_MoveDragger.rbxm took 63.826799999999295 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:50.746Z,14.746312,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_GameSettings.rbxm took 12.761700000000431 msec
+2026-10-10T06:46:50.747Z,14.747312,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_LightGuides.rbxm took 0.8148999999999518 msec
+2026-10-10T06:46:50.748Z,14.748311,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_LocalizationTools.rbxm took 1.0562000000007288 msec
+2026-10-10T06:46:50.749Z,14.749311,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_MoveDragger.rbxm took 0.5242000000009739 msec
+2026-10-10T06:46:50.757Z,14.757310,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::onResizeEvent: rplg_sabuiltin_DeviceSimulatorToolbar.rbxm_Popovers/e56d1892-78a8-4c42-bab2-ad9224968111 - Failed Empty
+2026-10-10T06:46:50.781Z,14.781304,4bd4,6,Warning [FLog::StudioPluginRelay] PluginWidgetRelay::updateWidgetTitle: edit_builtin_DraftsWidget.rbxm_Drafts - Failed Empty
+2026-10-10T06:46:50.977Z,14.977291,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_MaterialManager.rbxm' took 0.8016 msec
+2026-10-10T06:46:50.977Z,14.977291,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_MaterialManager.rbxm' took 430.5100 msec
+2026-10-10T06:46:50.978Z,14.978292,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_MaterialManager.rbxm took 435.17479999999864 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:50.979Z,14.979291,0848,6 [FLog::StudioDebuggerV2] DebuggerConnection(0000015C285A06F0): Connected event
+2026-10-10T06:46:50.980Z,14.980291,0848,6 [FLog::StudioDebuggerV2] DAPClient: Invoking method: setExceptionBreakpoints
+2026-10-10T06:46:50.994Z,14.994290,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_MaterialPicker.rbxm' took 0.8462 msec
+2026-10-10T06:46:50.994Z,14.994290,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_MaterialPicker.rbxm' took 405.5094 msec
+2026-10-10T06:46:51.008Z,15.008289,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::onResizeEvent: rplg_sabuiltin_DeviceSimulatorToolbar.rbxm_Popovers/ad1edd62-ce18-437b-8e48-7cc57c4f0ba1 - Failed Empty
+2026-10-10T06:46:51.013Z,15.013288,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_MaterialPicker.rbxm took 429.7348000000003 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.178Z,15.178344,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_PlayerEmulator.rbxm' took 0.6714 msec
+2026-10-10T06:46:51.179Z,15.179343,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_PlayerEmulator.rbxm' took 248.0574 msec
+2026-10-10T06:46:51.180Z,15.180344,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_PlayerEmulator.rbxm took 251.91099999999977 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.244Z,15.244342,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_MaterialManager.rbxm took 263.17449999999985 msec
+2026-10-10T06:46:51.353Z,15.353355,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_SimulationStep.rbxm' took 0.0081 msec
+2026-10-10T06:46:51.355Z,15.355355,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_SimulationStep.rbxm' took 3.0004 msec
+2026-10-10T06:46:51.356Z,15.356356,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_SimulationStep.rbxm took 7.567699999999178 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.381Z,15.381358,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_SelectDragger.rbxm' took 0.1927 msec
+2026-10-10T06:46:51.381Z,15.381358,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_SelectDragger.rbxm' took 91.0167 msec
+2026-10-10T06:46:51.382Z,15.382359,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_SelectDragger.rbxm took 98.23329999999864 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.436Z,15.436337,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_EventEmulator.rbxm' took 0.6225 msec
+2026-10-10T06:46:51.436Z,15.436337,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_EventEmulator.rbxm' took 1624.7753 msec
+2026-10-10T06:46:51.442Z,15.442335,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_EventEmulator.rbxm took 1640.6799999999996 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.553Z,15.553338,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_MaterialPicker.rbxm took 290.40280000000075 msec
+2026-10-10T06:46:51.560Z,15.560338,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_PlayerEmulator.rbxm took 6.915300000001068 msec
+2026-10-10T06:46:51.689Z,15.689413,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_SocialPresence.rbxm' took 3.3817 msec
+2026-10-10T06:46:51.689Z,15.689413,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_SocialPresence.rbxm' took 303.0537 msec
+2026-10-10T06:46:51.692Z,15.692414,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_SocialPresence.rbxm took 309.4713999999996 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.753Z,15.753405,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_StudioCameraUI.rbxm' took 0.8515 msec
+2026-10-10T06:46:51.753Z,15.753405,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_StudioCameraUI.rbxm' took 252.0786 msec
+2026-10-10T06:46:51.756Z,15.756405,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_StudioCameraUI.rbxm took 259.17679999999876 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.757Z,15.757405,0cb8,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] TotalTimeInMs: 1159
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] ramAvailableMb: 5281
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] TaskCount: 2
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] PerStateTraceId: 1C78D834-DCB7-4F24-ADF3-B6BD34E85825
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] State: OpenPlacePreSuccess
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] TaskNames: DraftsServiceHostManagerOnPlaceOpenSuccess;TestWorkflowManagerOnPlaceOpenSuccess;
+2026-10-10T06:46:51.758Z,15.758405,0cb8,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:51.759Z,15.759405,0cb8,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:51.759Z,15.759405,0cb8,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:51.913Z,15.913442,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_PathEditor.rbxm' took 1.0523 msec
+2026-10-10T06:46:51.913Z,15.913442,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_PathEditor.rbxm' took 1187.5047 msec
+2026-10-10T06:46:51.926Z,15.926444,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_PathEditor.rbxm took 1208.544400000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.930Z,15.930445,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_TagEditor.rbxm' took 0.8918 msec
+2026-10-10T06:46:51.930Z,15.930445,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_TagEditor.rbxm' took 363.1066 msec
+2026-10-10T06:46:51.931Z,15.931445,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_TagEditor.rbxm took 366.6962999999992 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.991Z,15.991376,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_PivotEditor.rbxm' took 4.5403 msec
+2026-10-10T06:46:51.991Z,15.991376,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_PivotEditor.rbxm' took 1182.0786 msec
+2026-10-10T06:46:51.993Z,15.993376,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_PivotEditor.rbxm took 1225.5345999999995 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:51.996Z,15.996375,3f6c,6,Info [FLog::PlaceSessionTaskRegister] Start to process OpenPlaceSuccess tasks.
+2026-10-10T06:46:51.996Z,15.996375,4bd4,6 [FLog::UpdateUIManager] Resuming status bar update (0000015C75D83690)
+2026-10-10T06:46:52.001Z,16.001373,3f6c,6,Info [DFLog::StudioPerformanceMeasurementsSummary] StudioPerformanceMeasurements summary for StudioOpenPlace: 6556ms
+2026-10-10T06:46:52.043Z,16.043383,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_TerrainPaletteEditor.rbxm' took 0.8664 msec
+2026-10-10T06:46:52.043Z,16.043383,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_TerrainPaletteEditor.rbxm' took 266.9758 msec
+2026-10-10T06:46:52.045Z,16.045383,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_TerrainPaletteEditor.rbxm took 277.3355000000013 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.069Z,16.069382,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_PublishPlaceAs.rbxm' took 0.6248 msec
+2026-10-10T06:46:52.069Z,16.069382,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_PublishPlaceAs.rbxm' took 994.0322 msec
+2026-10-10T06:46:52.076Z,16.076380,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_PublishPlaceAs.rbxm took 1007.6815999999998 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.077Z,16.077381,0848,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatch Local Patch DataModelPatchConfig : type=2, assetId=115043838414809, assetVersion=6833, maxAppVersion=721, localAssetURI=rbxasset://models/DataModelPatch/DataModelPatch.rbxm
+2026-10-10T06:46:52.077Z,16.077381,0848,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: config: 115043838414809.6833
+2026-10-10T06:46:52.077Z,16.077381,0848,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: numAttemptsRemaining: 1
+2026-10-10T06:46:52.077Z,16.077381,0848,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatchFromConfig: contentId=rbxasset://models/DataModelPatch/DataModelPatch.rbxm
+2026-10-10T06:46:52.078Z,16.078381,0848,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: get patch from content provider for Model
+2026-10-10T06:46:52.078Z,16.078381,0848,6,Warning [DFLog::RbxmFileManager] LocalStorageManager is not available.
+2026-10-10T06:46:52.124Z,16.124376,0848,6 [FLog::DataModelPatchConfigurer] deserializeAndVerifyPatch with blake3
+2026-10-10T06:46:52.158Z,16.158401,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_UIEditor.rbxm' took 0.0250 msec
+2026-10-10T06:46:52.158Z,16.158401,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_UIEditor.rbxm' took 7.0010 msec
+2026-10-10T06:46:52.158Z,16.158401,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_UIEditor.rbxm took 9.686299999998482 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.163Z,16.163403,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_ViewSelector.rbxm' took 0.0127 msec
+2026-10-10T06:46:52.163Z,16.163403,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_ViewSelector.rbxm' took 1.0001 msec
+2026-10-10T06:46:52.164Z,16.164402,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_ViewSelector.rbxm took 5.487300000002193 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.186Z,16.186405,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_TutorialLinks.rbxm' took 0.1493 msec
+2026-10-10T06:46:52.186Z,16.186405,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_TutorialLinks.rbxm' took 42.0058 msec
+2026-10-10T06:46:52.186Z,16.186405,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_TutorialLinks.rbxm took 50.12969999999939 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.266Z,16.266384,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_TextureGenerator.rbxm' took 1.9217 msec
+2026-10-10T06:46:52.267Z,16.267384,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_TextureGenerator.rbxm' took 259.0120 msec
+2026-10-10T06:46:52.269Z,16.269382,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_TextureGenerator.rbxm took 267.163 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.296Z,16.296379,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_RigGenerator.rbxm' took 0.8067 msec
+2026-10-10T06:46:52.296Z,16.296379,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_RigGenerator.rbxm' took 1215.0286 msec
+2026-10-10T06:46:52.297Z,16.297380,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_RigGenerator.rbxm took 1218.8092999999985 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.384Z,16.384392,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AnimationGraphEditor.rbxm' took 1.1479 msec
+2026-10-10T06:46:52.384Z,16.384392,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AnimationGraphEditor.rbxm' took 105.0099 msec
+2026-10-10T06:46:52.384Z,16.384392,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AnimationGraphEditor.rbxm took 108.28090000000046 msec [dm=Edit otaVersion=24569]
+2026-10-10T06:46:52.401Z,16.401392,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_VRStatus.rbxm' took 0.6310 msec
+2026-10-10T06:46:52.402Z,16.402391,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_VRStatus.rbxm' took 233.9899 msec
+2026-10-10T06:46:52.407Z,16.407393,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_VRStatus.rbxm took 243.9132000000015 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.602Z,16.602667,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_DeviceSimulatorToolbar.rbxm' took 0.7488 msec
+2026-10-10T06:46:52.602Z,16.602667,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_DeviceSimulatorToolbar.rbxm' took 301.2876 msec
+2026-10-10T06:46:52.608Z,16.608606,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_DeviceSimulatorToolbar.rbxm took 311.68579999999935 msec [dm=Edit otaVersion=24621]
+2026-10-10T06:46:52.616Z,16.616528,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetExport.rbxm' took 1.0003 msec
+2026-10-10T06:46:52.616Z,16.616528,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetExport.rbxm' took 71.2830 msec
+2026-10-10T06:46:52.617Z,16.617517,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AssetExport.rbxm took 85.80020000000133 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.695Z,16.695402,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetAccess.rbxm' took 0.7314 msec
+2026-10-10T06:46:52.696Z,16.696404,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetAccess.rbxm' took 304.0111 msec
+2026-10-10T06:46:52.697Z,16.697403,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AssetAccess.rbxm took 311.31350000000066 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.943Z,16.943937,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_StyleEditor.rbxm' took 0.8441 msec
+2026-10-10T06:46:52.943Z,16.943937,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_StyleEditor.rbxm' took 1380.5986 msec
+2026-10-10T06:46:52.945Z,16.945948,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_StyleEditor.rbxm took 1385.4726000000016 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:52.951Z,16.951979,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetManager.rbxm' took 16.7391 msec
+2026-10-10T06:46:52.951Z,16.951979,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetManager.rbxm' took 338.4221 msec
+2026-10-10T06:46:52.957Z,16.957006,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AssetManager.rbxm took 346.3411000000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.029Z,17.029387,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AttenuationCurveEditor.rbxm' took 0.6791 msec
+2026-10-10T06:46:53.029Z,17.029387,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AttenuationCurveEditor.rbxm' took 220.9820 msec
+2026-10-10T06:46:53.030Z,17.030392,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AttenuationCurveEditor.rbxm took 246.65680000000023 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.298Z,17.298416,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AudioEqualizerEditor.rbxm' took 0.7194 msec
+2026-10-10T06:46:53.298Z,17.298416,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AudioEqualizerEditor.rbxm' took 229.1619 msec
+2026-10-10T06:46:53.299Z,17.299416,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AudioEqualizerEditor.rbxm took 255.3012999999993 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.325Z,17.325415,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Assistant.rbxm' took 6.0013 msec
+2026-10-10T06:46:53.325Z,17.325415,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Assistant.rbxm' took 615.0051 msec
+2026-10-10T06:46:53.328Z,17.328413,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Assistant.rbxm took 630.9885000000008 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.449Z,17.449429,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetQualityValidation.rbxm' took 1.4896 msec
+2026-10-10T06:46:53.449Z,17.449429,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetQualityValidation.rbxm' took 815.0797 msec
+2026-10-10T06:46:53.451Z,17.451427,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AssetQualityValidation.rbxm took 833.3960000000004 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.476Z,17.476421,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AudioPlayerEditor.rbxm' took 0.7430 msec
+2026-10-10T06:46:53.476Z,17.476421,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AudioPlayerEditor.rbxm' took 316.9949 msec
+2026-10-10T06:46:53.478Z,17.478422,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AudioPlayerEditor.rbxm took 325.8763000000009 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.592Z,17.592402,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AvatarSettings.rbxm' took 0.9465 msec
+2026-10-10T06:46:53.592Z,17.592402,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AvatarSettings.rbxm' took 258.9884 msec
+2026-10-10T06:46:53.595Z,17.595402,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AvatarSettings.rbxm took 294.8630999999971 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.666Z,17.666426,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_CollisionGroupsEditor.rbxm' took 0.9540 msec
+2026-10-10T06:46:53.667Z,17.667427,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_CollisionGroupsEditor.rbxm' took 208.0005 msec
+2026-10-10T06:46:53.668Z,17.668427,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_CollisionGroupsEditor.rbxm took 215.97620000000006 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.809Z,17.809416,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ControlsEmulator.rbxm' took 0.7494 msec
+2026-10-10T06:46:53.809Z,17.809416,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ControlsEmulator.rbxm' took 326.9948 msec
+2026-10-10T06:46:53.811Z,17.811415,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ControlsEmulator.rbxm took 332.6570999999987 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.857Z,17.857410,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_TerrainEditor.rbxm' took 6.4071 msec
+2026-10-10T06:46:53.857Z,17.857410,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_TerrainEditor.rbxm' took 2129.9798 msec
+2026-10-10T06:46:53.859Z,17.859411,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_TerrainEditor.rbxm took 2135.7818 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.875Z,17.875410,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AudioCompressorEditor.rbxm' took 0.8634 msec
+2026-10-10T06:46:53.875Z,17.875410,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AudioCompressorEditor.rbxm' took 889.2510 msec
+2026-10-10T06:46:53.877Z,17.877409,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AudioCompressorEditor.rbxm took 895.0567000000013 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:53.945Z,17.945429,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Debugger.rbxm' took 0.6904 msec
+2026-10-10T06:46:53.945Z,17.945429,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Debugger.rbxm' took 215.9964 msec
+2026-10-10T06:46:53.946Z,17.946430,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Debugger.rbxm took 220.34319999999852 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.124Z,18.124491,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Dialog.rbxm' took 0.8265 msec
+2026-10-10T06:46:54.124Z,18.124491,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Dialog.rbxm' took 308.0749 msec
+2026-10-10T06:46:54.126Z,18.126492,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Dialog.rbxm took 314.41320000000064 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.200Z,18.200668,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_WindControl.rbxm' took 0.8006 msec
+2026-10-10T06:46:54.200Z,18.200668,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_WindControl.rbxm' took 2007.2629 msec
+2026-10-10T06:46:54.202Z,18.202671,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_WindControl.rbxm took 2012.3734000000013 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.230Z,18.230707,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ExplorerPlugin.rbxm' took 0.8568 msec
+2026-10-10T06:46:54.230Z,18.230707,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ExplorerPlugin.rbxm' took 349.2970 msec
+2026-10-10T06:46:54.232Z,18.232710,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ExplorerPlugin.rbxm took 354.7796000000005 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.242Z,18.242594,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_HotModuleReplacement.rbxm' took 0.0083 msec
+2026-10-10T06:46:54.242Z,18.242594,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_HotModuleReplacement.rbxm' took 6.0003 msec
+2026-10-10T06:46:54.242Z,18.242594,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_HotModuleReplacement.rbxm took 10.16270000000219 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.298Z,18.298597,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Gen3d.rbxm' took 0.8607 msec
+2026-10-10T06:46:54.298Z,18.298597,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Gen3d.rbxm' took 88.9170 msec
+2026-10-10T06:46:54.298Z,18.298597,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Gen3d.rbxm took 97.12280000000106 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.306Z,18.306597,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_FindReplaceAll.rbxm' took 1.2571 msec
+2026-10-10T06:46:54.307Z,18.307598,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_FindReplaceAll.rbxm' took 325.1626 msec
+2026-10-10T06:46:54.307Z,18.307598,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Footer.rbxm' took 0.8015 msec
+2026-10-10T06:46:54.307Z,18.307598,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Footer.rbxm' took 281.1559 msec
+2026-10-10T06:46:54.308Z,18.308598,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_FindReplaceAll.rbxm took 362.30589999999904 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.309Z,18.309597,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Footer.rbxm took 291.9862999999978 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.332Z,18.332600,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_InputActionManager.rbxm' took 0.9877 msec
+2026-10-10T06:46:54.332Z,18.332600,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_InputActionManager.rbxm' took 85.0049 msec
+2026-10-10T06:46:54.332Z,18.332600,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_InputActionManager.rbxm took 90.22749999999746 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.445Z,18.445114,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_Toolbox.rbxm' took 1.5140 msec
+2026-10-10T06:46:54.445Z,18.445114,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_Toolbox.rbxm' took 2380.7331 msec
+2026-10-10T06:46:54.447Z,18.447115,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_Toolbox.rbxm took 2386.1384000000003 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.630Z,18.630136,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_LoginPage.rbxm' took 10.4316 msec
+2026-10-10T06:46:54.630Z,18.630136,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_LoginPage.rbxm' took 317.5384 msec
+2026-10-10T06:46:54.632Z,18.632137,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_LoginPage.rbxm took 322.6054000000005 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.731Z,18.731108,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_MultitouchEmulator.rbxm' took 1.0134 msec
+2026-10-10T06:46:54.732Z,18.732107,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_MultitouchEmulator.rbxm' took 357.7916 msec
+2026-10-10T06:46:54.733Z,18.733107,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_MultitouchEmulator.rbxm took 397.88929999999925 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.781Z,18.781118,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PartyEmulator.rbxm' took 0.7283 msec
+2026-10-10T06:46:54.781Z,18.781118,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PartyEmulator.rbxm' took 284.0071 msec
+2026-10-10T06:46:54.813Z,18.813120,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PartyEmulator.rbxm took 320.83330000000035 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.836Z,18.836121,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ModerationDialog.rbxm' took 1.0717 msec
+2026-10-10T06:46:54.836Z,18.836121,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ModerationDialog.rbxm' took 492.9683 msec
+2026-10-10T06:46:54.866Z,18.866188,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ModerationDialog.rbxm took 533.1109999999981 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:54.944Z,18.944210,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PerformanceTools.rbxm' took 0.7392 msec
+2026-10-10T06:46:54.944Z,18.944210,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PerformanceTools.rbxm' took 343.0777 msec
+2026-10-10T06:46:54.946Z,18.946194,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PerformanceTools.rbxm took 349.7698999999983 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.051Z,19.051281,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PlaceAnnotations.rbxm' took 1.0093 msec
+2026-10-10T06:46:55.051Z,19.051281,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PlaceAnnotations.rbxm' took 308.1636 msec
+2026-10-10T06:46:55.056Z,19.056282,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PlaceAnnotations.rbxm took 322.0533000000003 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.149Z,19.149286,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PluginManagement.rbxm' took 0.8552 msec
+2026-10-10T06:46:55.149Z,19.149286,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PluginManagement.rbxm' took 275.0940 msec
+2026-10-10T06:46:55.151Z,19.151285,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PluginManagement.rbxm took 283.6444 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.312Z,19.312290,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PropertiesPlugin.rbxm' took 0.8543 msec
+2026-10-10T06:46:55.312Z,19.312290,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PropertiesPlugin.rbxm' took 361.1414 msec
+2026-10-10T06:46:55.314Z,19.314289,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PropertiesPlugin.rbxm took 368.18979999999965 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.350Z,19.350285,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Reimport.rbxm' took 0.8242 msec
+2026-10-10T06:46:55.350Z,19.350285,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Reimport.rbxm' took 337.6879 msec
+2026-10-10T06:46:55.352Z,19.352285,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Reimport.rbxm took 345.638000000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.434Z,19.434282,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Ribbon.rbxm' took 0.8501 msec
+2026-10-10T06:46:55.434Z,19.434282,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Ribbon.rbxm' took 371.0005 msec
+2026-10-10T06:46:55.435Z,19.435282,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Ribbon.rbxm took 378.18369999999743 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.448Z,19.448288,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_TransformDragger.rbxm' took 0.0341 msec
+2026-10-10T06:46:55.448Z,19.448288,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_TransformDragger.rbxm' took 4.0001 msec
+2026-10-10T06:46:55.493Z,19.493290,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_SceneAnalysis.rbxm' took 0.8433 msec
+2026-10-10T06:46:55.493Z,19.493290,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_SceneAnalysis.rbxm' took 334.0042 msec
+2026-10-10T06:46:55.495Z,19.495291,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_SceneAnalysis.rbxm took 344.35270000000173 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.496Z,19.496290,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_TransformDragger.rbxm took 60.107300000002084 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.576Z,19.576277,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_StartPage.rbxm' took 11.1090 msec
+2026-10-10T06:46:55.577Z,19.577276,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_StartPage.rbxm' took 257.9862 msec
+2026-10-10T06:46:55.578Z,19.578276,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_StartPage.rbxm took 263.553599999998 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.585Z,19.585276,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_TeamCreateCollaborators.rbxm' took 0.8674 msec
+2026-10-10T06:46:55.585Z,19.585276,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_TeamCreateCollaborators.rbxm' took 222.9913 msec
+2026-10-10T06:46:55.590Z,19.590275,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_TeamCreateCollaborators.rbxm took 237.6741000000031 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.591Z,19.591274,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'user_Rojo.rbxm' took 0.2148 msec
+2026-10-10T06:46:55.591Z,19.591274,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'user_Rojo.rbxm' took 8.9992 msec
+2026-10-10T06:46:55.592Z,19.592276,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin user_Rojo.rbxm took 13.02729999999741 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.616Z,19.616272,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_AudioDiscovery.rbxm' took 3.5081 msec
+2026-10-10T06:46:55.616Z,19.616272,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_AudioDiscovery.rbxm' took 7198.6173 msec
+2026-10-10T06:46:55.617Z,19.617273,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_AudioDiscovery.rbxm took 7203.115499999999 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.677Z,19.677284,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Tutorials.rbxm' took 0.8108 msec
+2026-10-10T06:46:55.677Z,19.677284,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Tutorials.rbxm' took 224.9963 msec
+2026-10-10T06:46:55.679Z,19.679285,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Tutorials.rbxm took 230.4819000000009 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.726Z,19.726288,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_AvatarCompatibilityPreviewer.rbxm' took 1.3983 msec
+2026-10-10T06:46:55.726Z,19.726288,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_AvatarCompatibilityPreviewer.rbxm' took 6577.9771 msec
+2026-10-10T06:46:55.728Z,19.728287,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_AvatarCompatibilityPreviewer.rbxm took 6582.8472 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.731Z,19.731287,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_VisualizationModes.rbxm' took 0.8548 msec
+2026-10-10T06:46:55.731Z,19.731287,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_VisualizationModes.rbxm' took 230.9969 msec
+2026-10-10T06:46:55.732Z,19.732286,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_VisualizationModes.rbxm took 235.92280000000088 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.753Z,19.753288,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_RotateDragger.rbxm' took 0.2627 msec
+2026-10-10T06:46:55.753Z,19.753288,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_RotateDragger.rbxm' took 4592.9459 msec
+2026-10-10T06:46:55.756Z,19.756289,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_RotateDragger.rbxm took 4603.258000000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.758Z,19.758287,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_MaterialGenerator.rbxm' took 0.7651 msec
+2026-10-10T06:46:55.758Z,19.758287,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_MaterialGenerator.rbxm' took 5299.5085 msec
+2026-10-10T06:46:55.760Z,19.760288,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_MaterialGenerator.rbxm took 5307.228499999999 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.777Z,19.777288,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_LegacyChatDeprecation.rbxm' took 0.7957 msec
+2026-10-10T06:46:55.777Z,19.777288,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_LegacyChatDeprecation.rbxm' took 5531.5934 msec
+2026-10-10T06:46:55.778Z,19.778290,1a3c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_LegacyChatDeprecation.rbxm took 5536.7105 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.779Z,19.779289,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_LayeredClothingEditor.rbxm' took 0.7726 msec
+2026-10-10T06:46:55.779Z,19.779289,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_LayeredClothingEditor.rbxm' took 5532.5935 msec
+2026-10-10T06:46:55.780Z,19.780289,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_SimulationStep.rbxm took 1.0252999999984524 msec
+2026-10-10T06:46:55.781Z,19.781290,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_LayeredClothingEditor.rbxm took 5539.617000000002 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.786Z,19.786289,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_ScaleDragger.rbxm' took 0.1903 msec
+2026-10-10T06:46:55.786Z,19.786289,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_ScaleDragger.rbxm' took 4566.9429 msec
+2026-10-10T06:46:55.789Z,19.789289,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_ScaleDragger.rbxm took 4573.273800000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.811Z,19.811291,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_KnowledgeTutorials.rbxm' took 0.8525 msec
+2026-10-10T06:46:55.811Z,19.811291,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_KnowledgeTutorials.rbxm' took 5713.7002 msec
+2026-10-10T06:46:55.812Z,19.812290,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_KnowledgeTutorials.rbxm took 5718.7573 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.827Z,19.827291,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_SelectDragger.rbxm took 47.27839999999972 msec
+2026-10-10T06:46:55.828Z,19.828291,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_EventEmulator.rbxm took 0.32359999999798106 msec
+2026-10-10T06:46:55.893Z,19.893295,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_TextureViewer.rbxm' took 0.6896 msec
+2026-10-10T06:46:55.893Z,19.893295,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_TextureViewer.rbxm' took 3842.9121 msec
+2026-10-10T06:46:55.895Z,19.895294,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_TextureViewer.rbxm took 3849.0252 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.956Z,19.956291,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AudioActions.rbxm' took 2.8367 msec
+2026-10-10T06:46:55.956Z,19.956291,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AudioActions.rbxm' took 3005.3169 msec
+2026-10-10T06:46:55.957Z,19.957291,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_SocialPresence.rbxm took 129.6090999999997 msec
+2026-10-10T06:46:55.958Z,19.958290,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_AudioActions.rbxm took 3011.5807999999975 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:55.959Z,19.959291,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_StudioCameraUI.rbxm took 1.4918000000001541 msec
+2026-10-10T06:46:56.008Z,20.008291,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ConnectionIndicator.rbxm' took 0.8048 msec
+2026-10-10T06:46:56.009Z,20.009291,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ConnectionIndicator.rbxm' took 2541.8665 msec
+2026-10-10T06:46:56.010Z,20.010290,3f6c,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ConnectionIndicator.rbxm took 2547.2097 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.050Z,20.050283,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_PathEditor.rbxm took 90.97829999999973 msec
+2026-10-10T06:46:56.069Z,20.069283,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_ForceVisualizationControl.rbxm' took 0.6762 msec
+2026-10-10T06:46:56.069Z,20.069283,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_ForceVisualizationControl.rbxm' took 6118.6568 msec
+2026-10-10T06:46:56.074Z,20.074282,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_ForceVisualizationControl.rbxm took 6128.4365 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.113Z,20.113279,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_DirectionalCurveEditor.rbxm' took 19.7617 msec
+2026-10-10T06:46:56.113Z,20.113279,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_DirectionalCurveEditor.rbxm' took 2248.8694 msec
+2026-10-10T06:46:56.115Z,20.115280,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_DirectionalCurveEditor.rbxm took 2255.079200000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.180Z,20.180281,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_PlaceVersionHistory.rbxm' took 0.9328 msec
+2026-10-10T06:46:56.180Z,20.180281,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_PlaceVersionHistory.rbxm' took 1361.1614 msec
+2026-10-10T06:46:56.181Z,20.181282,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Notifications.rbxm' took 0.6821 msec
+2026-10-10T06:46:56.182Z,20.182281,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Notifications.rbxm' took 1720.1674 msec
+2026-10-10T06:46:56.182Z,20.182281,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_PlaceVersionHistory.rbxm took 1368.4125999999992 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.183Z,20.183281,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_Notifications.rbxm took 1726.464100000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.194Z,20.194281,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_TagEditor.rbxm took 144.19519999999864 msec
+2026-10-10T06:46:56.196Z,20.196281,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_PivotEditor.rbxm took 1.106199999998836 msec
+2026-10-10T06:46:56.198Z,20.198280,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_TerrainPaletteEditor.rbxm took 2.25189999999742 msec
+2026-10-10T06:46:56.199Z,20.199280,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_PublishPlaceAs.rbxm took 0.6905999999986534 msec
+2026-10-10T06:46:56.201Z,20.201281,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_UIEditor.rbxm took 2.2185000000014554 msec
+2026-10-10T06:46:56.202Z,20.202280,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_DEPRECATED_AssetManager.rbxm' took 1.6858 msec
+2026-10-10T06:46:56.203Z,20.203281,0848,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_DEPRECATED_AssetManager.rbxm' took 6574.8269 msec
+2026-10-10T06:46:56.207Z,20.207281,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_DEPRECATED_AssetManager.rbxm took 6581.605299999999 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.214Z,20.214281,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'builtin_CompositorDebugger.rbxm' took 0.7794 msec
+2026-10-10T06:46:56.216Z,20.216280,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'builtin_CompositorDebugger.rbxm' took 6956.9836 msec
+2026-10-10T06:46:56.218Z,20.218281,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_ViewSelector.rbxm took 16.22989999999902 msec
+2026-10-10T06:46:56.218Z,20.218281,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin builtin_CompositorDebugger.rbxm took 6961.466700000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.222Z,20.222281,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_TutorialLinks.rbxm took 4.153200000001078 msec
+2026-10-10T06:46:56.222Z,20.222281,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_TextureGenerator.rbxm took 0.4731000000006702 msec
+2026-10-10T06:46:56.224Z,20.224279,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_RigGenerator.rbxm took 1.7020000000016466 msec
+2026-10-10T06:46:56.225Z,20.225281,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AnimationGraphEditor.rbxm took 0.34259999999974866 msec
+2026-10-10T06:46:56.226Z,20.226280,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_VRStatus.rbxm took 1.4213000000005138 msec
+2026-10-10T06:46:56.228Z,20.228279,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_DeviceSimulatorToolbar.rbxm took 1.421200000002898 msec
+2026-10-10T06:46:56.228Z,20.228279,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AssetExport.rbxm took 0.373899999999594 msec
+2026-10-10T06:46:56.229Z,20.229280,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_CancellableDialog.rbxm' took 0.7604 msec
+2026-10-10T06:46:56.229Z,20.229280,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_CancellableDialog.rbxm' took 2895.8662 msec
+2026-10-10T06:46:56.230Z,20.230280,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AssetAccess.rbxm took 1.7791000000002555 msec
+2026-10-10T06:46:56.231Z,20.231279,3f6c,6,Info [FLog::TestServiceLog] [onServiceProvider] DebugUTPLauncherWebSocketUri='' wsOptIn=0
+2026-10-10T06:46:56.231Z,20.231279,3f6c,6,Info [FLog::TestServiceLog] [onServiceProvider] this=0x15c8ebd14d0 dm=0x15c1d243cd0 wsOptIn=0 isStudio=1 isServer=0 isPlayClient=0 isNonNetworkEdit=1
+2026-10-10T06:46:56.231Z,20.231279,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_CancellableDialog.rbxm took 2901.9565000000007 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.232Z,20.232281,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_StyleEditor.rbxm took 1.394299999997628 msec
+2026-10-10T06:46:56.260Z,20.260288,0848,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_ActivityFeed.rbxm' took 0.8589 msec
+2026-10-10T06:46:56.261Z,20.261288,0848,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_ActivityFeed.rbxm' took 3916.8978 msec
+2026-10-10T06:46:56.262Z,20.262289,0848,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_ActivityFeed.rbxm took 3922.9315000000006 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.343Z,20.343275,0cb8,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_CreatorConfig.rbxm' took 0.8432 msec
+2026-10-10T06:46:56.343Z,20.343275,0cb8,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_CreatorConfig.rbxm' took 2646.8466 msec
+2026-10-10T06:46:56.345Z,20.345276,0cb8,6,Info [FLog::PluginLoadingEnhanced] loadPlugin sabuiltin_CreatorConfig.rbxm took 2653.705200000001 msec [dm=Edit otaVersion=-3]
+2026-10-10T06:46:56.345Z,20.345276,0cb8,6,Info [FLog::PluginLoadingEnhanced] Loading Plugins in 0 total took 7931.450199999998 msec
+2026-10-10T06:46:56.362Z,20.362274,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AssetManager.rbxm took 130.27699999999953 msec
+2026-10-10T06:46:56.364Z,20.364273,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AttenuationCurveEditor.rbxm took 1.7803999999976838 msec
+2026-10-10T06:46:56.366Z,20.366274,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AudioEqualizerEditor.rbxm took 1.7971000000009951 msec
+2026-10-10T06:46:56.444Z,20.444298,1a3c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_AssetExport.rbxm' took 0.8992 msec
+2026-10-10T06:46:56.444Z,20.444298,1a3c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_AssetExport.rbxm' took 169.0092 msec
+2026-10-10T06:46:56.662Z,20.662357,0848,6,Warning [FLog::StudioCommands] Unable to find component AccessTokenPermissions in histogram map.
+2026-10-10T06:46:56.662Z,20.662357,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Assistant.rbxm took 296.4631000000004 msec
+2026-10-10T06:46:56.717Z,20.717390,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AssetQualityValidation.rbxm took 54.531799999999464 msec
+2026-10-10T06:46:56.719Z,20.719391,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AudioPlayerEditor.rbxm took 1.60229999999828 msec
+2026-10-10T06:46:56.719Z,20.719391,0848,6,Info [FLog::CreatorOutput] > local server = game:GetService("ServerScriptService"):WaitForChild("Server")
+
+local config = require(game:GetService("ReplicatedStorage").Shared.GrowthConfig)
+
+local schema = require(server.ProfileSchema)
+
+local store = require(server.ProfileStore)
+
+local now = os.time()
+
+local profile = schema.New(now - 3600)
+
+profile.AvailableTrainingPower = config.MaxSafePower - 1
+
+profile.LifetimeTrainingPower = config.MaxSafePower - 1
+
+profile.OfflineRateSnapshot = 10
+
+local summary, reason = store.TestOfflineSettle(profile, now)
+
+print("IR_REVIEW_R05_OFFLINE", summary and summary.GrantedPower, reason, profile.AvailableTrainingPower, profile.LifetimeTrainingPower)
+
+
+2026-10-10T06:46:56.728Z,20.728397,0848,6,Info [FLog::CreatorOutput] IR_REVIEW_R05_OFFLINE 1 nil 9007199254740991 9007199254740991
+2026-10-10T06:46:56.918Z,20.918320,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AvatarSettings.rbxm took 189.57389999999918 msec
+2026-10-10T06:46:56.919Z,20.919321,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_CollisionGroupsEditor.rbxm took 1.4842000000001576 msec
+2026-10-10T06:46:56.923Z,20.923319,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ControlsEmulator.rbxm took 4.094699999999563 msec
+2026-10-10T06:46:56.925Z,20.925320,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_TerrainEditor.rbxm took 1.6472999999983529 msec
+2026-10-10T06:46:56.927Z,20.927319,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AudioCompressorEditor.rbxm took 2.0868000000007214 msec
+2026-10-10T06:46:56.942Z,20.942898,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Debugger.rbxm took 14.721500000000276 msec
+2026-10-10T06:46:56.944Z,20.944908,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Dialog.rbxm took 2.6200000000002888 msec
+2026-10-10T06:46:57.017Z,21.017292,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_WindControl.rbxm took 71.67409999999919 msec
+2026-10-10T06:46:57.116Z,21.116861,3f6c,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatch Local Patch DataModelPatchConfig : type=2, assetId=115043838414809, assetVersion=6833, maxAppVersion=721, localAssetURI=rbxasset://models/DataModelPatch/DataModelPatch.rbxm
+2026-10-10T06:46:57.116Z,21.116861,3f6c,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: config: 115043838414809.6833
+2026-10-10T06:46:57.117Z,21.117863,3f6c,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: numAttemptsRemaining: 1
+2026-10-10T06:46:57.117Z,21.117863,3f6c,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatchFromConfig: contentId=rbxasset://models/DataModelPatch/DataModelPatch.rbxm
+2026-10-10T06:46:57.118Z,21.118862,3f6c,6,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: get patch from content provider for Model
+2026-10-10T06:46:57.118Z,21.118862,3f6c,6,Warning [DFLog::RbxmFileManager] LocalStorageManager is not available.
+2026-10-10T06:46:57.125Z,21.125862,3f6c,6 [FLog::DataModelPatchConfigurer] deserializeAndVerifyPatch with blake3
+2026-10-10T06:46:57.132Z,21.132862,1a3c,6 [FLog::Output] Flag UnifyModelPackagePublish3 referenced from Lua isn't defined in C++ code
+2026-10-10T06:46:57.134Z,21.134861,1a3c,6 [FLog::Output] Flag OpenScriptDocOptionsLua referenced from Lua isn't defined in C++ code
+2026-10-10T06:46:57.135Z,21.135862,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ExplorerPlugin.rbxm took 118.36100000000016 msec
+2026-10-10T06:46:57.135Z,21.135862,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_HotModuleReplacement.rbxm took 0.21640000000289206 msec
+2026-10-10T06:46:57.140Z,21.140863,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_FindReplaceAll.rbxm took 4.564299999998411 msec
+2026-10-10T06:46:57.142Z,21.142864,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Footer.rbxm took 1.8695999999991386 msec
+2026-10-10T06:46:57.142Z,21.142864,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_InputActionManager.rbxm took 0.3646999999986633 msec
+2026-10-10T06:46:57.143Z,21.143864,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Gen3d.rbxm took 0.37700000000029377 msec
+2026-10-10T06:46:57.151Z,21.151865,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_Toolbox.rbxm took 8.623000000000047 msec
+2026-10-10T06:46:57.156Z,21.156864,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_LoginPage.rbxm took 4.654899999998463 msec
+2026-10-10T06:46:57.160Z,21.160864,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_MultitouchEmulator.rbxm took 3.265100000000132 msec
+2026-10-10T06:46:57.166Z,21.166864,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PartyEmulator.rbxm took 5.995500000000931 msec
+2026-10-10T06:46:57.168Z,21.168865,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ModerationDialog.rbxm took 2.058999999999145 msec
+2026-10-10T06:46:57.183Z,21.183865,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PerformanceTools.rbxm took 14.762000000001052 msec
+2026-10-10T06:46:57.191Z,21.191864,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PlaceAnnotations.rbxm took 7.9457999999981155 msec
+2026-10-10T06:46:57.192Z,21.192865,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PluginManagement.rbxm took 0.505999999997897 msec
+2026-10-10T06:46:57.226Z,21.226866,4bd4,6,Warning [FLog::AuxiliaryView] AuxiliaryView::updateWidgetOnScreenChange: edit_builtin_Toolbox.rbxm_Toolbox - Overriding Screen to: QScreen(0x15c75d82ef0, name="\\\\.\\DISPLAY2")
+2026-10-10T06:46:57.248Z,21.248922,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PropertiesPlugin.rbxm took 56.36210000000119 msec
+2026-10-10T06:46:57.344Z,21.344479,3f6c,6,Info [FLog::PluginFileRead] Hashing Plugin 'sabuiltin_Gen3d.rbxm' took 0.8662 msec
+2026-10-10T06:46:57.344Z,21.344479,3f6c,6,Info [FLog::PluginFileRead] Plugin file read 'sabuiltin_Gen3d.rbxm' took 196.6144 msec
+2026-10-10T06:46:57.345Z,21.345474,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Reimport.rbxm took 95.89610000000093 msec
+2026-10-10T06:46:57.346Z,21.346470,3f6c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Ribbon.rbxm took 1.4583999999970843 msec
+2026-10-10T06:46:57.349Z,21.349459,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_SceneAnalysis.rbxm took 2.399700000001559 msec
+2026-10-10T06:46:57.351Z,21.351450,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_TransformDragger.rbxm took 2.2910000000031516 msec
+2026-10-10T06:46:57.357Z,21.357426,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_StartPage.rbxm took 5.666099999999119 msec
+2026-10-10T06:46:57.359Z,21.359419,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_TeamCreateCollaborators.rbxm took 1.9624999999976467 msec
+2026-10-10T06:46:57.850Z,21.850103,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin user_Rojo.rbxm took 490.0070999999997 msec
+2026-10-10T06:46:57.850Z,21.850103,4bd4,6,Warning [FLog::StudioPluginRelay] PluginDockWidgetRelay::initializeFromInfo: edit_user_Rojo.rbxm_Rojo_soundPlayer - Failed Empty
+2026-10-10T06:46:57.931Z,21.931524,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_AudioDiscovery.rbxm took 80.13229999999893 msec
+2026-10-10T06:46:57.932Z,21.932529,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Tutorials.rbxm took 1.394900000001087 msec
+2026-10-10T06:46:57.935Z,21.935545,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_AvatarCompatibilityPreviewer.rbxm took 2.5228999999988844 msec
+2026-10-10T06:46:58.014Z,22.014202,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_VisualizationModes.rbxm took 80.13260000000244 msec
+2026-10-10T06:46:58.015Z,22.015198,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_RotateDragger.rbxm took 0.7292000000020948 msec
+2026-10-10T06:46:58.018Z,22.018183,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_MaterialGenerator.rbxm took 3.2560000000003697 msec
+2026-10-10T06:46:58.024Z,22.024155,0848,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_LegacyChatDeprecation.rbxm took 5.422800000001615 msec
+2026-10-10T06:46:58.165Z,22.165567,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_LayeredClothingEditor.rbxm took 121.2693999999992 msec
+2026-10-10T06:46:58.165Z,22.165567,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_ScaleDragger.rbxm took 0.43340000000213763 msec
+2026-10-10T06:46:58.224Z,22.224567,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_KnowledgeTutorials.rbxm took 58.28859999999736 msec
+2026-10-10T06:46:58.224Z,22.224567,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_TextureViewer.rbxm took 0.29830000000075074 msec
+2026-10-10T06:46:58.226Z,22.226568,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_AudioActions.rbxm took 1.6429000000002247 msec
+2026-10-10T06:46:58.227Z,22.227568,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ConnectionIndicator.rbxm took 1.317900000000094 msec
+2026-10-10T06:46:58.229Z,22.229568,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_ForceVisualizationControl.rbxm took 1.4473999999999876 msec
+2026-10-10T06:46:58.231Z,22.231567,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_DirectionalCurveEditor.rbxm took 1.6861999999981947 msec
+2026-10-10T06:46:58.232Z,22.232569,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_PlaceVersionHistory.rbxm took 1.4772999999976832 msec
+2026-10-10T06:46:58.234Z,22.234568,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_Notifications.rbxm took 1.6337000000028468 msec
+2026-10-10T06:46:58.234Z,22.234568,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_DEPRECATED_AssetManager.rbxm took 0.2635000000026366 msec
+2026-10-10T06:46:58.236Z,22.236578,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin builtin_CompositorDebugger.rbxm took 1.1221999999975196 msec
+2026-10-10T06:46:58.242Z,22.242579,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_CancellableDialog.rbxm took 6.683500000001175 msec
+2026-10-10T06:46:58.244Z,22.244579,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_ActivityFeed.rbxm took 1.3936000000001059 msec
+2026-10-10T06:46:58.245Z,22.245579,1a3c,6,Info [FLog::PluginLoadingEnhanced] Running plugin sabuiltin_CreatorConfig.rbxm took 1.090900000001227 msec
+2026-10-10T06:46:58.409Z,22.409548,4bd4,6,Info [FLog::StudioApplicationState] State: Qt::ApplicationInactive
+2026-10-10T06:46:58.409Z,22.409548,4bd4,6,Info [FLog::RenderSchedulerState] Pushing throttle render state (count 1)
+2026-10-10T06:46:58.409Z,22.409548,4bd4,6,Debug [FLog::DataModelSoundManager] onApplicationStateChanged: m_isApplicationActive = false
+2026-10-10T06:46:58.409Z,22.409548,4bd4,6,Debug [FLog::DataModelSoundManager] onApplicationStateChanged: with shouldMute = true
+2026-10-10T06:46:58.409Z,22.409548,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::hideForRestoreLater: rplg_sabuiltin_DeviceSimulatorToolbar.rbxm_Popovers/305efa55-eea1-4dc6-bf77-36b71c65e8da - Success
+2026-10-10T06:46:58.409Z,22.409548,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::hideForRestoreLater: rplg_sabuiltin_DeviceSimulatorToolbar.rbxm_Popovers/e56d1892-78a8-4c42-bab2-ad9224968111 - Success
+2026-10-10T06:46:58.409Z,22.409548,4bd4,6,Warning [FLog::StudioPluginRelay] PluginQWidgetRelay::hideForRestoreLater: rplg_sabuiltin_DeviceSimulatorToolbar.rbxm_Popovers/ad1edd62-ce18-437b-8e48-7cc57c4f0ba1 - Success
+2026-10-10T06:46:58.710Z,22.710087,0848,6,Debug [FLog::DataModelSoundManager] DataModelSoundManager::updateSoundState(true)
+2026-10-10T06:46:58.710Z,22.710087,0848,6,Debug [FLog::DataModelSoundManager] soundService->muteAllChannels(true)
+2026-10-10T06:46:58.928Z,22.928099,0cb8,6,Info [FLog::AssistantApplication] AssistantVersion: 93560e3
+2026-10-10T06:46:58.929Z,22.929100,0cb8,6,Debug [FLog::DataModelSoundManager] DataModelSoundManager::updateSoundState(false)
+2026-10-10T06:46:58.929Z,22.929100,0cb8,6,Debug [FLog::DataModelSoundManager] soundService->muteAllChannels(false)
+2026-10-10T06:46:58.929Z,22.929100,0cb8,6,Debug [FLog::DataModelSoundManager] Restoring voice chat mute state (true)
+2026-10-10T06:46:58.929Z,22.929100,4bd4,6,Warning [FLog::StudioPluginRelay] PluginWidgetRelay::updateWidgetTitle: edit_user_Rojo.rbxm_Rojo_soundPlayer - Failed Empty
+2026-10-10T06:46:58.977Z,22.977089,1a3c,6 [FLog::KeyValueStorage] Secure Storage read failed with message: 'Element not found.'
+2026-10-10T06:46:58.998Z,22.998087,1a3c,6 [FLog::KeyValueStorage] Secure Storage read failed with message: 'Element not found.'
+2026-10-10T06:46:58.998Z,22.998087,1a3c,6,Debug [FLog::SecretsController] SecretsController: Retrieved 0 bytes from storage.
+2026-10-10T06:46:59.025Z,23.025087,1a3c,6,Info [FLog::AssistantApplication] AssistantVersion: 93560e3
+2026-10-10T06:46:59.034Z,23.034086,4bd4,6,Info [FLog::D3D11SwapChain] validate: resize triggered swapChain=0x15c7b7c7050 dims=788x734 hasFB=true
+2026-10-10T06:46:59.034Z,23.034086,4bd4,6,Info [FLog::D3D11SwapChain] validate: gpu=NVIDIA GeForce GT 1030
+2026-10-10T06:46:59.034Z,23.034086,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c7b7c7050 windowHandle=0xe0cd4 dims=788x734
+2026-10-10T06:46:59.034Z,23.034086,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 788x734 swapChain=0x15c7b7c7050
+2026-10-10T06:46:59.035Z,23.035086,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c449e1760 windowHandle=0xf0cde dims=792x40
+2026-10-10T06:46:59.035Z,23.035086,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 792x40 swapChain=0x15c449e1760
+2026-10-10T06:46:59.035Z,23.035086,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c458f6be0 windowHandle=0x540952 dims=198x393
+2026-10-10T06:46:59.035Z,23.035086,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 198x393 swapChain=0x15c458f6be0
+2026-10-10T06:46:59.036Z,23.036087,4bd4,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x15c7fa9a600 windowHandle=0x7c0520 dims=278x356
+2026-10-10T06:46:59.036Z,23.036087,4bd4,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 278x356 swapChain=0x15c7fa9a600
+2026-10-10T06:46:59.051Z,23.051537,4bd4,6 [FLog::Graphics] SceneManager: resizing main targets to 788x734
+2026-10-10T06:46:59.102Z,23.102291,0848,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:59.102Z,23.102291,0848,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:59.102Z,23.102291,0848,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:59.103Z,23.103287,0848,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:59.103Z,23.103287,0848,6 [telemetryLog] TotalTimeInMs: 7345
+2026-10-10T06:46:59.103Z,23.103287,0848,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:59.103Z,23.103287,0848,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:59.106Z,23.106272,0848,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:59.106Z,23.106272,0848,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:59.106Z,23.106272,0848,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:59.106Z,23.106272,0848,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:59.106Z,23.106272,0848,6 [telemetryLog] ramAvailableMb: 5064
+2026-10-10T06:46:59.107Z,23.107267,0848,6 [telemetryLog] TaskCount: 9
+2026-10-10T06:46:59.107Z,23.107267,0848,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:59.107Z,23.107267,0848,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] PerStateTraceId: 791D18C5-D765-42A8-8596-A7AE7284DA07
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] State: OpenPlaceSuccess
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] TaskNames: InitCloudEditObjects;LocalFileSaveManagerOnPlaceOpenSuccess;PlaceSessionMainViewManager-openPlaceSuccessTask;OpenPlaceSuccess;ReportNumInstancesToTelemetry;ReportPlaceOpenSuccessTelemetry;NotifyPluginApiHostPlaceOpenSuccess;OpenGameInUniverseController;PreloadPatch;
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:59.108Z,23.108263,0848,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:59.109Z,23.109257,0848,6 [telemetryLog] Sending 'OpenPlaceWorkflowTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] Intro message: PlaceSession Workflow Telemetry Summary
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] 'OpenPlaceWorkflowTelemetry' fields logging starts.
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] numInstances: 2966
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] TotalTimeInMs: 12003
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] ramAvailableMb: 5804
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] universeid_fromcontext: 0
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:59.110Z,23.110252,0848,6 [telemetryLog] WorkflowTraceId: A156ECA0-1A67-4BF9-99C9-D4C7A000B289
+2026-10-10T06:46:59.111Z,23.111248,0848,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:59.111Z,23.111248,0848,6 [telemetryLog] LaunchTask: EditFile
+2026-10-10T06:46:59.111Z,23.111248,0848,6 [telemetryLog] WorkflowResult: Success
+2026-10-10T06:46:59.111Z,23.111248,0848,6 [telemetryLog] Workflow: OpenPlace
+2026-10-10T06:46:59.111Z,23.111248,0848,6 [telemetryLog] StateHistory: OpenPlaceInitialization;OpenPlaceCreateDataModel;OpenPlaceLoadDataModel;OpenPlaceWaitForStreaming;OpenPlacePostLoadDataModel;OpenPlaceEnterDataModelScope;OpenPlacePreSuccess;OpenPlaceSuccess;
+2026-10-10T06:46:59.111Z,23.111248,0848,6 [telemetryLog] IsTeamCreate: false
+2026-10-10T06:46:59.111Z,23.111248,0848,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:59.111Z,23.111248,0848,6 [telemetryLog] 'OpenPlaceWorkflowTelemetry' fields logging ends.
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] Sending 'OpenPlacePerStateTelemetry' to 'Event Ingest,Points'
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] Intro message: PlaceSession PerState Telemetry Summary
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging starts.
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] cpuIs64Bit: 1
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] TotalTimeInMs: 4
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] placeid: 0
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] placeid_fromcontext: 0
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] cpuCoreCount: 2
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] cpuMaxFreq: 3719
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] cpuMinFreq: 0
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] ramTotalMb: 16324
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] ramAvailableMb: 4775
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] TaskCount: 3
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] osversion: 148.10.0.19045
+2026-10-10T06:46:59.112Z,23.112244,0848,6 [telemetryLog] osname: Win64
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] universeid: 0
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] cpuSupportedAdvancedVectorExtensions: SSE,AVX,AVX2,SSE41
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] studioSid: 535F76CF-A3BF-4CD0-8735-1393A8090B36
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] clientId: A6072CBF-D749-46B0-8F67-8766E3D91123
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] launchIntent: RunScript
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] PerStateTraceId: B7E4ACF6-872E-4F44-91AA-1A2FCDEE58D6
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] State: PlaceIdle
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] PlaceSessionId: 7053BD0D-2850-4ABC-A071-934BA645ECB3-D:\ROBLOX_GAME\IdleRaid\build\IdleRaid-review-ui-fixed.rbxlx
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] TaskNames: CheckForAutoRecoveryFileTask;StudioTestServiceController::PlaceIdle task;EmitTrue;
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] StudioStreamingEnabled: false
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] AllSuccess: true
+2026-10-10T06:46:59.113Z,23.113237,0848,6 [telemetryLog] 'OpenPlacePerStateTelemetry' fields logging ends.
+2026-10-10T06:46:59.154Z,23.154608,4bd4,6,Info [FLog::StudioApplicationState] State: Qt::ApplicationActive
+2026-10-10T06:46:59.154Z,23.154608,4bd4,6,Info [FLog::RenderSchedulerState] Popping throttle render state (count 0)
+2026-10-10T06:46:59.154Z,23.154608,4bd4,6,Debug [FLog::DataModelSoundManager] onApplicationStateChanged: m_isApplicationActive = true
+2026-10-10T06:46:59.154Z,23.154608,4bd4,6,Debug [FLog::DataModelSoundManager] onApplicationStateChanged: with shouldMute = false
+2026-10-10T06:46:59.157Z,23.157608,3f6c,6,Debug [FLog::DataModelSoundManager] DataModelSoundManager::updateSoundState(false)
+2026-10-10T06:46:59.157Z,23.157608,3f6c,6,Debug [FLog::DataModelSoundManager] Restoring voice chat mute state (true)
+2026-10-10T06:46:59.386Z,23.386620,36f8,6,Error [DFLog::AssetProvider] AssetResolutionWorkflow to get assetid: <REDACTED_URL> failed!! adIndividualItemFailureReason: AssetDelivery403IncorrectAssetType adBatchHttpStatusCode: 0 adBatchHttpErrorCode: OK adIndividualItemCode: 403 contentRepresentationSpecifier:  wasModerated: true adResolutionErrorMessage: Asset type does not match requested type adBatchJsonParsingError:  cdnHttpStatusCode: 0 cdnHttpErrorCode: OK cdnErrorMessage:

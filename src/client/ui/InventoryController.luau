@@ -47,70 +47,77 @@ function InventoryController.Start(panel: Frame, stateController)
 	local equipRemote = ReplicatedStorage:WaitForChild("IdleRaidRemotes"):WaitForChild("EquipItem")
 	local selectedItemId
 	local currentState
-	local lastInventory
-	local lastEquipment
-	local lastAttack
-	local lastDefense
-	local hasRendered = false
+	local rowsByItemId = {}
+	local quantitiesByItemId = {}
+	local nextLayoutOrder = 0
+	local updateSelection
 
-	local function render(state, force)
+	-- Keep a row and its Activated connection alive across full and partial state updates.
+	-- New items are appended so a pressed row does not move before MouseButton1 is released.
+	local function render(state)
 		currentState = state
-		if hasRendered and not force and state.Inventory == lastInventory and state.Equipment == lastEquipment
-		and state.FinalAttack == lastAttack and state.FinalDefense == lastDefense then return end
-		hasRendered = true
-		lastInventory = state.Inventory
-		lastEquipment = state.Equipment
-		lastAttack = state.FinalAttack
-		lastDefense = state.FinalDefense
-		local selectedStack
-		for _, child in ipairs(scroll:GetChildren()) do
-			if child:IsA("TextButton") then
-				child:Destroy()
-			end
-		end
-
-		local items = state.Inventory or {}
-		for _, stack in ipairs(items) do
+		local present = {}
+		for _, stack in ipairs(state.Inventory or {}) do
 			local itemId = stack.ItemId
 			local definition = ItemConfig.Items[itemId]
-			if definition then
-				if selectedItemId == stack.ItemId then
-					selectedStack = stack
+			if definition and typeof(stack.Quantity) == "number" and stack.Quantity > 0 then
+				present[itemId] = true
+				local entry = rowsByItemId[itemId]
+				if not entry then
+					local row = UiStyle.Button(scroll, itemId, "", UDim2.new(1, -10, 0, 56), UDim2.fromOffset(4, 0))
+					row.TextXAlignment = Enum.TextXAlignment.Left
+					row.TextSize = 14
+					local rarityColor = UiStyle.Rarities[definition.Rarity] or UiStyle.Colors.Text
+					row.TextColor3 = rarityColor
+					local outline = row:FindFirstChild("Outline")
+					if outline and outline:IsA("UIStroke") then
+						outline.Color = rarityColor
+						outline.Transparency = 0.55
+					end
+					nextLayoutOrder += 1
+					row.LayoutOrder = nextLayoutOrder
+					entry = { Button = row }
+					rowsByItemId[itemId] = entry
+					entry.Connection = row.Activated:Connect(function()
+						if not quantitiesByItemId[itemId] then return end
+						selectedItemId = itemId
+						updateSelection()
+					end)
 				end
-				local prefix = if selectedItemId == stack.ItemId then "● " else ""
-				local row = UiStyle.Button(
-					scroll,
-					stack.ItemId,
-					string.format("%s%s  x%d\n%s · %s", prefix, definition.Name, stack.Quantity, typeNames[definition.Type] or definition.Type, rarityNames[definition.Rarity] or definition.Rarity),
-					UDim2.new(1, -10, 0, 56),
-					UDim2.fromOffset(4, 0)
-				)
-				row.TextXAlignment = Enum.TextXAlignment.Left
-				row.TextSize = 14
-				local rarityColor = UiStyle.Rarities[definition.Rarity] or UiStyle.Colors.Text
-				row.TextColor3 = rarityColor
-				row.BackgroundColor3 = if selectedItemId == itemId then Color3.fromRGB(54, 82, 113)
-					else UiStyle.Colors.Surface
-				local outline = row:FindFirstChild("Outline")
-				if outline and outline:IsA("UIStroke") then
-					outline.Color = rarityColor
-					outline.Transparency = 0.55
-				end
-				row.LayoutOrder = #scroll:GetChildren()
-				row.Activated:Connect(function()
-					selectedItemId = itemId
-					render(currentState, true)
-				end)
+				quantitiesByItemId[itemId] = stack.Quantity
 			end
 		end
+		for itemId, entry in pairs(rowsByItemId) do
+			if not present[itemId] then
+				entry.Connection:Disconnect()
+				entry.Button:Destroy()
+				rowsByItemId[itemId] = nil
+				quantitiesByItemId[itemId] = nil
+			end
+		end
+		if selectedItemId and not present[selectedItemId] then selectedItemId = nil end
+		updateSelection()
+	end
 
-		if selectedStack then
+	updateSelection = function()
+		if not currentState then return end
+		for itemId, entry in pairs(rowsByItemId) do
+			local selected = selectedItemId == itemId
+			local definition = ItemConfig.Items[itemId]
+			local label = string.format("%s%s  x%d\n%s · %s",
+				if selected then "● " else "", definition.Name, quantitiesByItemId[itemId],
+				typeNames[definition.Type] or definition.Type, rarityNames[definition.Rarity] or definition.Rarity)
+			if entry.Button.Text ~= label then entry.Button.Text = label end
+			entry.Button.BackgroundColor3 = if selected then Color3.fromRGB(54, 82, 113) else UiStyle.Colors.Surface
+		end
+
+		if selectedItemId and quantitiesByItemId[selectedItemId] then
 			equipButton.Visible = true
 			local selected = ItemConfig.Items[selectedItemId]
-			local wornId = (state.Equipment or {})[selected.Type]
+			local wornId = (currentState.Equipment or {})[selected.Type]
 			local worn = wornId and ItemConfig.Items[wornId]
-			local beforeAttack = state.FinalAttack or 0
-			local beforeDefense = state.FinalDefense or 0
+			local beforeAttack = currentState.FinalAttack or 0
+			local beforeDefense = currentState.FinalDefense or 0
 			local afterAttack = beforeAttack - (worn and worn.Attack or 0) + (selected.Attack or 0)
 			local afterDefense = beforeDefense - (worn and worn.Defense or 0) + (selected.Defense or 0)
 			selectedLabel.Text = string.format("%s → %s\n공격 %s → %s  ·  방어 %s → %s",
@@ -122,8 +129,7 @@ function InventoryController.Start(panel: Frame, stateController)
 			equipButton.BackgroundColor3 = UiStyle.Colors.Accent
 		else
 			equipButton.Visible = false
-			selectedItemId = nil
-			selectedLabel.Text = if #items == 0 then "아직 아이템 없음" else "아이템을 선택하세요"
+			selectedLabel.Text = if next(rowsByItemId) == nil then "아직 아이템 없음" else "아이템을 선택하세요"
 			equipButton.Active = false
 			equipButton.AutoButtonColor = false
 			equipButton.BackgroundColor3 = UiStyle.Colors.Surface
@@ -131,28 +137,29 @@ function InventoryController.Start(panel: Frame, stateController)
 	end
 
 	equipButton.Activated:Connect(function()
-		if selectedItemId then
+		if selectedItemId and quantitiesByItemId[selectedItemId] then
 			equipRemote:FireServer(selectedItemId)
 		end
 	end)
-	stateController.Subscribe(render)
+	local subscription = stateController.Subscribe(render)
+	section.Destroying:Connect(function()
+		subscription:Disconnect()
+		for _, entry in pairs(rowsByItemId) do entry.Connection:Disconnect() end
+	end)
+
 	return function(itemId: string): boolean
-		if not currentState then return false end
-		for _, stack in ipairs(currentState.Inventory or {}) do
-			if stack.ItemId == itemId then
-				selectedItemId = itemId
-				render(currentState, true)
-				task.defer(function()
-					local row = scroll:FindFirstChild(itemId)
-					if row then
-						scroll.CanvasPosition = Vector2.new(0, math.max(0,
-							row.AbsolutePosition.Y - scroll.AbsolutePosition.Y + scroll.CanvasPosition.Y))
-					end
-				end)
-				return true
+		if not currentState or not quantitiesByItemId[itemId] then return false end
+		selectedItemId = itemId
+		updateSelection()
+		task.defer(function()
+			local entry = rowsByItemId[itemId]
+			local row = entry and entry.Button
+			if row and row.Parent then
+				scroll.CanvasPosition = Vector2.new(0, math.max(0,
+					row.AbsolutePosition.Y - scroll.AbsolutePosition.Y + scroll.CanvasPosition.Y))
 			end
-		end
-		return false
+		end)
+		return true
 	end
 end
 
