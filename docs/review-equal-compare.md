@@ -1,6 +1,6 @@
 # 검토 안정화: 동일 정책 성장 비교
 
-실행: Roblox Studio 0.742.0 편집 모드에서 `tests/review-equal-compare.luau` 실행. 로그는 [전체 편집 출력](test-logs/review-equal-compare.studio.log), [관문 CSV](review-equal-compare.csv), [1218개 이벤트 CSV](review-equal-events.csv)에 있다. `IR_REVIEW_COMPARE_RESULT PASS`는 **수식 시뮬레이션 완료**만 뜻한다. Play 클리어 PASS가 아니다.
+실행: Roblox Studio 0.742.0 편집 모드에서 `tests/review-equal-compare.luau` 실행. 로그는 [전체 편집 출력](test-logs/review-final-equal-compare.studio.log), [관문 CSV](review-equal-compare.csv), [1218개 이벤트 CSV](review-equal-events.csv)에 있다. `IR_REVIEW_COMPARE_RESULT PASS`는 **수식 시뮬레이션 완료**만 뜻한다. Play 클리어 PASS가 아니다.
 
 모든 경로는 수련력 0, Gold 0, 돌파 1단계, 시설 1등급, 무장비·무스킬로 독립 시작한다. 기본 수련 ON, 8킬/분 고정, 현재 단계에서 열린 최고 지역 선택, Gold가 되면 같은 시설 구매 정책, 드롭 제외, Gold는 지역 최소·최대의 평균을 사용한다. 레이드 중 사냥은 멈추지만 기본 수련은 계속된다. 모집 대기 0초, Gate10/20/30 전투는 각각 60/90/120초 **가정**이다. 모든 관문은 직접 클리어한 것으로 계산한 뒤 다음 단계로 간다. 공격력은 현행 Level 공식으로 계산해 이벤트에 기록하지만 적 HP에 따른 실제 공격 횟수·회피·패턴·대기·이동은 모델링하지 않았다. 난수 대신 결정적 평균을 사용하므로 seed는 없다. 가속은 없다.
 

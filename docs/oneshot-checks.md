@@ -1,12 +1,14 @@
 # OneShot 44개 인수 검사
 
+최신 상태: **17 PASS / 1 FAIL / 20 NOT_RUN / 6 BLOCKED**. V08은 Gate10에서 세 경로를 실제 Studio 가상입력으로 클리어한 범위만 PASS다. Gate20/30 실제 클리어는 미실행이다.
+
 상태는 PASS / FAIL / BLOCKED / NOT_RUN만 사용한다. PASS는 해당 환경에서 실제 실행한 증거가 있을 때만 기록한다. 코드 작성·빌드만으로 실제 플레이 항목을 통과시키지 않는다. `oneshot-free-play`는 **Studio 가상입력 자동 통합 테스트**다. RaidTelegraph 좌표를 읽어 회피하며 인간의 육안 공략·모바일 가독성 검사는 아니다. `growth-v2-raid2`는 서버에서 보스 HP를 직접 감소시킨 공동 보상 검사이며 실제 2인 전투 공략이 아니다. 아래 기존 PASS는 이 범위로만 해석한다; 검토 안정화의 신규 회귀 결과는 `oneshot-review-stabilization.md`에 별도 기록한다. 최종 빌드의 UI 가상입력은 첫 실행에서 장비 선택 클릭 시간 초과, 동일 빌드 재실행에서 전체 통과했다. 이 변동은 함께 기록하며 사람의 UI 가독성 판정으로 쓰지 않는다.
 
 | ID | 검사 | 상태 | 실행 환경 | 증거 / 한계 |
 | --- | --- | --- | --- | --- |
-| X01 | 정상 프로필에서 Command Bar 없이 수련/사냥 → 보상 → 실제 보유 장비 장착 → 시설 개선 → 돌파 → 첫 관문 도전으로 이동한다. 접근 자격과 실제 보유량을 준수한다. | PASS | Studio Play | [최종 빌드 무료 Play 전체 로그](test-logs/review-final-free-play-full.studio.log): Gate10 클리어 406초, 서버/클라이언트 true. 가상입력 자동 통합 검사 |
+| X01 | 정상 프로필에서 Command Bar 없이 수련/사냥 → 보상 → 실제 보유 장비 장착 → 시설 개선 → 돌파 → 첫 관문 도전으로 이동한다. 접근 자격과 실제 보유량을 준수한다. | PASS | Studio Play | [동일 조건 무료 Play 원본 로그](test-logs/review-matched-free.studio.log), [기존 최종 무료 Play](test-logs/review-final-free-play-full.studio.log): Gate10 클리어 406초, 서버/클라이언트 true. 가상입력 자동 통합 검사 |
 | X02 | 작은 수련 보상·아이템 획득·레벨업·시설 개선·돌파·관문 성공 알림이 서버 이벤트와 일치하고 중복·과잉 가림이 없다. | NOT_RUN | Studio Play 일부 | 서버 결과 알림 구현·UI 입력은 확인. 각 알림의 화면 표시/가림은 캡처·직접 관찰 미완료 |
-| X03 | 시설·돌파·장비 미리보기의 이전/이후 값이 적용 후 서버 원본과 일치한다. 성장 잔액의 자연 증가 때문에 정상 요청이 계속 거부되지 않는다. | PASS | Studio Play mock + 무료 Play | [최종 UI 재실행](test-logs/review-final-ui-retry-full.studio.log) preview_values·적용 rate/Attack 대조; [첫 UI 실행의 클릭 시간 초과](test-logs/review-final-ui-full.studio.log); [최종 무료 Play](test-logs/review-final-free-play-full.studio.log) 수련 중 연속 정상 돌파 |
+| X03 | 시설·돌파·장비 미리보기의 이전/이후 값이 적용 후 서버 원본과 일치한다. 성장 잔액의 자연 증가 때문에 정상 요청이 계속 거부되지 않는다. | PASS | Studio Play mock + 무료 Play | [최종 UI 재실행](test-logs/review-final-ui-retry-full.studio.log) preview_values·적용 rate/Attack 대조; [첫 UI 실행의 클릭 시간 초과](test-logs/review-final-ui-full.studio.log); [동일 초기 프로필 클릭 반복 5회](review-ui-click-diagnostic.md); [최종 무료 Play](test-logs/review-final-free-play-full.studio.log) 수련 중 연속 정상 돌파 |
 | X04 | 모의 상품 체험은 격리된 Studio 테스트에서만 가능하고 실제 구매창이나 정상 프로필의 무료 지급을 만들지 않는다. | PASS | Studio Play mock | [sandbox 로그](test-logs/oneshot-sandbox.studio.log): 정상 지급 거부, 별도 기록, 정상 복귀, 재진입 복원 |
 | X05 | 무료와 모의 유료 경로가 같은 효과 적용/관문 검증을 호출한다. +5권의 관문 초과 거부 시 아무 자원도 소비되지 않는다. | PASS | Studio Play mock | [integration 로그](test-logs/oneshot-integration.studio.log): 무료/권 돌파, +5 관문 초과 거부 시 장부 보존; [UI 로그](test-logs/oneshot-ui.studio.log) |
 | X06 | 레이드 중 상점·성장 패널을 접어도 HP·장판·Dash·자동전투 상태를 조작할 수 있다. 성공/실패 후 정상 성장 화면으로 복귀한다. | NOT_RUN | Studio Play 일부 | 실전 자동공격·Dash는 확인. Raid 중 메뉴 접기 및 HP/장판 시각 가독성 미확인 |
@@ -40,11 +42,11 @@
 | P11 | 스키마 이관 재실행 시 자산 보존, 테스트/운영 데이터 분리. | NOT_RUN | Studio Luau 일부 | [simulate](test-logs/oneshot-simulate.studio.log) v1→v2 재이관 보존. 운영 데이터 분리 실제 접속 미실행 |
 | P12 | 운영 클라이언트의 모의 구매/강제 지급 접근 차단. | NOT_RUN | Studio Play + 코드 | [sandbox](test-logs/oneshot-sandbox.studio.log) 정상 프로필 원격 거부. 게시 서버 클라이언트 미실행 |
 | V01 | 메인 성장 수치·메뉴별 상세 스탯/토큰 배치. | NOT_RUN | 코드 확인 | HUD/캐릭터/레이드 메뉴 분리 구현. 실제 PC·좁은 화면 시각 판독 미완료 |
-| V02 | 획득→가방→비교→장착, 시설→수련량 변화의 실제 버튼 동선. | PASS | Studio Play | [free-play 로그](test-logs/oneshot-free-play.studio.log): 아이템 드롭→가방 비교→장착, Gold 시설→rate 변화 |
+| V02 | 획득→가방→비교→장착, 시설→수련량 변화의 실제 버튼 동선. | FAIL | Studio 가상입력 Play, 동일 초기 프로필 반복 | [성공 경로](test-logs/review-matched-free.studio.log)와 [자연 상태 갱신 중 장비 선택 실패](test-logs/review-ui-click-run10.studio.log)를 모두 보존. [원인 분리](review-ui-click-diagnostic.md): 행 MouseDown 뒤 재생성으로 Activated 0/Equip 숨김. 안정적으로 클릭된다는 검사는 미통과 |
 | V03 | 돌파 비용·조건·전후 수치·불가 사유가 서버와 일치. | NOT_RUN | Studio Play 일부 | [UI 검사](test-logs/oneshot-ui.studio.log) 돌파 비용·전후 rate 일치. 모든 거부 사유의 화면 대조는 미완료 |
 | V04 | PC·좁은 화면·터치 에뮬레이션과 실제 모바일 결과 구분. | BLOCKED | Computer Use 오류 | [최종 모바일 버튼 경로](test-logs/review-final-mobile-full.studio.log) 테스트 전용 위치에서 가상 클릭→Slime HP 40→30. 화면 helper 프로세스 종료 오류로 PC/좁은 캡처 미확보; 원래 버튼 배치·실기 터치는 미검증 |
 | V05 | 실제 솔로 보스 공략, 2인 공략과 공동 보상. | NOT_RUN | Studio Play + 2인 서버 검사 | [free-play](test-logs/oneshot-free-play.studio.log) 솔로 실전 클리어; [raid2](test-logs/oneshot-raid2.studio.log) 2인 서버 보상만. 2인 실전 공략 미실행 |
 | V06 | 임시 Place와 실제 사용자 Place의 Rojo 연결 검사 구분. | PASS | 보고서/빌드 식별 | [manifest](build-manifest.json)에 별도 Rojo Place 식별. 원본 IdleRaid.rbxl 연결 검증으로 주장하지 않음 |
 | V07 | 리스폰·UI 재열기·레이드 반복 후 이벤트/이펙트 정리. | NOT_RUN | Studio Play 일부 | 실전 레이드 1회 종료 확인. 리스폰·반복 레이드·UI 재열기 누수 검사는 미실행 |
-| V08 | 실제 무료/모의 유료 동일 조건 비교와 원본 로그. | NOT_RUN | Studio Luau 모의 | [비교](oneshot-compare.md)는 같은 수식/정책의 결정적 가정. 모의 유료 실제 Play 관문 클리어 시간은 미측정 |
-| V09 | Rojo 빌드, 사용 가능한 Luau 검사, git diff --check. | PASS | Rojo + Studio + Git | 최종 안정화 Rojo .rbxlx 빌드, 내장 Script 43/43 소스 일치, Studio ModuleScript 41/41 로드, git diff --check. [새 manifest](review-build-manifest.json) |
+| V08 | 실제 무료/모의 유료 동일 조건 비교와 원본 로그. | PASS | Studio 가상입력 Play, Gate10 한정 | [동일 조건 방법·비교](review-matched-play.md), [측정 CSV](review-matched-play.csv), [무료](test-logs/review-matched-free.studio.log), [+5권](test-logs/review-matched-ticket5.studio.log), [10분권](test-logs/review-matched-voucher10.studio.log): 모두 실제 Gate10 Clear. Gate20/30 실제 Play와 사람 조작 난도는 미실행. 결정적 모델은 별도 가정 |
+| V09 | Rojo 빌드, 사용 가능한 Luau 검사, git diff --check. | PASS | Rojo + Studio + Git | 최종 안정화 Rojo .rbxlx 빌드, 내장 Script 43/43 소스 일치, Studio ModuleScript 41/41 로드, git diff --check. [빌드 manifest](review-build-manifest.json), [검토 ZIP manifest](review-stabilized-package-manifest.json) |

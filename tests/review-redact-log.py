@@ -9,10 +9,11 @@ destination = Path(sys.argv[2])
 raw = source.read_text(encoding="utf-8", errors="replace")
 players = set(re.findall(r"Players\.([A-Za-z0-9_]+)\.PlayerScripts", raw))
 players |= set(re.findall(r"Players\.([A-Za-z0-9_]+)\.PlayerGui", raw))
+players |= set(re.findall(r"\[IdleRaid\] ([A-Za-z0-9_]+) (?:dealt|killed|gained|obtained|reached)", raw))
 ids = set(re.findall(r"(?i)user[_-]?id[\s\"':=]+(\d{5,})", raw))
 players |= {value for value in [os.environ.get("REVIEW_REDACT_PLAYER")] if value}
 ids |= {value for value in [os.environ.get("REVIEW_REDACT_USER_ID")] if value}
-text = re.sub(r"(?i)C:\\Users\\[^\\\s]+", r"C:\Users\<REDACTED_USER>", raw)
+text = re.sub(r"(?i)C:\\Users\\[^\\\s]+", lambda _: "C:\\Users\\<REDACTED_USER>", raw)
 text = re.sub(r"(?i)https?://[^\s\"}]+", "<REDACTED_URL>", text)
 text = re.sub(
     r"(?i)(authorization|cookie|access[_-]?token|refresh[_-]?token|api[_-]?key|session[_-]?token)(\s*[:=]\s*)([^\s,&]+)",

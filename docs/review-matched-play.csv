@@ -1,0 +1,4 @@
+scenario,log,status,use_stage,use_time_s,gate_reached_s,raid_click_s,entry_wait_s,boss_fight_s,clear_s,initial_stage,initial_gold,initial_facility,initial_attack,initial_inventory_count,initial_ticket5,initial_voucher10
+free,docs/test-logs/review-matched-free.studio.log,PASS,,,293.438,293.638,5.117,107.663,406.418,1,0,1,10,0,0,0
+ticket5,docs/test-logs/review-matched-ticket5-rerun.studio.log,PASS,1,27.891,183.367,183.569,5.182,104.022,292.773,1,0,1,10,0,1,0
+voucher10,docs/test-logs/review-matched-voucher10-rerun.studio.log,PASS,1,4.855,215.173,215.368,5.172,102.857,323.397,1,0,1,10,0,0,1

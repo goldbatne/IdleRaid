@@ -28,7 +28,9 @@ try {
     if (-not $found) { Write-Output "TIMEOUT $TestName PID=$($process.Id)"; exit 2 }
     Start-Sleep -Seconds 2
     python tests/review-redact-log.py $found $destination
+    if ($LASTEXITCODE -ne 0) { throw "Log redaction failed: $LASTEXITCODE" }
     $resultLine=Select-String -LiteralPath $destination -Pattern $Marker -SimpleMatch | Select-Object -Last 1 -ExpandProperty Line
+    if (-not $resultLine) { throw "Result marker missing from redacted log: $Marker" }
     Write-Output $resultLine
     if ($resultLine -match ([regex]::Escape($Marker) + "\s+false")) { throw "Studio test failed: $resultLine" }
     Write-Output "BUILD_SHA256=$((Get-FileHash -LiteralPath $place -Algorithm SHA256).Hash.ToLowerInvariant())"
