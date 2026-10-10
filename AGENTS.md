@@ -17,6 +17,8 @@
 - `src/client`: 클라이언트 전용 LocalScript와 ModuleScript. 입력, 화면 표시, 연출을 둔다.
 - `src/shared`: 서버와 클라이언트가 함께 참조하는 상수, Config, 순수 로직, 통신 계약을 둔다.
 - `default.project.json`: 위 폴더를 Roblox 서비스에 연결하는 Rojo 설정이다.
+- `assets/place`: 기존 `IdleRaid.rbxl`에서 추출한 Baseplate, SpawnLocation, Terrain, Camera, Lighting 오브젝트다.
+- `IdleRaid.rbxl`: 사용자가 Roblox Studio에서 열어 플레이하는 단일 로컬 Place 파일이다.
 
 ## 개발 규칙
 
@@ -26,6 +28,7 @@
 - 밸런스 수치가 생기면 Config 모듈에 모아 관리한다. 공유 Config를 사용하더라도 최종 판정은 서버에서 수행한다.
 - 입력과 화면은 모바일 사용을 고려한다.
 - 문제가 발견되면 원인과 영향을 먼저 설명한다. 기존 파일을 보존하고 임의로 우회하지 않는다.
+- 코드 변경 후에는 원본 Place의 Studio 전용 변경 여부를 확인하고 백업한 뒤 `IdleRaid.rbxl`에 최신 Rojo 소스를 반영한다. 사용자가 확인할 파일은 이 원본 하나로 안내하고, 실제 원본 파일을 Studio Play로 검증한다. 원본의 월드 오브젝트가 `assets/place`와 달라졌다면 먼저 보존·동기화한다.
 
 ## 현재 단계
 
